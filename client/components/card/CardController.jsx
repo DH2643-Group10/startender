@@ -1,8 +1,8 @@
 import {React, useState} from 'react';
 import Card from "./CardView"
-
+//component meant to handle logic for cards
 const CardController = () => {
-const [state, setstate] = useState(initialState)
+const [state, setstate] = useState("")
 
     return (
         <div>

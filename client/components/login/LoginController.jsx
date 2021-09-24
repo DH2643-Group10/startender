@@ -1,5 +1,6 @@
 import {React,useState} from "react"
 import LoginView from "./loginView"
+//component meant to render login box and handle authentication
 
 const LoginController = () => {
     const [email, setEmail] = useState("")

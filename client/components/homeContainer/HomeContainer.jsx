@@ -1,5 +1,6 @@
 import  {React,useState} from 'react'
 import Card from '../card/CardView';
+//component is meant to be like a container for everything else
 
 
 const HomeContainer = () => {

@@ -1,5 +1,5 @@
 import React from "react"
-
+//component meant to display to display drink cards and perhaps other things aswell
 const Card = ({imgUrl,text}) => {
     return (
         <div>

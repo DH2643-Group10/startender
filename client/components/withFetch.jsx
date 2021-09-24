@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+//fetch HoC used to fetch data
   
   function withFetch(WrappedComponent, requestUrl) {
     const WithFetch = (props) => {
