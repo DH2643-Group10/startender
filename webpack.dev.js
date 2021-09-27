@@ -1,14 +1,16 @@
 import path from 'path';
-import { merge } from 'webpack-merge';
+import wpMerge from 'webpack-merge';
 import common from './webpack.common.js';
 
+const { merge } = wpMerge;
+
 export default merge(common, {
-    devtool: 'inline-soruce-map',
+    devtool: 'inline-source-map',
     mode: 'development',
     devServer: {
         static: {
-            directeory: path.join(path.resolve(), "dist")
+            directory: path.join(path.resolve(), "dist")
         },
-        port: 3000
+        port: 8080
     }
 })

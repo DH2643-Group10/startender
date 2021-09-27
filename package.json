@@ -2,9 +2,9 @@
   "name": "startender",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "webpack server --config webpack.dev.js",
+    "dev": "webpack serve --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
