@@ -21,7 +21,7 @@ useEffect(() => {
             <CardView 
             imgUrl={apiData!==null ? apiData.strDrinkThumb : "https://alladrinkar.se/wp-content/uploads/2021/06/sex-on-the-beach-drink-500x375.png"}
             title={apiData!==null ? apiData.strDrink : 'Loading...'} 
-            text={"hello, this is a text prop"}/>            
+            text={apiData!==null ? apiData.strInstructions : 'Loading...'}/>            
         </div>
     )
 }
