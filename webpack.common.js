@@ -14,6 +14,18 @@ loaders.push({
     exclude: /node_modules/,
 })
 
+loaders.push({ 
+    test: /\.s[ac]ss$/i,
+    use: [
+      // Creates `style` nodes from JS strings
+      "style-loader",
+      // Translates CSS into CommonJS
+      "css-loader",
+      // Compiles Sass to CSS
+      "sass-loader",
+    ],
+  })
+
 module.exports = {
     entry: {
         app: './client/app.tsx'
@@ -22,7 +34,7 @@ module.exports = {
         rules: loaders
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.jsx'],
+        extensions:  ['.js', '.jsx', '.ts', '.tsx', '.css','.scss'],
       },
     output: {
         filename: 'main.bundle.js',

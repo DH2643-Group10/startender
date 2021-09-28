@@ -3,13 +3,15 @@ import React, { FC } from "react"
 
 interface Props {
     imgUrl?: string,
+    title: string,
     text: string
 }
 
-const CardView: FC<Props> = ({imgUrl, text}) => {
+const CardView: FC<Props> = ({imgUrl,title,text}) => {
     return (
         <div style={{background:'gray',width:"250px", border:"black 2px solid", borderRadius:"5px"}}>
             <img style={{width:"200px",height:"200px"}} src={ imgUrl ? imgUrl : "https://alladrinkar.se/wp-content/uploads/2021/06/sex-on-the-beach-drink-500x375.png"}/> 
+            <h3>{title}</h3>
             <div>
                 {text ? text : 'lorem lorem ipsum' }
             </div>
