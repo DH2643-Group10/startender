@@ -18,5 +18,8 @@ export default {
     output: {
         filename: 'main.bundle.js',
         path: path.resolve(path.resolve(), 'dist')
-    }
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
 }

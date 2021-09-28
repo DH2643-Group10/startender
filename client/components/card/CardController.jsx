@@ -1,14 +1,14 @@
-import {React, useState} from 'react';
-import Card from "./CardView"
+import React,{useState} from 'react';
+import CardView from "./CardView"
 //component meant to handle logic for cards
-const CardController = () => {
+const Card = () => {
 const [state, setstate] = useState("")
 
     return (
         <div>
-            <Card text={"hello, this is a card lorem lorem ipsum ipsum"}/>            
+            <CardView text={"hello, this is a text prop"}/>            
         </div>
     )
 }
 
-export default CardController
+export default Card

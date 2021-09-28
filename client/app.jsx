@@ -4,8 +4,9 @@ import HomeContainer from './components/homeContainer/HomeContainer';
 
 const App = () => {
     return (
-    <div>Hello World
+    <div>
         <HomeContainer/>
+      
     </div>)
 }
 
