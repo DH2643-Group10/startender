@@ -3,15 +3,15 @@ import CardView from "./CardView"
 //component meant to handle logic for cards
 const Card = ({data}) => {
 const [apiData, setApiData] = useState(null)
-console.log("data prop: ",data)
-console.log("apiData: ",apiData)
+// console.log("data prop: ",data)
+// console.log("apiData: ",apiData)
 
 useEffect(() => {
     if(data.drinks){
-        console.log(">>>>>>data fetched from Effect",data)
+        console.log(">>>>>>data fetched to Card",data)
         setApiData(data.drinks[0])
     } else{
-        console.log("no fetched data")}
+        console.log("no fetched data to card")}
     }, [data])
     // console.log("data props",data)
     // console.log("apiData state",apiData)
