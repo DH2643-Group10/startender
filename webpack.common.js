@@ -8,6 +8,18 @@ loaders.push({
     use: 'babel-loader'
 })
 
+loaders.push({ 
+    test: /\.s[ac]ss$/i,
+    use: [
+      // Creates `style` nodes from JS strings
+      "style-loader",
+      // Translates CSS into CommonJS
+      "css-loader",
+      // Compiles Sass to CSS
+      "sass-loader",
+    ],
+  })
+
 export default {
     entry: {
         app: './client/app.jsx'
@@ -20,6 +32,6 @@ export default {
         path: path.resolve(path.resolve(), 'dist')
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.css','.scss'],
       },
 }
