@@ -1,5 +1,6 @@
 import React from 'react'
-import Input from '../input'
+import Input from '../input/Input'
+
 //view meant to render login window, input fields and register new users
 const LoginView = ({...props}) => {
     return (
