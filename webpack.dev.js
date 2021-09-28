@@ -1,10 +1,10 @@
-import path from 'path';
-import wpMerge from 'webpack-merge';
-import common from './webpack.common.js';
+const path = require('path');
+const wpMerge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 const { merge } = wpMerge;
 
-export default merge(common, {
+module.exports = merge(common, {
     devtool: 'inline-source-map',
     mode: 'development',
     devServer: {
