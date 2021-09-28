@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 //fetch HoC used to fetch data
   
-  function withFetch(WrappedComponent, requestUrl) {
-    const WithFetch = (props) => {
+  function withFetch<T>(WrappedComponent: React.ComponentType<T>, requestUrl: string) {
+    const WithFetch = (props: T) => {
       const [data, setData] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
       const [isError, setIsError] = useState(false);
@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
         if (requestUrl) fetchData(requestUrl);
       }, []);
       
-      const fetchData = async (requestUrl) => {
+      const fetchData = async (requestUrl: string) => {
         setIsLoading(true);
         setIsError(false);
         
@@ -37,7 +37,7 @@ import React, { useEffect, useState } from "react";
           isLoading={isLoading}
           isError={isError}
           {...props}
-          getData={(requestUrl) => fetchData(requestUrl)}
+          getData={(requestUrl: string) => fetchData(requestUrl)}
         />
       );
     };
