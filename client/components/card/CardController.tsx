@@ -1,13 +1,16 @@
 import React,{useState, useEffect} from 'react';
 import CardView from "./CardView"
 //component meant to handle logic for cards
-const Card = ({data}) => {
+const Card = ({...props}) => {
+const {data} = props;
 const [apiData, setApiData] = useState(null)
-// console.log("data prop: ",data)
-// console.log("apiData: ",apiData)
-
+// console.log("data: ",data)
+// console.log("props",props)
 useEffect(() => {
+    // console.log("data:",data)
     if(data.drinks){
+        //when the async feth call is done, data.drinks is available.
+        
         console.log(">>>>>>data fetched to Card",data)
         setApiData(data.drinks[0])
     } else{
