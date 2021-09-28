@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import HomeContainer from './components/homeContainer/HomeContainer';
-
+import "./sass/style.scss"
 const App = () => {
     return (
-    <div>
+    <div className='homecontainer'>
         <HomeContainer/>
       
     </div>)
