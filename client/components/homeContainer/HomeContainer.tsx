@@ -9,8 +9,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 
 
-
-
 //component is meant to be like a container for everything else
 
 const HomeContainer:FC = () => {
@@ -24,8 +22,8 @@ const HomeContainer:FC = () => {
                     {/* TODO: ändra så filen importeras från lokalt istället /assets/imgs/title.png */}
                 </Col>
             </Row>
-            <Row>
-                <Col className="bottom-bar">
+            <Row  className="search-bar">
+                <Col>
                      <InputGroup>
                         <FormControl
                         placeholder="Find your drink..."
@@ -36,11 +34,17 @@ const HomeContainer:FC = () => {
                         Search
                         </Button>
                     </InputGroup>
-
-                    {/* <UseFetch /> */}
-                    <Button variant="info">
-                        Hello I'm a little button
-                    </Button>
+                    </Col>
+            </Row>
+            <Row className="bottom-bar">
+                <Col>
+                    <UseFetch />
+                </Col>
+                <Col>
+                    <UseFetch />
+                </Col>
+                <Col>
+                    <UseFetch />
                 </Col>
             </Row>
         </Container>

@@ -1,4 +1,7 @@
-import React, { FC } from "react"
+import React, { FC } from "react";
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 //component meant to display to display drink cards and perhaps other things aswell
 
 interface Props {
@@ -9,13 +12,16 @@ interface Props {
 
 const CardView: FC<Props> = ({imgUrl,title,text}) => {
     return (
-        <div style={{background:'gray',width:"250px", border:"black 2px solid", borderRadius:"5px"}}>
-            <img style={{width:"200px",height:"200px"}} src={ imgUrl ? imgUrl : "https://alladrinkar.se/wp-content/uploads/2021/06/sex-on-the-beach-drink-500x375.png"}/> 
-            <h3>{title}</h3>
-            <div>
+        <Card>
+            <Card.Img variant="top"  src={ imgUrl ? imgUrl : "https://alladrinkar.se/wp-content/uploads/2021/06/sex-on-the-beach-drink-500x375.png"} />
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>
                 {text ? text : 'lorem lorem ipsum' }
-            </div>
-        </div>
+                </Card.Text>
+                <Button variant="secondary">Read more</Button>
+            </Card.Body>
+        </Card>
     )
 }
 
