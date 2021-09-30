@@ -1,0 +1,18 @@
+.top-bar {
+    height: 50vh;
+    text-align: center;
+
+    // ---- Background Image ----
+    background-image: url("https://i.imgur.com/yY2jgba.png"); 
+    background-position: 0 -100px; 
+    background-attachment: fixed;
+
+}
+
+.top-bar img {
+    margin-top: 3em;
+}
+
+.bottom-bar, .search-bar {
+    padding: 1em 5em 1em 5em;
+}

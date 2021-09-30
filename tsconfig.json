@@ -5,6 +5,7 @@
         "outDir": "dist",
         "allowSyntheticDefaultImports": true,
         "jsx": "react",
+        "moduleResolution": "node"
     },
     "exclude": ["node_modules"]
 }
