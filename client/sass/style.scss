@@ -1,9 +1,10 @@
-$body-color: red;
+$body-color: rgb(240, 238, 235);
 
 body {
-  // color: $body-color;
+  color: tomato;
 }
 
 .homecontainer{
     background: $body-color;
+    height: 100%;
 }

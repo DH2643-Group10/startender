@@ -1,8 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 @import "custom";
+@import "/client/components/homeContainer/styles.scss";
 
 .header {
   text-align: center;
+}
+
+#app, .container {
+  height: 100vh;
+  width: 100%;
 }
 
 span {
