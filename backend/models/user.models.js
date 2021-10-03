@@ -1,18 +1,21 @@
 const mongoose = require ('mongoose')
 
 
-const signUpTemplate = new mongoose.Schema({
+const User = new mongoose.Schema({
     fullName: {
         type:String,
         required: true
     },
     username: {
         type:String,
-        required: true
+        required: true,
+        unique: true
+
     },
     email: {
         type:String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type:String,
@@ -22,6 +25,8 @@ const signUpTemplate = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-
-})
-module.exports = mongoose.model('myusers',signUpTemplate)
+}, {
+    timestamps:true,
+    }
+)
+module.exports = mongoose.model('myusers', User)

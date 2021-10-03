@@ -1,9 +1,8 @@
-POST http://localhost:4000/app/signup
-Content-Type: application/json
-
-{
-    "fullName":"Albinbin",
-    "username":"ALBA",
-    "email":"alba@mg.se",
-    "password":"albin123pw"
-}
+# POST http://localhost:4000/drinks/update/6159cfd58f99645030aa98e5
+# Content-Type: application/json
+  
+# {
+#     "name" : "Just Vodka 3.0",
+#     "description" : "Pour to mouth",
+#     "ingredients" : ["Vodka"]
+# }

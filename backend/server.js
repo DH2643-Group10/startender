@@ -1,17 +1,22 @@
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const cors = require('cors');
 
-const routesUrls = require('./routes/routes.js');
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const app = express();
+
+const usersRouter = require('./routes/users.js');
+const drinkRouter = require('./routes/drinks.js');
+const commentsRouter = require('./routes/comments.js');
 
 
-dotenv.config()
-
-mongoose.connect(process.env.DATABASE_ACCESS, {useNewUrlParser:true, useCreateIndex: true} ,() => console.log("Database connected"))
+mongoose.connect(process.env.DATABASE_ACCESS, () => console.log("Database connected"))
 
 app.use(express.json())
 app.use(cors())
-app.use('/app', routesUrls)
+app.use('/users', usersRouter)
+app.use('/drinks', drinkRouter)
+app.use('/comments', commentsRouter)
+
 app.listen(4000,()=> console.log('server is up and running'))
