@@ -1,0 +1,9 @@
+POST http://localhost:4000/app/signup
+Content-Type: application/json
+
+{
+    "fullName":"Albinbin",
+    "username":"ALBA",
+    "email":"alba@mg.se",
+    "password":"albin123pw"
+}
