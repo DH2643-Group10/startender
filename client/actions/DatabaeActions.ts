@@ -8,3 +8,12 @@ Action Creators, these are the function that creates actions. So actions are the
 
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#designing-actions
 */
+
+import {Dispatch} from "redux";
+
+export const GetFromDatabae = () => async (dispatch: Dispatch) => {
+    // Här vill vi hantera allt snack med databasen. 
+    // precis på samma sätt som vi snackar med Cocktail DB i den andra reducern.
+    // så try {} funktionen här inne! 
+};
+

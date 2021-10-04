@@ -18,6 +18,8 @@ const defaultState: DefaultStateI = {
 };
 
 const databaeReducer = (state: DefaultStateI = defaultState, action: any): DefaultStateI => {
+    // TODO. Här ska alla asyncrona funktioner som rör Databasen ligga.
+    // Fetch dvs.
     return state
 }
 

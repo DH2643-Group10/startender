@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import databaeReducer from "./DatabaeReducer";
+import cocktailReducer from "./CocktailReducer";
 
 /*
 What goes in this file? Just the root reducer, it combines the databae reducer and the Cocktail reducer.
@@ -18,7 +19,8 @@ Read more: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-redu
 
 const RootReducer = combineReducers({
     // Combines the two reducers, one for the Database API and one for the Cocktail DB API:
-    databae: databaeReducer
+    databae: databaeReducer,
+    cocktails: cocktailReducer
 
 });
 
