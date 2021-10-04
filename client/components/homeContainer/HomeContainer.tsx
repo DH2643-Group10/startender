@@ -9,18 +9,20 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import LoginController from '../login/LoginController';
 
-
 //component is meant to be like a container for everything else
-                    {/* TODO: ändra så filen importeras från lokalt istället /assets/imgs/title.png */}
-
+                    
 const HomeContainer:FC = () => {
     const [user, setUser] = useState("")
     const UseFetch = withFetch(Card,"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007")
     return (
         <Container fluid>
-            {/* <Row>
+            <Row>
+                <LoginController/>
+            </Row>
+            <Row>
                 <Col className="top-bar">
                     <img src="https://i.imgur.com/6wA0XlN.png"></img>
+                    {/* TODO: ändra så filen importeras från lokalt istället /assets/imgs/title.png */}
                 </Col>
             </Row>
             <Row  className="search-bar">
@@ -47,10 +49,8 @@ const HomeContainer:FC = () => {
                 <Col>
                     <UseFetch />
                 </Col>
-            </Row> */}
-            <Container>
-                <LoginController/>
-            </Container>
+            </Row>
+
         </Container>
     )
 }
