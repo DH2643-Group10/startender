@@ -13,7 +13,7 @@ import {Dispatch} from "redux";
 import { CocktailDispatchTypes, COCKTAILS_FAIL, COCKTAILS_LOADING, COCKTAILS_SUCCESS } from "./CocktailActionTypes";
 import axios from "axios";
 
-export const GetFromDatabae = (requestUrl: string) => async (dispatch: Dispatch<CocktailDispatchTypes>) => {
+export const GetFromCocktailDB = (requestUrl: string) => async (dispatch: Dispatch<CocktailDispatchTypes>) => {
     
     try {
         dispatch( {
@@ -21,7 +21,10 @@ export const GetFromDatabae = (requestUrl: string) => async (dispatch: Dispatch<
             
         })
 
+        // Här gör vi själva API callet till CocktailDB.
+
         const response = await axios.get(requestUrl);
+        console.log(response);
 
         dispatch({
             type: COCKTAILS_SUCCESS,

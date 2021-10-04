@@ -35,7 +35,10 @@ const cocktailReducer = (state: DefaultStateI = defaultState, action: CocktailDi
                 loading: false,
                 cocktail: action.payload
             }
+        default:
+            return state
     }
+    
 }
 
 export default cocktailReducer;
