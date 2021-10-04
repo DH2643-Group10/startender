@@ -14,6 +14,6 @@ import {Dispatch} from "redux";
 export const GetFromDatabae = () => async (dispatch: Dispatch) => {
     // Här vill vi hantera allt snack med databasen. 
     // precis på samma sätt som vi snackar med Cocktail DB i den andra reducern.
-    // så try {} funktionen här inne! 
+    // så try { fetch from database } funktionen här inne! 
 };
 

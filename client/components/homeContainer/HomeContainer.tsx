@@ -8,11 +8,17 @@ import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import LoginController from '../login/LoginController';
+import { useSelector } from 'react-redux';
+import { RootStore } from "../../Store";
 
 //component is meant to be like a container for everything else
                     
 const HomeContainer:FC = () => {
     const [user, setUser] = useState("")
+    // This is our connection to our store and reducers. 
+    // So we can access all the values and functions. 
+    const cocktailState = useSelector((state: RootStore) => state.cocktails);
+
     const UseFetch = withFetch(Card,"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007")
     return (
         <Container fluid>

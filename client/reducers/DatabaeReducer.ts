@@ -18,8 +18,9 @@ const defaultState: DefaultStateI = {
 };
 
 const databaeReducer = (state: DefaultStateI = defaultState, action: any): DefaultStateI => {
-    // TODO. Här ska alla asyncrona funktioner som rör Databasen ligga.
-    // Fetch dvs.
+    // TODO. 
+    // Här ska reducern som hanterar alla actions för databasen ligga.
+    // tex göra en switch(action.type) som vi gör i Cocktail reducer.
     return state
 }
 
