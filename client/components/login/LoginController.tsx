@@ -24,14 +24,14 @@ const LoginController = () => {
     //    })
     // }
     const onSubmit = (event,form) =>{
-        console.log("on submit event:",event)
+        // console.log("on submit event:",event)
         event.preventDefault()
 
        
        axios.post('http://localhost:4000/users/add',form).then(response => {
         console.log("response", response)
-        console.log("response Data", response.data)
-        console.log("response Data usernamne", response.data.username)
+        // console.log("response Data", response.data)
+        // console.log("response Data usernamne", response.data.username)
 
            if(response.status==200){
             setUsername(response.data.username)
@@ -39,7 +39,7 @@ const LoginController = () => {
             setSignUpResponseCode(200)
             setSigningUp(false)
            }
-           console.log("response Data", response)
+        //    console.log("response Data", response)
        }).catch(error=>{
            console.log("Error :", error)
        })
@@ -54,7 +54,7 @@ const LoginController = () => {
         
             axios.post('http://localhost:4000/login/', userInput)
             .then(response => {
-                // console.log("response", response)
+                console.log("login response", response)
 
                 if (response.status==200){
                     

@@ -25,7 +25,7 @@ router.route('/').post( async (req, res) => {
           maxAge: 60 * 60 * 24 * 30 * 1000,
           httpOnly: true,
         });
-        // console.log("validateToken",validateToken)
+        console.log("validateToken",validateToken)
         res.status(200).json(user);
       }
     });

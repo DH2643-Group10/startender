@@ -1,16 +1,16 @@
-const express = require('express');
-const cors = require('cors');
+const express = require('express')
+const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
-const mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require('mongoose')
+require('dotenv').config()
 
-const app = express();
+const app = express()
 
-const usersRouter = require('./routes/users.js');
-const drinkRouter = require('./routes/drinks.js');
-const commentsRouter = require('./routes/comments.js');
-const loginRouter = require('./routes/login.js');
+const usersRouter = require('./routes/users.js')
+const drinkRouter = require('./routes/drinks.js')
+const commentsRouter = require('./routes/comments.js')
+const loginRouter = require('./routes/login.js')
 
 
 

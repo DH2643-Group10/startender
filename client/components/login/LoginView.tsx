@@ -13,7 +13,6 @@ const LoginView = ({...props}) => {
             <Input placeHolder={'Username'} type={'text'} value={username} onChange={setUsername}/>
             <Input placeHolder={'Password'} type={'password'} value={password} onChange={setPassword}/>
             <button onClick={login}>Login</button>
-            
         </div>
     )
 }
