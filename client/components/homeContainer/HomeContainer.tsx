@@ -1,6 +1,4 @@
 import  React,{useState,FC} from 'react'
-import Card from '../card/CardController';
-import withFetch from '../withFetch';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,18 +6,21 @@ import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import LoginController from '../login/LoginController';
-import { useSelector } from 'react-redux';
-import { RootStore } from "../../Store";
+import { useDispatch, useSelector } from 'react-redux';
+import { GetFromCocktailDB } from '../../actions/CocktailActions';
+import CardView from '../card/CardView';
 
 //component is meant to be like a container for everything else
                     
 const HomeContainer:FC = () => {
     const [user, setUser] = useState("")
-    // This is our connection to our store and reducers. 
-    // So we can access all the values and functions. 
-    const cocktailState = useSelector((state: RootStore) => state.cocktails);
 
-    const UseFetch = withFetch(Card,"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007")
+    // Show drink:
+    const dispatch = useDispatch();
+    const [cocktailName, setCocktailName] = useState("");
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setCocktailName(event.target.value);
+    const handleSubmit = () => dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName));
+  
     return (
         <Container fluid>
             <Row>
@@ -38,23 +39,16 @@ const HomeContainer:FC = () => {
                         placeholder="Find your drink..."
                         aria-label="Find your drink..."
                         aria-describedby="basic-addon2"
+                        onChange={handleChange}
                         />
-                        <Button variant="outline-secondary" id="button-addon2">
+                        <Button variant="outline-secondary" id="button-addon2" onClick={handleSubmit}>
                         Search
                         </Button>
                     </InputGroup>
                     </Col>
             </Row>
             <Row className="bottom-bar">
-                <Col>
-                    <UseFetch />
-                </Col>
-                <Col>
-                    <UseFetch />
-                </Col>
-                <Col>
-                    <UseFetch />
-                </Col>
+                <CardView/>
             </Row>
 
         </Container>

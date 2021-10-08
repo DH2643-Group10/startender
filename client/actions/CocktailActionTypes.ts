@@ -13,7 +13,7 @@ export type CocktailType = {
     // We can add more stuff here in the future, to extract more data from the API.
     idDrink?: string
     strDrink?: string
-    strImageSource?: string
+    strDrinkThumb?: string
 }
 
 export interface CocktailsLoading {
