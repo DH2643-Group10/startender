@@ -5,7 +5,7 @@ import Input from '../input/Input'
 //view meant to render login window, input fields and register new users
 const LoginView = ({...props}) => {
     const {login,signing, handleToggle,setPassword,setUsername,username,password} = props;
-    console.log("loginView username",username)
+    // console.log("loginView username",username)
 
     return (
         <div>

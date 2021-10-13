@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
+
 const mongoose = require('mongoose')
 require('dotenv').config()
 
@@ -24,4 +25,4 @@ app.use('/users', usersRouter)
 app.use('/drinks', drinkRouter)
 app.use('/comments', commentsRouter)
 
-app.listen(4000,()=> console.log('server is up and running on port:4000'))
+app.listen(4000,() => console.log('server is up and running on port:4000'))
