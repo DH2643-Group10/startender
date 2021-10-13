@@ -1,8 +1,9 @@
 export const DATABASE_LOADING = "DATABASE_LOADING";
 export const DATABASE_FAIL = "DATABASE_FAIL";
 export const DATABASE_SUCCESS = "DATABASE_SUCCESS";
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
-interface DatabaseLoarding {
+interface DatabaseLoading {
     type: typeof DATABASE_LOADING;
 }
 
@@ -12,5 +13,18 @@ interface DatabaseFail {
 
 interface DatabaseSuccess {
     type: typeof DATABASE_SUCCESS;
-    payload: {}
+    payload?: String
 };
+
+interface SetCurrentUser {
+    type:typeof SET_CURRENT_USER
+    payload?:{}
+}
+
+export interface UserInput {
+    username: String,
+    password: String,
+    token: String,
+    }
+
+export type DataBaeDispatchTypes = DatabaseLoading | DatabaseFail | DatabaseSuccess | SetCurrentUser;

@@ -16,8 +16,10 @@ const posts = [
 
 
 //Login check
+//localhost:4000/login/
 router.route("/").post(async (req, res) => {
   const { username, password } = req.body;
+  
   var user = await User.find({ username: username });
 
   //user is returned in an array => extract the user object
