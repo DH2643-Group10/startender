@@ -9,6 +9,7 @@ import LoginController from '../login/LoginController';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetFromCocktailDB } from '../../actions/CocktailActions';
 import CardView from '../card/CardView';
+import CardController from '../card/CardController';
 
 //component is meant to be like a container for everything else
                     
@@ -21,6 +22,7 @@ const HomeContainer:FC = () => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setCocktailName(event.target.value);
     const handleSubmit = () => dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName));
   
+
     return (
         <Container fluid>
             <Row>
@@ -40,6 +42,8 @@ const HomeContainer:FC = () => {
                         aria-label="Find your drink..."
                         aria-describedby="basic-addon2"
                         onChange={handleChange}
+                        onKeyPress={(e) => {if(e.key === "Enter") dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName))}}
+                        //onKeyPress={(event) => {if(event.key === 'Enter'){handleSubmit}}}
                         />
                         <Button variant="outline-secondary" id="button-addon2" onClick={handleSubmit}>
                         Search
@@ -48,7 +52,7 @@ const HomeContainer:FC = () => {
                     </Col>
             </Row>
             <Row className="bottom-bar">
-                <CardView/>
+                <CardController/>
             </Row>
 
         </Container>

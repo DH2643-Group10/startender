@@ -14,6 +14,7 @@ export type CocktailType = {
     idDrink?: string
     strDrink?: string
     strDrinkThumb?: string
+    strInstructions?: string
 }
 
 export interface CocktailsLoading {
