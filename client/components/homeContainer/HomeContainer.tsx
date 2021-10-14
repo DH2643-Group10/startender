@@ -1,4 +1,4 @@
-import  React,{useState,FC} from 'react'
+import  React,{useState,FC, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -22,6 +22,11 @@ const HomeContainer:FC = () => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setCocktailName(event.target.value);
     const handleSubmit = () => dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName));
   
+    // Show drinks on initial visit:
+    useEffect(() => {
+        // Searches all of API when user enters the page
+        dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s= "));
+    }, []);
 
     return (
         <Container fluid>

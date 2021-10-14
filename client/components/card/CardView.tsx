@@ -32,7 +32,7 @@ const CardView: FC<Props> = () => {
             { cocktailState == null || cocktailState.cocktail == null ?
                 "" :
                 cocktailState.cocktail.drinks?.map((drink, index) => (
-                    <Col xs={12} sm={4} md={3} key={drink.idDrink}>
+                    <Col xs={12} sm={4} md={3} lg={2} key={drink.idDrink}>
                         <Card>
                             <Card.Img variant="top" src={drink.strDrinkThumb} />
                             <Card.Body>

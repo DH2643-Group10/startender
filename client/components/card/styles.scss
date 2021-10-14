@@ -7,3 +7,10 @@
     font-weight: bolder;
     margin-right: 1em;
 }
+
+.card .card-text {
+    max-height: 5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

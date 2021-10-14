@@ -22,6 +22,13 @@ const CardModal = (props) => (
                 <Image id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
             </Col>
             <Col>
+                <div className="sub-header">Ingredients</div>
+                {/* TODO, add ingredients and measurements to a array, so we can loop through it. */}
+                <ul>
+                    <li>
+                        {props?.drinktoshow?.strMeasure1}{props?.drinktoshow?.strIngredient1}
+                    </li>
+                </ul>
                 <div className="sub-header">Instructions:</div>
                 {props?.drinktoshow?.strInstructions}
             </Col>
