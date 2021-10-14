@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import {Link} from 'react-router-dom'
+import './styles.scss';
 
 
 //component meant to display the header
@@ -8,16 +9,17 @@ import {Link} from 'react-router-dom'
 const HeaderView: FC = () => {
 
     return (
-        <Container fluid>
-            <Row>
-                <Col>
+        <Navbar collapseOnSelect expand="sm" variant="light">
+            <Container fluid>
+                <Navbar.Brand>Startender</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                     <Link to="/">Home</Link>
-                </Col>
-                <Col>
                     <Link to="/my-page">My page</Link>
-                </Col>
-            </Row>
-        </Container>
+                </Navbar.Collapse>
+            </Container>
+            </Navbar>
+        
     )
 }
 
