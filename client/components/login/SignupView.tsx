@@ -35,10 +35,10 @@ const SignupView = ({...props}) => {
         <div>
             {signingUp ? 
             <div>
-            <Input placeHolder={'Full name'} onChange={(e)=>{setfullName(e.target.value)}} value={fullName}/>
-            <Input placeHolder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
-            <Input placeHolder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
-            <Input placeHolder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
+            <Input placeholder={'Full name'} onChange={(e)=>{setfullName(e.target.value)}} value={fullName}/>
+            <Input placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
+            <Input placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
+            <Input placeholder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
             <button onClick={event=>{onSubmit(event, registered)}}>Submit</button>
            </div>
             :
