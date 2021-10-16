@@ -2,6 +2,8 @@
 @import "custom";
 @import "/client/components/homeContainer/styles.scss";
 @import "/client/components/card/styles.scss";
+@import 'settings';
+@import 'color-themes';
 
 .header {
   text-align: center;
@@ -20,5 +22,12 @@ span {
   &.infoText {
     color: #17a2b8;
     font-weight: bold;
+  }
+}
+
+.container-fluid#HC {
+  @include themed() {
+    color: t($text);
+    background: t($bg);
   }
 }
