@@ -1,9 +1,16 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
 .top-bar {
     height: 50vh;
     text-align: center;
 
     // ---- Background Image ----
-    background-image: url("https://i.imgur.com/yY2jgba.png"); 
+    @include themed() {
+        background-image: t($background-image);
+      }
+
+    // background-image: url("https://i.imgur.com/yY2jgba.png"); 
     background-position: 0 -100px; 
     background-attachment: fixed;
 
@@ -15,4 +22,12 @@
 
 .bottom-bar, .search-bar {
     padding: 1em 5em 1em 5em;
+}
+
+.search-bar input {
+    @include themed() {
+        color: t($text);
+        background: t($card-bg);
+      }
+    // background-color: rgb(19, 19, 20);
 }

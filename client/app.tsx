@@ -21,22 +21,22 @@ const App: FC = () => {
       }
 
     return (    
-        
-        <Provider store={store}>
-            <div className={'theme ' + (darkMode ? 'theme--dark' : 'theme--default')}>
-                <Router>
-                    <HeaderController {...handleDarkMode} />
-                    <Switch>
-                        <Route exact path="/">
-                            <HomeContainer/>
-                        </Route>
-                        <Route path="/my-page">
-                            <MyPageController/>
-                        </Route>
-                    </Switch>
-                </Router>
-            </div>
-        </Provider>)
+        <div className={'theme ' + (darkMode ? 'theme--dark' : 'theme--default')}>
+            <Provider store={store}>
+                    <Router>
+                        <HeaderController {...handleDarkMode} />
+                        <Switch>
+                            <Route exact path="/">
+                                <HomeContainer/>
+                            </Route>
+                            <Route path="/my-page">
+                                <MyPageController/>
+                            </Route>
+                        </Switch>
+                    </Router>
+            </Provider>
+        </div>
+)
 }
 
 ReactDOM.render(<App/>, document.querySelector('#app'))

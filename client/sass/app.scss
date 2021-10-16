@@ -10,8 +10,10 @@
 }
 
 #app, .container {
+  background-color: #17a2b8;
   height: 100vh;
   width: 100%;
+
 }
 
 span {
@@ -23,6 +25,10 @@ span {
     color: #17a2b8;
     font-weight: bold;
   }
+}
+
+.theme {
+  height: 100%;
 }
 
 .container-fluid#HC {
