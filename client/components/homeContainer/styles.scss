@@ -2,7 +2,7 @@
 @import '../../sass/color-themes';
 
 .top-bar {
-    height: 50vh;
+    height: 75vh;
     text-align: center;
 
     // ---- Background Image ----
@@ -11,7 +11,7 @@
       }
 
     // background-image: url("https://i.imgur.com/yY2jgba.png"); 
-    background-position: 0 -100px; 
+    background-size: contain;
     background-attachment: fixed;
 
 }

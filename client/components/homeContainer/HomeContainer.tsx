@@ -33,7 +33,6 @@ const HomeContainer:FC = () => {
                 </Row> */}
                 <Row>
                     <Col className="top-bar">
-                        <img src="https://i.imgur.com/6wA0XlN.png"></img>
                         {/* TODO: ändra så filen importeras från lokalt istället /assets/imgs/title.png */}
                     </Col>
                 </Row>
