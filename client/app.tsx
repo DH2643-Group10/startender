@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import HomeContainer from './components/homeContainer/HomeContainer';
 import './sass/app.scss';
-import "./sass/style.scss";
 import { Provider } from 'react-redux';
 import store from "./Store";
 import MyPageController from './components/myPage/MyPageController';

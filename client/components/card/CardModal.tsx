@@ -19,17 +19,17 @@ const CardModal = (props) => (
     <Modal.Body id={"body-"+props?.drinktoshow?.idDrink} >
         <Row>
             <Col>
-                <Image id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
+                <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
             </Col>
             <Col>
-                <div className="sub-header">Ingredients</div>
+                <div className="modal__subtitle">Ingredients</div>
                 {/* TODO, add ingredients and measurements to a array, so we can loop through it. */}
                 <ul>
                     <li>
                         {props?.drinktoshow?.strMeasure1}{props?.drinktoshow?.strIngredient1}
                     </li>
                 </ul>
-                <div className="sub-header">Instructions:</div>
+                <div className="modal__subtitle">Instructions:</div>
                 {props?.drinktoshow?.strInstructions}
             </Col>
         </Row>

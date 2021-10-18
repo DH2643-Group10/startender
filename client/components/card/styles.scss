@@ -2,34 +2,41 @@
 @import '../../sass/color-themes';
 
 /* The modal */
-.modal-content {
-    @include themed() {
-        color: t($text);
-        background-color: t($bg);
-      }
-}
 
-.modal-body img {
+// denna funkar inte just nu :(( och behöver skrivas om till BEM
+// .modal-content {
+//     @include themed() {
+//         color: t($text);
+//         background-color: t($bg);
+//       }
+// }
+
+.modal {
+
+    &__img{
     max-width: 100%;
+    }
+
+    &__subtitle{
+        font-weight: bolder;
+        margin-right: 1em;
+    }
 }
 
-.modal-body .sub-header {
-    font-weight: bolder;
-    margin-right: 1em;
-}
 
 /* The cards */
-.card .card-text {
-    max-height: 5em;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
 .card {
+    margin-top: 1em;
+    
     @include themed() {
         color: t($text);
         background: t($bg);
-      }
-    margin-top: 1em;
+        }
+    
+    &__text{
+        max-height: 5em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
