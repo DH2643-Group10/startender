@@ -5,32 +5,50 @@ const { ObjectId }  = require("mongodb");
 
 
 
+
 //Delete comment by id
+//perhaps implement authenticate??
 router.route('/delete/:id').delete((req,res) => {
   Comment.findByIdAndDelete(req.params.id)
-  .then(comment=> res.json('Your comment has been deleted!' + comment))
+  .then(comment=> {
+    res.status(200).json({message:'Your comment has been deleted!'})})
   .catch(error=>{res.status(400).json(error)})
 
 })
 
 
-// //Find comment by id
-// router.route('/:id').get((req,res) => {
-//   Comment.findById(req.params.id)
-//   .then(comment=> res.json(comment))
-//   .catch(error=>{res.status(400).json(error)})
 
-// })
 
 
 //Find all comments for a drink
 router.route('/:id').get((req,res) => {
-var objId = new ObjectId(req.params.id)
+  
+  var objId = new ObjectId(req.params.id)
   Comment.find(objId)
-  .then(comments=> res.json(comments))
-  .catch(error=>res.status(400).json('Error: ' + error))
+  .then(comments=> res.status(200).json({comments:comments}))
+  .catch((error)=>{
+    console.log("comments error:", error)
+    res.status(400).json({error:error})
+  
+  })
 
 })
+
+router.route('/:id').get((req,res) => {
+  
+  var objId = new ObjectId(req.params.id)
+  Comment.find(objId)
+  .then(comments=> res.status(200).json({comments:comments}))
+  .catch((error)=>{
+    console.log("comments error:", error)
+    res.status(400).json({error:error})
+  
+  })
+
+})
+
+
+
 
 //Post comment on drink
 router.post('/create', (req, res) => {
@@ -43,10 +61,12 @@ router.post('/create', (req, res) => {
   newComment
     .save()
     .then((data) => {
-      res.json('Comment created!: ' + data);
+      res.status(200)
+      // res.json({data:data});
+      res.json({message:'Comment created!'});
     })
     .catch((error) => {
-      res.json(error);
+      res.status(400).json({error:error});
     });
 });
 

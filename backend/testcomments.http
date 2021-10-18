@@ -10,20 +10,22 @@
     ##&     "comment" : "tycker den är ganska god om jag ska vara helt ärlig1"
     ##& }
 
-# POST http://localhost:4000/comments/create
-# Content-Type: application/json 
+POST http://localhost:4000/comments/create
+Content-Type: application/json 
   
-# {
-#     "drinkId" : "6159cfd58f99645030aa98e5",
-#     "userId" : "6159cc4bfe289ebe9ac43247",
-#     "comment" : "detta är ett litet test"
-# }
+{
+    "drinkId" : "616d622a3b0b7f7495ecae8e",
+    "userId" : "616d78761b93acbe8ec54c4a",
+    "comment" : "albin2 ohhVodka drink222"
+}
 
 
 ###// find all comments for a drink - /comments/${drinkId}
-GET http://localhost:4000/comments/6159cfd58f99645030aa98e12
+GET http://localhost:4000/comments/616d622a3b0b7f7495ecae8e
 Content-Type: application/json
   
 ###//Delete a comment - /comments/delete/${commentId}
 # DELETE  http://localhost:4000/comments/delete/6159ee01d7d30bfa207af17e
 # Content-Type: application/json
+DELETE http://localhost:4000/comments/delete/616d62593b0b7f7495ecae90
+Content-Type: application/json
