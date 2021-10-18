@@ -2,14 +2,18 @@
 @import "custom";
 @import "/client/components/homeContainer/styles.scss";
 @import "/client/components/card/styles.scss";
+@import 'settings';
+@import 'color-themes';
 
 .header {
   text-align: center;
 }
 
 #app, .container {
+  background-color: #17a2b8;
   height: 100vh;
   width: 100%;
+
 }
 
 span {
@@ -20,5 +24,16 @@ span {
   &.infoText {
     color: #17a2b8;
     font-weight: bold;
+  }
+}
+
+.theme {
+  height: 100%;
+}
+
+.container-fluid#HC {
+  @include themed() {
+    color: t($text);
+    background: t($bg);
   }
 }

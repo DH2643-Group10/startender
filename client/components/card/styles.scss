@@ -1,4 +1,14 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
 /* The modal */
+.modal-content {
+    @include themed() {
+        color: t($text);
+        background-color: t($bg);
+      }
+}
+
 .modal-body img {
     max-width: 100%;
 }
@@ -8,9 +18,18 @@
     margin-right: 1em;
 }
 
+/* The cards */
 .card .card-text {
     max-height: 5em;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.card {
+    @include themed() {
+        color: t($text);
+        background: t($bg);
+      }
+    margin-top: 1em;
 }

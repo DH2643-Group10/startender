@@ -38,68 +38,67 @@ const HomeContainer:FC = () => {
         // Searches all of API when user enters the page
         dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s= "));
     }, []);
-
+    
     return (
-        <Container fluid>
-            {
-                initialPageLoading ? 
-                <Row className="spinner">
-                    <div className="spinner--state-loading">
-                        <SpinnerView setIsLoading={setInitialPageLoading}/>
-                    </div>
-                </Row> : ''
-            }
-            
-            <Row>
-                <LoginController/>
-            </Row>
-            <Row>
-                <Col className="top-bar">
-                    <img src="https://i.imgur.com/6wA0XlN.png"></img>
-                    {/* TODO: ändra så filen importeras från lokalt istället /assets/imgs/title.png */}
-                </Col>
-            </Row>
-            <Row  className="search-bar">
-                <Col>
-                     <InputGroup>
-                        <FormControl
-                        placeholder="Find your drink..."
-                        aria-label="Find your drink..."
-                        aria-describedby="basic-addon2"
-                        onChange={handleChange}
-                        onKeyPress={(e) => {if(e.key === "Enter") handleSubmit()
-                        //dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName))
-                        
-                    }}
-                        //onKeyPress={(event) => {if(event.key === 'Enter'){handleSubmit}}}
-                        />
-                        <Button variant="outline-secondary" id="button-addon2" onClick={handleSubmit}>
-                        Search
-                        </Button>
-                    </InputGroup>
-                    </Col>
-            </Row>
-
-            {!isCardsLoading 
-            // and we have data : && data.drinks or something
-            // or do we want that in the CardController / someplace else? 
-            // && cocktailState 
-            // ? cocktailState != null || cocktailState.cocktail != null? 
-            ? cocktailState.cocktail ?
-            <Row className="bottom-bar">
-                <CardController/>
-                {console.log("cocktailState: ", cocktailState.cocktail)}
-            </Row> : 
-            console.log("Cannot find drinks") 
-            :
+      <Container fluid id="HC">
+        {
+            initialPageLoading ? 
             <Row className="spinner">
                 <div className="spinner--state-loading">
-                <SpinnerView setIsLoading={setIsCardsLoading}/>
-               </div> 
-            </Row>
-            }
-        </Container>
-    )
+                    <SpinnerView setIsLoading={setInitialPageLoading}/>
+                </div>
+            </Row> : ''
+        }
+    {/* <Row>
+        <LoginController/>
+    </Row> */}
+    <Row>
+        <Col className="top-bar">
+            {/* <img src="https://i.imgur.com/dxShUJW.png"></img> */}
+            {/* TODO: ändra så filen importeras från lokalt istället /assets/imgs/title.png */}
+        </Col>
+    </Row>
+    <Row  className="search-bar">
+                    <Col>
+                         <InputGroup>
+                            <FormControl
+                            placeholder="Find your drink..."
+                            aria-label="Find your drink..."
+                            aria-describedby="basic-addon2"
+                            onChange={handleChange}
+                            onKeyPress={(e) => {if(e.key === "Enter") handleSubmit()
+                            //dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName))
+
+                        }}
+                            //onKeyPress={(event) => {if(event.key === 'Enter'){handleSubmit}}}
+                            />
+                            <Button variant="outline-secondary" id="button-addon2" onClick={handleSubmit}>
+                            Search
+                            </Button>
+                        </InputGroup>
+                        </Col>
+                </Row>
+
+                {!isCardsLoading 
+                // and we have data : && data.drinks or something
+                // or do we want that in the CardController / someplace else? 
+                // && cocktailState 
+                // ? cocktailState != null || cocktailState.cocktail != null? 
+                ? cocktailState.cocktail ?
+                <Row className="bottom-bar">
+                    <CardController/>
+                    {console.log("cocktailState: ", cocktailState.cocktail)}
+                </Row> : 
+                console.log("Cannot find drinks") 
+                :
+                <Row className="spinner">
+                    <div className="spinner--state-loading">
+                    <SpinnerView setIsLoading={setIsCardsLoading}/>
+                   </div> 
+                </Row>
+                }
+            </Container>
+      )
 }
 
 export default HomeContainer

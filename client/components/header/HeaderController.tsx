@@ -3,11 +3,12 @@ import HeaderView from "./HeaderView";
 
 // component meant to handle logic for header
 
-const HeaderController = () => {
+const HeaderController = (props) => {
+    // Toggle light or dark mode with global store variable
 
     return (
         <div>
-            <HeaderView/>
+            <HeaderView {...props}/>
         </div>
     )
 }
