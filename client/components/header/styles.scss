@@ -8,6 +8,27 @@
       }
     margin-left: 1em;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar a:hover {
+  @include themed() {
+    color: t($text-important);
+  }
+}
+
+.navbar svg {
+  @include themed() {
+    color: t($text);
+  }
+  cursor: pointer;
+
+}
+
+.navbar svg:hover {
+  @include themed() {
+    color: t($text-important);
+  }
 }
 
 .navbar {
