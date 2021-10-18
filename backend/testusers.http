@@ -2,7 +2,7 @@ POST http://localhost:4000/users/add
 Content-Type: application/json
   
 {
-    "fullName" : "Albin Matson Gyllang3",
+    "name" : "Albin Matson Gyllang3",
     "username" : "ALBA",
     "email" : "ALBA@ALBA.se",
     "password":"ALBA"

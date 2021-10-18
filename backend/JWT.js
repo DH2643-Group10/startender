@@ -3,7 +3,13 @@ const {sign, verify} = require('jsonwebtoken')
 
 const createTokens = (user) => {
     const accessToken = sign(
-        {username: user.username, id: user.id},
+        {
+            username: user.username,
+            id: user.id,
+            name: user.name,
+            email:user.email,
+            createdAt:user.createdAT
+        },
         process.env.ACCESS_TOKEN_SECRET)
     return accessToken
 }
@@ -37,6 +43,7 @@ const authenticateToken = (req, res, next) =>{
     verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) =>{
         if(err) return res.sendStatus(403)
         req.user = user
+        req.isAuthenticated = true
         next()
     })
 }
