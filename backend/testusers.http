@@ -8,3 +8,8 @@ Content-Type: application/json
     "password":"ALBA"
         
 }
+###
+
+GET http://localhost:4000/users/616d79d21b93acbe8ec54c50
+Content-Type: application/json
+

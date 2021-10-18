@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let User = require("../models/user.models.js");
+const Comment = require("../models/comment.models.js")
 const bcrypt = require('bcrypt')
 const {checkError} = require('../errorCodes')
 //Find user all users
@@ -54,5 +55,15 @@ router.route('/add').post((req, res) => {
  
   
 });
+
+//Find all comments by a user
+router.route('/:userId').get((req,res) => {
+  console.log("req.params.userId",req.params.userId)
+  Comment.find({userId:req.params.userId})
+  // Commment.find()
+  .then(comments=> res.status(200).json({comments:comments}))
+  .catch(error=>{res.status(400).json(error)})
+
+})
 
 module.exports = router;
