@@ -1,7 +1,14 @@
 @import '../../sass/settings';
 @import '../../sass/color-themes';
 
-.top-bar {
+.home {
+    @include themed() {
+      color: t($text);
+      background: t($bg);
+    }
+  }
+
+.header {
     height: 105vh;
     text-align: center;
     padding: 0px;
@@ -9,45 +16,34 @@
 
     // ---- Background Image ----
     @include themed() {
-
         background-image: t($background-image); 
-        
       }
-    // background-size: contain;
-
-    // background-image: url("https://i.imgur.com/yY2jgba.png"); 
-    // background-size: contain;
-    // background-attachment: fixed;
+    
     background: no-repeat center center scroll; 
     background-size: cover;
-    //background-attachment: scroll;
-
-
 }
 
-// .top-bar img {
-//     max-width: 100%;
-//     margin-top: -60px;
-// }
+.search {
+    padding: 1em 5em 1em 5em;
 
-.bottom-bar, .search-bar {
+    &__input{
+        @include themed() {
+            color: t($text);
+            background: t($card-bg);
+          }  
+    }
+}
+
+.results {
     padding: 1em 5em 1em 5em;
 }
-
-
-.search-bar input {
-    @include themed() {
-        color: t($text);
-        background: t($card-bg);
-      }
-    // background-color: rgb(19, 19, 20);
 
 .spinner {
     text-align: center;
     padding: 2em;
-}
 
-.spinner--state-loading {
+    &----loading {
    display: inline-block;
+
     }
 }

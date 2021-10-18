@@ -6,3 +6,17 @@
 #     "description" : "Pour to mouth",
 #     "ingredients" : ["Vodka"]
 # }
+
+# POST http://localhost:4000/drinks/create
+# Content-Type: application/json
+  
+# {   "userId" : "616d5fe83b0b7f7495ecae87",
+#     "name" : "Just Vodka 3.0",
+#     "description" : "Pour to mouth",
+#     "ingredients" : ["Vodka"]
+# }
+
+## GET ALL COMMENTS from a drink 
+GET http://localhost:4000/comments/616d622a3b0b7f7495ecae8e
+Content-Type: application/json
+  

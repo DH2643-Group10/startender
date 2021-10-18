@@ -37,7 +37,7 @@ const CardView: FC<Props> = () => {
                             <Card.Img variant="top" src={drink.strDrinkThumb} />
                             <Card.Body>
                                 <Card.Title>{drink.strDrink}</Card.Title>
-                                <Card.Text>
+                                <Card.Text className="card__text">
                                 {drink.strInstructions}
                                 </Card.Text>
                                 <Button variant="secondary" onClick={() => handleShow(drink)}>Read more</Button>

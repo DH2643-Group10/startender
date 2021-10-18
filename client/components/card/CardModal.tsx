@@ -5,8 +5,6 @@ import { CocktailsType, CocktailType } from '../../actions/CocktailActionTypes';
 import { RootStore } from '../../Store';
 
 // Modal that shows more info of specific drink
-
-// const CardModal = (props) => (
 const CardModal = (props) => {
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
 
@@ -40,15 +38,15 @@ const CardModal = (props) => {
         <Modal.Body id={"body-"+props?.drinktoshow?.idDrink} >
             <Row>
                 <Col>
-                    <Image id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
+                    <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
                 </Col>
                 <Col>
-                    <div className="sub-header">Ingredients</div>
+                    <div className="modal__subtitle">Ingredients</div>
                     <ul>
                         {props?.drinktoshow?.ingredientList?.map(ing => <li>{ing}</li>)}
                     </ul>
                     
-                    <div className="sub-header">Instructions:</div>
+                    <div className="modal__subtitle">Instructions:</div>
                     {props?.drinktoshow?.strInstructions}
                 </Col>
             </Row>

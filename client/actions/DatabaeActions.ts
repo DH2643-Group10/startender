@@ -9,11 +9,12 @@ Action Creators, these are the function that creates actions. So actions are the
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#designing-actions
 */
 import axios from "axios";
-import {DataBaeDispatchTypes,DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput} from "./DatabaeActionTypes"
+import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER} from "./DatabaeActionTypes"
 
 import {Dispatch} from "redux";
 
-
+import setAuthToken from "../components/util/setAuthToken";
+import jwt_decode from 'jwt-decode';
 
 export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
     // Här vill vi hantera allt snack med databasen. 
@@ -35,14 +36,23 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
 
             axios.post('http://localhost:4000/login/', userInput)
             .then(response => {
-                console.log("login response", response.data)
+                console.log("login response@ DatabaeActions.ts", response)
+
                 if (response.status==200){
-                    dispatch(
-                        {
-                            type: DATABASE_SUCCESS,
-                            payload: response.data.token
-                        }
-                    )
+                   const {token} = response.data
+
+                    dispatch({type: DATABASE_SUCCESS,})
+
+                    setAuthToken(token)
+                    //function that sets HTTP headers
+
+                    const decodedFromToken= jwt_decode(token)
+                    //decodes the token
+                    dispatch({
+                        type: SET_CURRENT_USER,
+                        payload: decodedFromToken},
+                        )
+                    
                 // setToken(response.data.token)
                     // setToken()
                     // verify()
@@ -58,10 +68,62 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
     
 }  catch(error)
     { dispatch( {
-        type: DATABASE_FAIL
+        type: DATABASE_FAIL,
+        payload:error
         
     })
         
     console.log("catch error in DatabaeActions.ts: ", error)}
 
 }
+
+export const SignUp = (userInput : UserInput) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+ 
+    try {
+        dispatch( {
+            type: DATABASE_LOADING
+            
+        })
+    axios.post('http://localhost:4000/users/add',userInput).then(response => {
+        // console.log("response", response)
+        // console.log("response Data", response.data)
+        // console.log("response Data usernamne", response.data.username)
+
+            if(response.status==200){
+                dispatch(
+                    {
+                        type: CREATE_USER,
+                        payload: true
+                    }
+                )
+            // setUsername(response.data.username)
+
+            // setSignUpResponseCode(200)
+            // setSigningUp(false)
+            }
+        //    console.log("response Data", response)
+        }).catch(error=>{
+            console.log("Error :", error)
+
+             dispatch( {
+                type: CREATE_USER,
+                payload:false
+                // payload: error.error
+                
+            })
+
+        })
+
+    
+}  catch(error){
+     dispatch( 
+         {
+        type: CREATE_USER,
+        payload:false,
+        // payload: error.error
+    })
+        
+    console.log("catch error in DatabaeActions.ts: ", error)}
+
+}
+

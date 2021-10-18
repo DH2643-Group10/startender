@@ -1,11 +1,11 @@
 import axios from "axios"
-import React,{useState} from "react"
+import React,{useEffect, useState} from "react"
 import LoginView from "./loginView"
 import SignupView from './SignupView'
 import Profile from './Profile'
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../Store";
-import { Login } from '../../actions/DatabaeActions';
+import { Login, SignUp } from '../../actions/DatabaeActions';
 import {UserInput} from '../../actions/DatabaeActionTypes';
 
 
@@ -18,7 +18,6 @@ const LoginController = () => {
     const [password, setPassword] = useState("")
     const [isLoggedIn,setIsLoggedIn] = useState(false)
     const [signingUp, setSigningUp] = useState(false)
-    const [signUpResponseCode,setSignUpResponseCode]=useState(0)
 
     // console.log("username",username)
     // console.log("password",password)
@@ -26,29 +25,31 @@ const LoginController = () => {
         setSigningUp(!signingUp)
     }
 
-    const dispatch = useDispatch();
  
-    const onSubmit = (event,form) =>{
-        // console.log("on submit event:",event)
-        event.preventDefault()
+    // const onSubmit = (event,form) =>{
+    //     // console.log("on submit event:",event)
+    //     event.preventDefault()
 
+    //    try {axios.post('http://localhost:4000/users/add',form).then(response => {
+    //     console.log("http://localhost:4000/users/add response:", response)
+    //     // console.log("response Data", response.data)
+    //     // console.log("response Data usernamne", response.data.username)
+
+    //        if(response.status==200){
+
+    //         setClear(true)
+    //         setSigningUp(false)
+    //        } 
+    //     //    console.log("response Data", response)
+    //    }).catch(error=>{
+    //        console.log("Error :", error)
+    //    })}
+    //    catch(error){
+    //        console.log("catch onSubmit",error)
+    //     //    error
+    //    }
        
-       axios.post('http://localhost:4000/users/add',form).then(response => {
-        // console.log("response", response)
-        // console.log("response Data", response.data)
-        // console.log("response Data usernamne", response.data.username)
-
-           if(response.status==200){
-            setUsername(response.data.username)
-
-            setSignUpResponseCode(200)
-            setSigningUp(false)
-           }
-        //    console.log("response Data", response)
-       }).catch(error=>{
-           console.log("Error :", error)
-       })
-    }
+    // }
 
     const verify = () => {
         try{
@@ -75,31 +76,31 @@ const LoginController = () => {
             }
         }   
 
-    const posts = () => {
-        console.log("posts token", token)
-        try{
-            axios.get('http://localhost:4000/login/posts',{
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-                })
-            .then(response => {
-                console.log("posts response", response)
-                // setToken(res)
-                if (response.status==200){
-                    setIsLoggedIn(true)
-                }
-                // console.log("response", response)
-            }).catch(error=>{
-                console.log("posts error:",error)
-            })
+    // const posts = () => {
+    //     console.log("posts token", token)
+    //     try{
+    //         axios.get('http://localhost:4000/login/posts',{
+    //             headers: {
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //             })
+    //         .then(response => {
+    //             console.log("posts response", response)
+    //             // setToken(res)
+    //             if (response.status==200){
+    //                 setIsLoggedIn(true)
+    //             }
+    //             // console.log("response", response)
+    //         }).catch(error=>{
+    //             console.log("posts error:",error)
+    //         })
         
-        }
+    //     }
     
-        catch(error){
-            console.log("error",error)
-            }
-        }   
+    //     catch(error){
+    //         console.log("error",error)
+    //         }
+    //     }   
    
     // const login = () => {
     //     //authorization
@@ -126,18 +127,34 @@ const LoginController = () => {
     //         .catch((error)=>{
     //         console.log("error",error)
     //         })
-    //     }   
-    var newUser : UserInput = {username:username, password:password,token:''}
+    //     }
+
+    var newUser : UserInput = {username:username, password:password, token:'', }
+    
+
+    const dispatch = useDispatch();
 
     const handleLogin = () => dispatch(Login(newUser));
+    const handleSignUp = (user) => dispatch(SignUp(user));
+
     const databaeRootState = useSelector((state: RootStore) => state.databae);
     console.log("databaeRootState", databaeRootState)
+    useEffect(()=>{
+        databaeRootState.createSuccessful &&
+        setSigningUp(false)
+     
+    },[
+        databaeRootState.createSuccessful
+    ])
     return (
         <div>{
-        !isLoggedIn? <> 
+        !databaeRootState.isAuthenticated
+        ? <> 
+        {!signingUp &&
         <LoginView  login={handleLogin} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
-        <SignupView signingUp={signingUp} handleToggle={handleToggle} onSubmit={onSubmit} responseCode={signUpResponseCode}/> 
-        </> : <Profile posts={posts}/>
+        }   
+        <SignupView successful={databaeRootState.createSuccessful} signingUp={signingUp} handleToggle={handleToggle} signUp={handleSignUp}/> 
+        </> : <Profile/>
         }
            
         </div>
