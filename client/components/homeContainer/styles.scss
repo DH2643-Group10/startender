@@ -16,3 +16,12 @@
 .bottom-bar, .search-bar {
     padding: 1em 5em 1em 5em;
 }
+
+.spinner {
+    text-align: center;
+    padding: 2em;
+}
+
+.spinner--state-loading {
+   display: inline-block;
+}
