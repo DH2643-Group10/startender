@@ -3,7 +3,8 @@ import './styles.scss';
 
 interface ButtonProps {
     onClick: () => void;
-    children?: ReactNode
+    children?: ReactNode,
+    id?: string
 }
 
 const ButtonView: FC<ButtonProps> = ({onClick, children}) => {

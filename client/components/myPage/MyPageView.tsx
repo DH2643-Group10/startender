@@ -5,6 +5,7 @@ import { RootStore } from "../../Store";
 import ButtonController from "../button/ButtonController";
 import ButtonView from "../button/ButtonView";
 import LoginController from '../login/LoginController';
+import './styles.scss';
 
 //component meant to display to display information about the logged in user
 
@@ -13,24 +14,24 @@ const MyPageView: FC = () => {
 
     const [loggedIn, setLoggedIn] = useState(true); // do with redux
 
-    // const loggedIn = true; // do with redux
-    //userState.loading == false && userState.token 
-
     const handleClick = () => {
         console.log("clicked");
         setLoggedIn(false);
-
     }
 
     return (
         <Container fluid>
-            <h2>My Page</h2>
+            <h2 className="header--myPage">My Page</h2>
             {!loggedIn ? 
             <Row>
                 <LoginController/>
             </Row>
             :
             <Row>
+                 <div className="button--myPage-logOut">
+                    <ButtonView onClick={handleClick}>Log out</ButtonView>
+                    {/* <ButtonController /> */}
+                </div>
                 <Col>
                 {/* TODO: In future add info about the logged in user. Access with redux, with useSelect 
                 (Like we have done in the CardView component) */}
@@ -41,8 +42,6 @@ const MyPageView: FC = () => {
                     My favorite drinks:
                     My comments:
                 </Col>
-                <ButtonView onClick={handleClick}>Log out</ButtonView>
-                {/* <ButtonController /> */}
             </Row>
             }
         </Container>

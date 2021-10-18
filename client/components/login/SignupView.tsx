@@ -1,4 +1,6 @@
+import Button from '@restart/ui/esm/Button'
 import React,{useState, useEffect} from 'react'
+import ButtonView from '../button/ButtonView'
 import Input from '../input/Input'
 import {UserInput} from '../../actions/DatabaeActionTypes';
 
@@ -39,14 +41,17 @@ const SignupView = ({...props}) => {
         <div>
             {signingUp ? 
             <div>
+                <div>Sign up as a new user</div>
             <Input placeholder={'Name'} onChange={(e)=>{setname(e.target.value)}} value={name}/>
             <Input placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
             <Input placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
             <Input placeholder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
-            <button onClick={()=>signUp(newUser)}>Submit</button>
+            {/* <button onClick={()=>signUp(newUser)}>Submit</button> */}
+            <ButtonView onClick={() => event=>signUp(newUser)}>Submit</ButtonView>
            </div>
             :
-            <button onClick={handleToggle}>Register New</button>
+            // <button onClick={handleToggle}>Register New</button>
+            <ButtonView onClick={handleToggle}>Register New</ButtonView>
             }
             <div>{statusMessage}</div>
             
