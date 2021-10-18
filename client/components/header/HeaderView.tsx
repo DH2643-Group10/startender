@@ -23,8 +23,12 @@ const HeaderView = (props) => {
                     <NavItem className="theme-toggle header-link"onClick={props.handleThemeChange}>
                         <FontAwesomeIcon className="navbar__icon--clickable" icon={props.darkMode ? 'sun' : 'moon'}/>
                     </NavItem>
-                    <Link className="navbar__link" to="/">Home</Link>
-                    <Link className="navbar__link" to="/my-page">My page</Link>
+                    <NavItem>
+                        <Link className="navbar__link" to="/">Home</Link>
+                    </NavItem>
+                    <NavItem>
+                        <Link className="navbar__link" to="/my-page">My page</Link>
+                    </NavItem>
                 </Navbar.Collapse>
             </Container>
             </Navbar>

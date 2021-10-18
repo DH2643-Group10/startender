@@ -2,6 +2,11 @@
 @import '../../sass/color-themes';
 
 .navbar {
+  @include themed() {
+    color: t($text);
+    background: t($bg);
+  }
+
   &__icon {
     @include themed() {
       color: t($text-third);
@@ -13,9 +18,9 @@
       color: t($text);
       background: t($bg);
     }
-  margin-left: 1em;
-  text-decoration: none;
-  cursor: pointer;
+    margin-left: 1em;
+    text-decoration: none;
+    cursor: pointer;
   }
   &__link:hover {
     @include themed() {
@@ -36,49 +41,4 @@
     }
   }
 
-}
-
-
-// a {
-//     @include themed() {
-//         color: t($text);
-//         background: t($bg);
-//       }
-//     margin-left: 1em;
-//     text-decoration: none;
-//     cursor: pointer;
-// }
-
-// .navbar a:hover {
-//   @include themed() {
-//     color: t($text-important);
-//   }
-// }
-
-// .navbar svg {
-//   @include themed() {
-//     color: t($text);
-//   }
-//   cursor: pointer;
-
-// }
-
-// .navbar svg:hover {
-//   @include themed() {
-//     color: t($text-important);
-//   }
-// }
-
-.navbar {
-    @include themed() {
-        color: t($text);
-        background: t($bg);
-      }
-    // background-color: #f74b4b !important;
-}
-
-.navbar-brand {
-    @include themed() {
-        color: t($text);
-      }
 }
