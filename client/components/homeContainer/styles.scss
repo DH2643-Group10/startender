@@ -34,10 +34,19 @@
     padding: 1em 5em 1em 5em;
 }
 
+
 .search-bar input {
     @include themed() {
         color: t($text);
         background: t($card-bg);
       }
     // background-color: rgb(19, 19, 20);
+
+.spinner {
+    text-align: center;
+    padding: 2em;
+}
+
+.spinner--state-loading {
+   display: inline-block;
 }
