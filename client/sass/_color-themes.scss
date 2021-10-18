@@ -13,7 +13,7 @@ $logo2: 'logo-2';
 $brand-secondary: 'brand-blue';
 $brand-primary: 'brand-red';
 $border: 'border';
-
+$text-third: 'text-third';
 //themes
 $themes: (
         default: (
@@ -25,6 +25,7 @@ $themes: (
                 text: $text--light,
                 text-important: $text--imp--light,
                 text-secondary: $text--2--light,
+                text-third: $text--third--light,
                 text-badge: $text--light,
                 link: $brand--secondary--light,
                 hover: $hover--light,
@@ -41,6 +42,7 @@ $themes: (
                 text: $text--dark,
                 text-important: $text--imp--dark,
                 text-secondary: $text--2--dark,
+                text-third: $text--third--dark,
                 text-badge: $text--dark,
                 link: $brand--secondary--dark,
                 hover: $hover--dark,

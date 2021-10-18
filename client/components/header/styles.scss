@@ -1,35 +1,73 @@
 @import '../../sass/settings';
 @import '../../sass/color-themes';
 
-.navbar a {
+.navbar {
+  &__icon {
     @include themed() {
-        color: t($text);
-        background: t($bg);
-      }
-    margin-left: 1em;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.navbar a:hover {
-  @include themed() {
-    color: t($text-important);
+      color: t($text-third);
+    }
   }
-}
 
-.navbar svg {
-  @include themed() {
-    color: t($text);
-  }
+  &__link {
+    @include themed() {
+      color: t($text);
+      background: t($bg);
+    }
+  margin-left: 1em;
+  text-decoration: none;
   cursor: pointer;
-
-}
-
-.navbar svg:hover {
-  @include themed() {
-    color: t($text-important);
   }
+  &__link:hover {
+    @include themed() {
+      color: t($text-important);
+    }
+  }
+
+  &__icon--clickable {
+    @include themed() {
+      color: t($text);
+    }
+    cursor: pointer;
+  }
+
+  &__icon--clickable:hover {
+    @include themed() {
+      color: t($text-important);
+    }
+  }
+
 }
+
+
+// a {
+//     @include themed() {
+//         color: t($text);
+//         background: t($bg);
+//       }
+//     margin-left: 1em;
+//     text-decoration: none;
+//     cursor: pointer;
+// }
+
+// .navbar a:hover {
+//   @include themed() {
+//     color: t($text-important);
+//   }
+// }
+
+// .navbar svg {
+//   @include themed() {
+//     color: t($text);
+//   }
+//   cursor: pointer;
+
+// }
+
+// .navbar svg:hover {
+//   @include themed() {
+//     color: t($text-important);
+//   }
+// }
 
 .navbar {
     @include themed() {
