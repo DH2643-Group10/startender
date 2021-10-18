@@ -1,9 +1,25 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
 .navbar a {
+    @include themed() {
+        color: t($text);
+        background: t($bg);
+      }
     margin-left: 1em;
-    color: black;
     text-decoration: none;
 }
 
 .navbar {
-    background-color: #f74b4b !important;
+    @include themed() {
+        color: t($text);
+        background: t($bg);
+      }
+    // background-color: #f74b4b !important;
+}
+
+.navbar-brand {
+    @include themed() {
+        color: t($text);
+      }
 }

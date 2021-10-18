@@ -1,18 +1,53 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
 .top-bar {
-    height: 50vh;
+    height: 105vh;
     text-align: center;
+    padding: 0px;
+    margin-top: -60px;
 
     // ---- Background Image ----
-    background-image: url("https://i.imgur.com/yY2jgba.png"); 
-    background-position: 0 -100px; 
-    background-attachment: fixed;
+    @include themed() {
+
+        background-image: t($background-image); 
+        
+      }
+    // background-size: contain;
+
+    // background-image: url("https://i.imgur.com/yY2jgba.png"); 
+    // background-size: contain;
+    // background-attachment: fixed;
+    background: no-repeat center center scroll; 
+    background-size: cover;
+    //background-attachment: scroll;
+
 
 }
 
-.top-bar img {
-    margin-top: 3em;
-}
+// .top-bar img {
+//     max-width: 100%;
+//     margin-top: -60px;
+// }
 
 .bottom-bar, .search-bar {
     padding: 1em 5em 1em 5em;
+}
+
+
+.search-bar input {
+    @include themed() {
+        color: t($text);
+        background: t($card-bg);
+      }
+    // background-color: rgb(19, 19, 20);
+
+.spinner {
+    text-align: center;
+    padding: 2em;
+}
+
+.spinner--state-loading {
+   display: inline-block;
+    }
 }
