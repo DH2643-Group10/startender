@@ -23,16 +23,17 @@ router.route("/").post(async (req, res) => {
   var user = await User.find({ username: username });
 
   //user is returned in an array => extract the user object
+  console.log("user:",user)
+
   user = user[0];
+  console.log("user:",user)
 
   if (!user) res.status(400).json({ error: "User Doesn't Exist" });
 
   const dbPassword = user.password;
   bcrypt.compare(password, dbPassword).then((match) => {
     if (!match) {
-      res
-        .status(400)
-        .json({ error: "Wrong Username and Password Combination!" });
+      res.status(400).json({ error: "Wrong Username and Password Combination!" });
     } else {
       const token = createTokens(user);
       console.log("token", token);
@@ -41,7 +42,7 @@ router.route("/").post(async (req, res) => {
         httpOnly: true,
       });
       
-      // res.status(200).json(user);
+      res.status(200);
       
       // res.status(200).json(token)
       res.json({token:token})
@@ -49,13 +50,14 @@ router.route("/").post(async (req, res) => {
   });
 });
 router.route("/verify").get(authenticateToken, (req, res) => {
-  //verify the JWT token generated for the user
+
   // res.json(posts.filter(post => post.username === req.user.name))
 });
 
 router.route("/posts").get(authenticateToken, (req, res) => {
   // console.log("POSTS req", req)
   // console.log("POSTS res", res)
+
   //verify the JWT token generated for the user
   res.json({posts: posts.filter(post => post.username === req.user.username)})
 });
