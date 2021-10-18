@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
-import LoginController from '../login/LoginController';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetFromCocktailDB } from '../../actions/CocktailActions';
 import CardView from '../card/CardView';
