@@ -1,7 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RootStore } from "../../Store";
+import ButtonController from "../button/ButtonController";
+import ButtonView from "../button/ButtonView";
 import LoginController from '../login/LoginController';
 
 //component meant to display to display information about the logged in user
@@ -9,7 +11,16 @@ import LoginController from '../login/LoginController';
 const MyPageView: FC = () => {
     const userState = useSelector((state: RootStore) => state.databae);
 
-    const loggedIn = true; // do with redux
+    const [loggedIn, setLoggedIn] = useState(true); // do with redux
+
+    // const loggedIn = true; // do with redux
+    //userState.loading == false && userState.token 
+
+    const handleClick = () => {
+        console.log("clicked");
+        setLoggedIn(false);
+
+    }
 
     return (
         <Container fluid>
@@ -30,6 +41,8 @@ const MyPageView: FC = () => {
                     My favorite drinks:
                     My comments:
                 </Col>
+                <ButtonView onClick={handleClick}>Log out</ButtonView>
+                {/* <ButtonController /> */}
             </Row>
             }
         </Container>
