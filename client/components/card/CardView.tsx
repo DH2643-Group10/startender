@@ -29,8 +29,9 @@ const CardView: FC<Props> = () => {
 
     return (
         <Row>
-            { cocktailState == null || cocktailState.cocktail == null ?
-                "" :
+            { cocktailState == null || cocktailState.cocktail == null || cocktailState.cocktail.drinks == null ?
+                <Row className="text--search--noMatch">Sorry! Can't find any drinks...</Row>
+                     :
                 cocktailState.cocktail.drinks?.map((drink, index) => (
                     <Col xs={12} sm={4} md={3} lg={2} key={drink.idDrink}>
                         <Card>
