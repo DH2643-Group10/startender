@@ -22,8 +22,8 @@ export const GetFromCocktailDB = (requestUrl: string) => async (dispatch: Dispat
         })
 
         // Här gör vi själva API callet till CocktailDB.
-
-        const response = await axios.get(requestUrl);
+        const response = await axios.get(requestUrl)
+      
         console.log(response);
 
         dispatch({

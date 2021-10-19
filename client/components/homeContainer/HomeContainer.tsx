@@ -29,14 +29,14 @@ const HomeContainer:FC = () => {
     const [cocktailName, setCocktailName] = useState("");
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setCocktailName(event.target.value);
     const handleSubmit = () => 
-        {dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName));
+        {dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName));
         setIsCardsLoading(true);
         }
   
     // Show drinks on initial visit:
     useEffect(() => {
         // Searches all of API when user enters the page
-        dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s= "));
+        dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/search.php?s= "));
     }, []);
     
     return (
