@@ -26,9 +26,8 @@ const CardModal = (props) => {
 
         <Modal
         {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
+        dialogClassName="modal__dialog"
+        aria-labelledby="example-custom-modal-styling-title"
         onHide={props.onHide}
         drinktoshow = {props.drinktoshow}
     >
@@ -37,20 +36,23 @@ const CardModal = (props) => {
         </Modal.Header>
         <Modal.Body id={"body-"+props?.drinktoshow?.idDrink} >
             <Row>
-                <Col>
+                <Col sm={7} md={6} >
                     <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
                 </Col>
-                <Col>
-                    <div className="modal__subtitle">Ingredients</div>
-                    <ul>
+                <Col sm={5} md={6} className="modal__ingredients">
+                    <Row>
+                        <div className="modal__subtitle">Ingredients</div>
                         {props?.drinktoshow?.ingredientList?.map(ing => (
-                            <li>
+                            <Col xs={12} sm={6} md={4} lg={4}>
+                                <Image className="modal__ingredients--image" src={"https://www.thecocktaildb.com/images/ingredients/" + ing[1] + "-Medium.png"} alt="" />
                                 {ing}
-                                <Image src={"https://www.thecocktaildb.com/images/ingredients/" + ing[1] + "-Medium.png"} alt="" />
-                            </li>
+                            </Col>
                         ))}
-                    </ul>
-                    
+                    </Row>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <div className="modal__subtitle">Instructions:</div>
                     {props?.drinktoshow?.strInstructions}
                 </Col>

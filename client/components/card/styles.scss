@@ -14,13 +14,27 @@
 .modal {
 
     &__img{
-    max-width: 100%;
+        max-width: 100%;
     }
 
     &__subtitle{
         font-weight: bolder;
         margin-right: 1em;
+        font-size: large;
     }
+
+    &__dialog {
+        max-width: 80vw;
+    }    
+
+    &__ingredients {
+        text-align: center;
+    }
+
+    &__ingredients--image {
+        max-width: 100%;
+    }
+
 }
 
 
