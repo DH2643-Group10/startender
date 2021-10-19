@@ -45,6 +45,7 @@ export type CocktailType = {
     strMeasure13?: string | null;
     strMeasure14?: string | null;
     strMeasure15?: string | null;
+    ingredientList?: string[][];
 }
 
 export interface CocktailsLoading {

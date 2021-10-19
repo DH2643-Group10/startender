@@ -1,25 +1,44 @@
 @import '../../sass/settings';
 @import '../../sass/color-themes';
 
-.navbar a {
+.navbar {
+  @include themed() {
+    color: t($text);
+    background: t($bg);
+  }
+
+  &__icon {
     @include themed() {
-        color: t($text);
-        background: t($bg);
-      }
+      color: t($text-third);
+    }
+  }
+
+  &__link {
+    @include themed() {
+      color: t($text);
+      background: t($bg);
+    }
     margin-left: 1em;
     text-decoration: none;
-}
-
-.navbar {
+    cursor: pointer;
+  }
+  &__link:hover {
     @include themed() {
-        color: t($text);
-        background: t($bg);
-      }
-    // background-color: #f74b4b !important;
-}
+      color: t($text-important);
+    }
+  }
 
-.navbar-brand {
+  &__icon--clickable {
     @include themed() {
-        color: t($text);
-      }
+      color: t($text);
+    }
+    cursor: pointer;
+  }
+
+  &__icon--clickable:hover {
+    @include themed() {
+      color: t($text-important);
+    }
+  }
+
 }
