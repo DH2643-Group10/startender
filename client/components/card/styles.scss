@@ -4,12 +4,12 @@
 /* The modal */
 
 // denna funkar inte just nu :(( och behöver skrivas om till BEM
-// .modal-content {
-//     @include themed() {
-//         color: t($text);
-//         background-color: t($bg);
-//       }
-// }
+.modal-content {
+    @include themed() {
+        color: t($text);
+        background-color: t($bg);
+      }
+}
 
 .modal {
 

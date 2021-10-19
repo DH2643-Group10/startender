@@ -7,6 +7,7 @@ import { RootStore } from '../../Store';
 // Modal that shows more info of specific drink
 const CardModal = (props) => {
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
+    const themeState = useSelector((state: RootStore) => state.themeReducer);
 
     useEffect(() => {
         // turns all the ingredient and meassurement attributes into an array
@@ -30,16 +31,17 @@ const CardModal = (props) => {
         aria-labelledby="example-custom-modal-styling-title"
         onHide={props.onHide}
         drinktoshow = {props.drinktoshow}
+        className={'theme ' + (themeState.darkMode? 'theme--dark' : 'theme--default')}
     >
         <Modal.Header closeButton>
             <Modal.Title>{props?.drinktoshow?.strDrink}</Modal.Title>
         </Modal.Header>
         <Modal.Body id={"body-"+props?.drinktoshow?.idDrink} >
             <Row>
-                <Col sm={7} md={6} >
+                <Col sm={6} md={6} >
                     <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
                 </Col>
-                <Col sm={5} md={6} className="modal__ingredients">
+                <Col sm={6} md={6} className="modal__ingredients">
                     <Row>
                         <div className="modal__subtitle">Ingredients</div>
                         {props?.drinktoshow?.ingredientList?.map(ing => (
