@@ -33,19 +33,19 @@ const CardModal = (props) => {
         drinktoshow = {props.drinktoshow}
         className={'theme ' + (themeState.darkMode? 'theme--dark' : 'theme--default')}
     >
-        <Modal.Header closeButton>
-            <Modal.Title>{props?.drinktoshow?.strDrink}</Modal.Title>
+        <Modal.Header closeButton >
+            <Modal.Title className="modal__title" >{props?.drinktoshow?.strDrink}</Modal.Title>
         </Modal.Header>
-        <Modal.Body id={"body-"+props?.drinktoshow?.idDrink} >
+        <Modal.Body id={"body-"+props?.drinktoshow?.idDrink} className="modal__body">
             <Row>
-                <Col sm={6} md={6} >
+                <Col sm={12} md={6} lg={4}>
                     <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
                 </Col>
-                <Col sm={6} md={6} className="modal__ingredients">
+                <Col sm={12} md={6} lg={8} className="modal__ingredients">
                     <Row>
-                        <div className="modal__subtitle">Ingredients</div>
+                        <div className="modal__subheader">Ingredients</div>
                         {props?.drinktoshow?.ingredientList?.map(ing => (
-                            <Col xs={12} sm={6} md={4} lg={4}>
+                            <Col xs={12} sm={6} md={4}>
                                 <Image className="modal__ingredients--image" src={"https://www.thecocktaildb.com/images/ingredients/" + ing[1] + "-Medium.png"} alt="" />
                                 {ing}
                             </Col>
@@ -54,17 +54,12 @@ const CardModal = (props) => {
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col className="modal__instructions">
                     <div className="modal__subtitle">Instructions:</div>
                     {props?.drinktoshow?.strInstructions}
                 </Col>
             </Row>
         </Modal.Body>
-        <Modal.Footer id={"footer-"+props?.drinktoshow?.idDrink}  className="justify-content-center">
-        <Button onClick={props.onHide}>
-            Close
-        </Button>
-        </Modal.Footer>
     </Modal>
     )
 }
