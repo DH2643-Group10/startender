@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import databaeReducer from "./DatabaeReducer";
 import cocktailReducer from "./CocktailReducer";
 import commentsReducer from "./CommentsReducer";
+import themeReducer from "./ThemeReducer";
 
 /*
 What goes in this file? Just the root reducer, it combines the databae reducer and the Cocktail reducer.
@@ -23,6 +24,7 @@ const RootReducer = combineReducers({
     databae: databaeReducer,
     cocktails: cocktailReducer,
     commentsReducer:commentsReducer,
+    themeReducer: themeReducer,
 
 });
 
