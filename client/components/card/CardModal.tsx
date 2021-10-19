@@ -43,7 +43,12 @@ const CardModal = (props) => {
                 <Col>
                     <div className="modal__subtitle">Ingredients</div>
                     <ul>
-                        {props?.drinktoshow?.ingredientList?.map(ing => <li>{ing}</li>)}
+                        {props?.drinktoshow?.ingredientList?.map(ing => (
+                            <li>
+                                {ing}
+                                <Image src={"https://www.thecocktaildb.com/images/ingredients/" + ing[1] + "-Medium.png"} alt="" />
+                            </li>
+                        ))}
                     </ul>
                     
                     <div className="modal__subtitle">Instructions:</div>
