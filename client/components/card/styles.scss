@@ -4,23 +4,60 @@
 /* The modal */
 
 // denna funkar inte just nu :(( och behöver skrivas om till BEM
-// .modal-content {
-//     @include themed() {
-//         color: t($text);
-//         background-color: t($bg);
-//       }
-// }
+.modal-content {
+    @include themed() {
+        color: t($text);
+        background-color: t($bg);
+      }
+
+}
 
 .modal {
+    font-family: 'Poppins', sans-serif;
 
     &__img{
-    max-width: 100%;
+        max-width: 100%;
+        border-radius: 10%;
+    }
+
+    &__title{
+        font-weight: bold;
+        font-size: xx-large;
     }
 
     &__subtitle{
-        font-weight: bolder;
-        margin-right: 1em;
+        font-weight: bold;
+        margin: 2em 0em 0em 0em;
+        font-size: x-large;
     }
+
+    &__subheader{
+        font-weight: bold;
+        margin: 0em 0em 0.5em 0em;
+        font-size: x-large;
+    }
+
+    &__dialog {
+        max-width: 80vw;
+
+    }    
+
+    &__body {
+        padding: 1em;
+    }
+
+    &__ingredients {
+        text-align: center;
+    }
+
+    &__ingredients--image {
+        max-width: 100%;
+    }
+
+    &__instructions {
+        padding: 1em;
+    }
+
 }
 
 

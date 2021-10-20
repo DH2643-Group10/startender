@@ -9,18 +9,28 @@
   }
 
 .header {
-    height: 105vh;
     text-align: center;
     padding: 0px;
-    margin-top: -60px;
 
     // ---- Background Image ----
     @include themed() {
+      @media screen and (max-width:800px) {
+          /* style changes when the screen gets smaller */
+          background-image: t($background-image-mobile); 
+          background-size: 100%;
+          height: 80vh;
+
+      }
+      @media screen and (min-width:801px) {
+        /* style changes when the screen gets larger */
         background-image: t($background-image); 
+        background-size: cover;
+        height: 105vh;
+        margin-top: -60px;
+      }
       }
     
     background: no-repeat center center scroll; 
-    background-size: cover;
 }
 
 .search {
