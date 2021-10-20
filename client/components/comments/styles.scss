@@ -2,19 +2,37 @@
 @import '../../sass/color-themes';
 
 .comment{
-    padding: 1vh;
-    margin-top: 3vh;
-    height: 30vh;
-    background-color: rgb(255, 249, 231);  
-    border-width: thin; 
-    border-color: black;
+    // padding: 10px;
+    // margin: 10px;
+    // margin-top: 3vh;
+    height: auto;
+    background-color: rgb(253, 249, 237);  
+    // border-width: thin; 
+    // border-color: black;
     border-radius: 30px;
-    box-shadow: 2px 3px #333; 
+    box-shadow: 1px 1px 1px 1px #333; 
+
+    &__title {
+        padding: 1em;
+    }
+
+    &__text {
+        background-color: white;
+        // width:min-content;
+        padding: 1em;
+        margin: 10px;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px 1px #333;
+    }
     
+    &__text--title {
+        font-weight: bold;
+    }
 }
 
 .form{
 
+    margin:0em;
     display: flex;
     
     &__img{
@@ -26,9 +44,10 @@
     }
 
     &__input{
-        display: flex;
-        width: 350px;
-        padding: 4px;
+        // display: flex;
+        // width: 350px;
+        width: 75vw;
+        padding: 1em;
         border-color: white;
         border-radius: 10px;
         box-shadow: 1px 1px #333;
@@ -39,7 +58,8 @@
         background-color: bisque;
         border-radius: 2px;
         margin: 5px;
-        display: table-column-group;
+        margin-bottom: 1em;
+        // display: table-column-group;
         // align-items: right;
     }
 }

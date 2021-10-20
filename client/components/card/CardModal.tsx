@@ -3,6 +3,7 @@ import {Modal, Button, Image, Row, Col} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { CocktailsType, CocktailType } from '../../actions/CocktailActionTypes';
 import { RootStore } from '../../Store';
+import CommentsController from '../comments/CommentsController';
 import Comment from '../comments/CommentsController'
 
 // Modal that shows more info of specific drink
@@ -60,8 +61,9 @@ const CardModal = (props) => {
                     {props?.drinktoshow?.strInstructions}
                 </Col>
             </Row>
+            <CommentsController/>
         </Modal.Body>
-        <Comment/>
+        
     </Modal>
     )
 }

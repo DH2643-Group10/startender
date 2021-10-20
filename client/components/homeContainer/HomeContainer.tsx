@@ -53,7 +53,6 @@ const HomeContainer:FC = () => {
         <Row>
             <Col className="header"/>
         </Row>
-        <Comment/>
         <Row  className="search">
             <Col>
                 <InputGroup >
