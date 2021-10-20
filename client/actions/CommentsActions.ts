@@ -17,7 +17,7 @@ import { CommentsDispatchTypes,
     CommentType } from "./CommentsActionTypes";
 import axios from "axios";
 
-export const GetAllComments = (drinkId: string) => async (dispatch: Dispatch<CommentsDispatchTypes>) => {
+export const GetAllComments = (cocktailDBId: string) => async (dispatch: Dispatch<CommentsDispatchTypes>) => {
     /*  /comments/${drinkId}
     
     */
@@ -28,7 +28,7 @@ export const GetAllComments = (drinkId: string) => async (dispatch: Dispatch<Com
         })
 
         // Här gör vi själva API callet till CocktailDB.
-        axios.get(`http://localhost:4000/comments/${drinkId}`).then(response=>{
+        axios.get(`http://localhost:4000/comments/${cocktailDBId}`).then(response=>{
             if(response.status==200){
                 const {comments} = response.data
 
@@ -67,7 +67,7 @@ export const CreateComment = (comment: CommentType) => async (dispatch: Dispatch
             error:error
         })
     }
-}
+};
     
 export const DeleteComment = (commentId: string) => async (dispatch: Dispatch<CommentsDispatchTypes>) => {
     // comments/create

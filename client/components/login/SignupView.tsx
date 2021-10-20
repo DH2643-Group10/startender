@@ -47,7 +47,7 @@ const SignupView = ({...props}) => {
             <Input placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
             <Input placeholder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
             {/* <button onClick={()=>signUp(newUser)}>Submit</button> */}
-            <ButtonView onClick={() => event=>signUp(newUser)}>Submit</ButtonView>
+            <ButtonView onClick={() => signUp(newUser)}>Submit</ButtonView>
            </div>
             :
             // <button onClick={handleToggle}>Register New</button>

@@ -2,7 +2,9 @@ const mongoose = require ('mongoose')
 
 
 const Comment = new mongoose.Schema({
-    
+    cocktailDBId:{
+        type:String,
+    },
     userId: {
         type:String,
         required: true,

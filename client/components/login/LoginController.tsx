@@ -13,10 +13,10 @@ import {UserInput} from '../../actions/DatabaeActionTypes';
 //component meant to render login box and handle authorization
 
 const LoginController = () => {
-    const [token,setToken] = useState("")
+    const [token, setToken] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [isLoggedIn,setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [signingUp, setSigningUp] = useState(false)
 
     // console.log("username",username)
