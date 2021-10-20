@@ -63,8 +63,8 @@ const databaeReducer = (state: DefaultStateI = defaultState, action: DataBaeDisp
             return {
                 //isAuthenticated: false,
                 //currentUser: {}
-                //isAuthenticated: isEmpty(action.payload)
-                isAuthenticated: !isEmpty(action.payload)
+                isAuthenticated: isEmpty(action.payload)
+                //isAuthenticated: !isEmpty(action.payload)
             }
             
         default:
