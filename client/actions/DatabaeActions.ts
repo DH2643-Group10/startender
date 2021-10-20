@@ -9,8 +9,7 @@ Action Creators, these are the function that creates actions. So actions are the
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#designing-actions
 */
 import axios from "axios";
-import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER} from "./DatabaeActionTypes"
-
+import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER} from "./DatabaeActionTypes"
 import {Dispatch} from "redux";
 
 import setAuthToken from "../components/util/setAuthToken";
@@ -124,6 +123,14 @@ export const SignUp = (userInput : UserInput) => async (dispatch: Dispatch<DataB
     })
         
     console.log("catch error in DatabaeActions.ts: ", error)}
-
 }
 
+export const Logout = () => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+    // want to dispatch username etc to empty string or null
+    // if there is a login true also set this to false 
+    dispatch(
+        {
+        type: LOG_OUT_USER,
+        payload: false
+    });
+}

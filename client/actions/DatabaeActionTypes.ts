@@ -5,9 +5,8 @@ export const DATABASE_SUCCESS = "DATABASE_SUCCESS";
 
 //Create users
 export const CREATE_USER = "CREATE_USER";
-
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-
+export const LOG_OUT_USER = "LOG_OUT_USER";
 
 interface DatabaseLoading {
     type: typeof DATABASE_LOADING;
@@ -16,7 +15,6 @@ interface DatabaseLoading {
 interface DatabaseFail {
     type: typeof DATABASE_FAIL;
     payload?:{}
-
 }
 
 interface SetCurrentUser {
@@ -34,6 +32,11 @@ interface CreateUser {
     payload:boolean;
 };
 
+interface LogOutUser {
+    type: typeof LOG_OUT_USER;
+    payload?: {}
+}
+
 export interface UserInput {
     name?:String,
     username: String,
@@ -48,4 +51,4 @@ export interface UserInput {
 //     token: String,
 //     }
 
-export type DataBaeDispatchTypes = DatabaseLoading | DatabaseFail | DatabaseSuccess | SetCurrentUser | CreateUser;
+export type DataBaeDispatchTypes = DatabaseLoading | DatabaseFail | DatabaseSuccess | SetCurrentUser | CreateUser | LogOutUser;

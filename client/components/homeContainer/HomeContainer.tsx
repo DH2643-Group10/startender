@@ -49,9 +49,6 @@ const HomeContainer:FC = () => {
                 </div>
             </Row> : ''
         }
-    {/* <Row>
-        <LoginController/>
-    </Row> */}
         <Row>
             <Col className="header"/>
         </Row>
@@ -65,9 +62,7 @@ const HomeContainer:FC = () => {
                     aria-describedby="basic-addon2"
                     onChange={handleChange}
                     onKeyPress={(e) => {if(e.key === "Enter") handleSubmit()
-                    //dispatch(GetFromCocktailDB("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName))
                     }}
-                    //onKeyPress={(event) => {if(event.key === 'Enter'){handleSubmit}}}
                     />
                     <Button variant="outline-secondary" id="button-addon2" onClick={handleSubmit}>
                         Search
