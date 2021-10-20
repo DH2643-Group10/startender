@@ -1,13 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Modal, Button, Image, Row, Col} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { CocktailsType, CocktailType } from '../../actions/CocktailActionTypes';
+import { GetAllComments } from '../../actions/CommentsActions';
 import { RootStore } from '../../Store';
 
 // Modal that shows more info of specific drink
 const CardModal = (props) => {
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const themeState = useSelector((state: RootStore) => state.themeReducer);
+    const commentState = useSelector((state: RootStore) => state.commentsReducer);
+    const dispatch = useDispatch();
+
+    console.log('Comment state: ', commentState);
+    console.log('Commentstate:.comments ', commentState.comments)
+
+    useEffect(() => {
+        // dispatch(GetAllComments()) depending on current drink id
+        // dispatch(GetAllComments('15997'))
+        dispatch(GetAllComments(props?.drinktoshow?.idDrink));
+    }, [props?.drinktoshow?.idDrink])
+   
 
     useEffect(() => {
         // turns all the ingredient and meassurement attributes into an array
@@ -24,7 +37,6 @@ const CardModal = (props) => {
       }, [])
 
     return (
-
         <Modal
         {...props}
         dialogClassName="modal__dialog"
@@ -58,6 +70,19 @@ const CardModal = (props) => {
                     <div className="modal__subtitle">Instructions:</div>
                     {props?.drinktoshow?.strInstructions}
                 </Col>
+            </Row>
+            <Row>
+                {/* TODO: Use Comment component for styling */}
+                <div>Comments:</div>
+                {props?.drinktoshow?.idDrink}
+                {/*            
+                {commentState.comments ? 
+                <div> User {commentState.comments[0].userId} said {commentState.comments[0].comment}</div> : ''} */}
+
+                {commentState.comments instanceof Array ? 
+                    commentState.comments.map((comment) => <div>User {comment.userId} said {comment.comment} </div>) : ''
+                }
+
             </Row>
         </Modal.Body>
     </Modal>
