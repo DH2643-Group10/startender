@@ -10,23 +10,24 @@ Read more: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-redu
 
 */
 
-import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, CREATE_USER} from "../actions/DatabaeActionTypes"
-import isEmpty from "../components/util/checkEmpty"
-
+import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, CREATE_USER, LOG_OUT_USER} from "../actions/DatabaeActionTypes"
+import isEmpty from "../components/util/checkEmpty";
+import { UserInput } from "../actions/DatabaeActionTypes";
 
 interface DefaultStateI {
     loading?: boolean,
     token?: string,
     error?: object,
     createSuccessful?: boolean,
-    currentUser?: {},
+    // currentUser?: {},
+    currentUser?: any,  // --> What type should it have? 
+    // currentUser?: UserInput,
     isAuthenticated?: boolean,
 }
 
 const defaultState: DefaultStateI = {
     loading: false,
     isAuthenticated: false,
-
 };
 
 const databaeReducer = (state: DefaultStateI = defaultState, action: DataBaeDispatchTypes): DefaultStateI => {
@@ -57,6 +58,15 @@ const databaeReducer = (state: DefaultStateI = defaultState, action: DataBaeDisp
                 isAuthenticated: !isEmpty(action.payload),
                 currentUser: action.payload,
             }
+        
+        case LOG_OUT_USER:
+            return {
+                //isAuthenticated: false,
+                //currentUser: {}
+                isAuthenticated: isEmpty(action.payload)
+                //isAuthenticated: !isEmpty(action.payload)
+            }
+            
         default:
             return state
     }

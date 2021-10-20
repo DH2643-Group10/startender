@@ -1,6 +1,8 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Logout } from "../../actions/DatabaeActions";
+import { UserInput } from "../../actions/DatabaeActionTypes";
 import { RootStore } from "../../Store";
 import ButtonController from "../button/ButtonController";
 import ButtonView from "../button/ButtonView";
@@ -11,18 +13,23 @@ import './styles.scss';
 
 const MyPageView: FC = () => {
     const userState = useSelector((state: RootStore) => state.databae);
-
-    const [loggedIn, setLoggedIn] = useState(true); // do with redux
+    const dispatch = useDispatch();
 
     const handleClick = () => {
-        console.log("clicked");
-        setLoggedIn(false);
+        console.log("userState.isAuthenticated BEFORE: ", userState.isAuthenticated)
+        dispatch(Logout());
+        console.log("userState.isAuthenticated AFTER: ", userState.isAuthenticated)
+        console.log("userstate: ", userState)
     }
+
+    useEffect(() => {
+        console.log("userState: ", userState)
+    }, [userState.isAuthenticated]) 
 
     return (
         <Container fluid>
             <h2 className="header--myPage">My Page</h2>
-            {!loggedIn ? 
+            {!userState.isAuthenticated ?
             <Row>
                 <LoginController/>
             </Row>
@@ -35,10 +42,20 @@ const MyPageView: FC = () => {
                 <Col>
                 {/* TODO: In future add info about the logged in user. Access with redux, with useSelect 
                 (Like we have done in the CardView component) */}
-                    
-                    Name: username
+                {
+                    userState.currentUser ? console.log(userState.currentUser.email) : ''
+                }
+                    <Row>
+                        Name: {userState.currentUser ? userState.currentUser.name : ''} 
+                    </Row>
+                    <Row>
+                        Username: {userState.currentUser ? userState.currentUser.username : ''} 
+                    </Row>
+                    <Row>
+                        Email: {userState.currentUser ? userState.currentUser.email : ''} 
+                    </Row>
                     {/* Probably don't wanna show token in frontend in future, just wanted to show how to access the redux store :-) */}
-                    My token: {userState.token?? ''}
+                    {/* My token: {userState.token?? ''} */}
                     My favorite drinks:
                     My comments:
                 </Col>

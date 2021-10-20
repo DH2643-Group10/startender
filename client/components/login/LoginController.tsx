@@ -8,8 +8,6 @@ import { RootStore } from "../../Store";
 import { Login, SignUp } from '../../actions/DatabaeActions';
 import {UserInput} from '../../actions/DatabaeActionTypes';
 
-
-
 //component meant to render login box and handle authorization
 
 const LoginController = () => {
@@ -24,7 +22,6 @@ const LoginController = () => {
     const handleToggle = () =>{
         setSigningUp(!signingUp)
     }
-
  
     // const onSubmit = (event,form) =>{
     //     // console.log("on submit event:",event)
@@ -154,7 +151,8 @@ const LoginController = () => {
         <LoginView  login={handleLogin} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
         }   
         <SignupView successful={databaeRootState.createSuccessful} signingUp={signingUp} handleToggle={handleToggle} signUp={handleSignUp}/> 
-        </> : <Profile/>
+        </> : 
+        <Profile/> // remove from this file? Or remove entirely? 
         }
            
         </div>

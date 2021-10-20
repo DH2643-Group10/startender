@@ -6,7 +6,6 @@ import {UserInput} from '../../actions/DatabaeActionTypes';
 
 const SignupView = ({...props}) => {
 
-    
     const {successful, signingUp, handleToggle, signUp} = props
     const [name, setname] = useState("")
     const [username, setusername] = useState("")
@@ -24,7 +23,6 @@ const SignupView = ({...props}) => {
     // }
     // console.log("newU:",registered)
 
-
     useEffect(() => {
         if(successful){
             setStatusMessage("Your account has been successfully created")
@@ -34,9 +32,6 @@ const SignupView = ({...props}) => {
             setpassword("")}
     }, [successful])
 
-   
-   
-    
     return (
         <div>
             {signingUp ? 
@@ -46,18 +41,14 @@ const SignupView = ({...props}) => {
             <Input placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
             <Input placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
             <Input placeholder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
-            {/* <button onClick={()=>signUp(newUser)}>Submit</button> */}
-            <ButtonView onClick={() => signUp(newUser)}>Submit</ButtonView>
+            <ButtonView onClick={() =>signUp(newUser)}>Submit</ButtonView>
            </div>
             :
-            // <button onClick={handleToggle}>Register New</button>
             <ButtonView onClick={handleToggle}>Register New</ButtonView>
             }
             <div>{statusMessage}</div>
-            
         </div>
     )
 }
 
-
-export default SignupView
+export default SignupView;
