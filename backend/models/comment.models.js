@@ -3,12 +3,14 @@ const mongoose = require ('mongoose')
 
 const Comment = new mongoose.Schema({
     cocktailDBId:{
-        type:String,
+        type: String,
     },
     userId: {
         type:String,
         required: true,
-
+    },
+    name:{
+        type:String
     },
     drinkId: {
         type:String,

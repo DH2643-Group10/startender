@@ -14,15 +14,15 @@ POST http://localhost:4000/comments/create
 Content-Type: application/json 
   
 {
-    "cocktailDBId" : "1595954",
+    "cocktailDBId" : "15997",
     "drinkId" : "6159cfd58f99645030aa98e5",
     "userId" : "616d78761b93acbe8ec54c4b",
-    "comment" : "moa123"
+    "comment" : "2222"
 }
 
 
 ###// find all comments for a drink - /comments/${drinkId}
-GET http://localhost:4000/comments/1595954
+GET http://localhost:4000/comments/15997
 Content-Type: application/json
   
 ###//Delete a comment - /comments/delete/${commentId}

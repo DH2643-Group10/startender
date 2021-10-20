@@ -25,7 +25,7 @@ interface DefaultStateI {
 
 const defaultState: DefaultStateI = {
     commentsLoading: false,
-    commentsError:''
+    commentsError:'',
 
 };
 

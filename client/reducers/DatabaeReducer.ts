@@ -10,7 +10,7 @@ Read more: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-redu
 
 */
 
-import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, CREATE_USER, LOG_OUT_USER} from "../actions/DatabaeActionTypes"
+import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, CREATE_USER, LOG_OUT_USER} from "../actions/DatabaeActionTypes"
 import isEmpty from "../components/util/checkEmpty";
 import { UserInput } from "../actions/DatabaeActionTypes";
 
@@ -23,6 +23,8 @@ interface DefaultStateI {
     currentUser?: any,  // --> What type should it have? 
     // currentUser?: UserInput,
     isAuthenticated?: boolean,
+    fetchedUser?: any,
+
 }
 
 const defaultState: DefaultStateI = {
@@ -46,7 +48,14 @@ const databaeReducer = (state: DefaultStateI = defaultState, action: DataBaeDisp
             return {
                 loading: false,
                 token: action.payload,
+                
             }
+        case FIND_USER_SUCCESS: 
+        return {
+            loading: false,
+            fetchedUser: action.payload,
+            
+        }
 
         case CREATE_USER: 
             return {

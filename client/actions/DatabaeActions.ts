@@ -9,7 +9,7 @@ Action Creators, these are the function that creates actions. So actions are the
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#designing-actions
 */
 import axios from "axios";
-import {DataBaeDispatchTypes, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER} from "./DatabaeActionTypes"
+import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER} from "./DatabaeActionTypes"
 import {Dispatch} from "redux";
 
 import setAuthToken from "../components/util/setAuthToken";
@@ -124,6 +124,38 @@ export const SignUp = (userInput : UserInput) => async (dispatch: Dispatch<DataB
         
     console.log("catch error in DatabaeActions.ts: ", error)}
 }
+
+export const FetchUserDataWithId = (userId : string) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+    try {
+        dispatch( {
+            type: DATABASE_LOADING
+            
+        })
+        console.log("kommer vi hit")
+
+        // Här gör vi själva API callet till CocktailDB.
+        // axios.get(`http://localhost:4000/comments/find/${cocktailDBId}`,{params:{id:cocktailDBId}}).then(response=>{
+        axios.get(`http://localhost:4000/users/${userId}`).then(response=>{
+            if(response.status==200){
+                const {user} = response.data
+
+                dispatch({
+                    type: FIND_USER_SUCCESS,
+                    payload: user
+                })
+            }
+        })
+   
+       
+
+      } catch (error) {
+          dispatch({
+              type: DATABASE_FAIL
+          })
+      }
+
+};
+
 
 export const Logout = () => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
     // want to dispatch username etc to empty string or null
