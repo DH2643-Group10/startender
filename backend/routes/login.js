@@ -49,10 +49,7 @@ router.route("/").post(async (req, res) => {
     }
   });
 });
-router.route("/verify").get(authenticateToken, (req, res) => {
 
-  // res.json(posts.filter(post => post.username === req.user.name))
-});
 
 router.route("/posts").get(authenticateToken, (req, res) => {
   // console.log("POSTS req", req)

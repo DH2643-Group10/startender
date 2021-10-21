@@ -9,7 +9,7 @@ Action Creators, these are the function that creates actions. So actions are the
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#designing-actions
 */
 import axios from "axios";
-import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER} from "./DatabaeActionTypes"
+import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER, ERROR_MESSAGE} from "./DatabaeActionTypes"
 import {Dispatch} from "redux";
 
 import setAuthToken from "../components/util/setAuthToken";
@@ -76,30 +76,36 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
 
 }
 
-export const SignUp = (userInput : UserInput) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+export const SignUp = (userInput : UserInput |any) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
  
     try {
         dispatch( {
             type: DATABASE_LOADING
             
         })
-    axios.post('http://localhost:4000/users/add',userInput).then(response => {
+    await axios.post('http://localhost:4000/users/add',userInput).then(response => {
         // console.log("response", response)
         // console.log("response Data", response.data)
         // console.log("response Data usernamne", response.data.username)
 
             if(response.status==200){
-                dispatch(
-                    {
+                dispatch({
                         type: CREATE_USER,
                         payload: true
-                    }
-                )
-            // setUsername(response.data.username)
-
-            // setSignUpResponseCode(200)
-            // setSigningUp(false)
+                    })
             }
+
+                //error statuses from backend
+            if(response.status==201){
+                // console.log("error 201:", response)
+                const {errorMessage} = response.data.data
+                dispatch(
+                    {
+                        type: ERROR_MESSAGE,
+                        payload: errorMessage
+                    })
+            }
+
         //    console.log("response Data", response)
         }).catch(error=>{
             console.log("Error :", error)
@@ -107,8 +113,6 @@ export const SignUp = (userInput : UserInput) => async (dispatch: Dispatch<DataB
              dispatch( {
                 type: CREATE_USER,
                 payload:false
-                // payload: error.error
-                
             })
 
         })

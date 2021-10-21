@@ -1,10 +1,10 @@
 const STATUS_CODES = {
     'a112': 'MongoDB write conflict',
     'a200': 'OK',
-    'a201': 'Created',
+    'a201': 'Username already taken, try another one!',
     'a202': 'Accepted',
     'a203': 'Non-Authoritative Information',
-    'a204': 'No Content',
+    'a204': 'Username already taken, try another one!',
     'a205': 'Reset Content',
     'a206': 'Partial Content',
     'a300': 'Multiple Choices',
@@ -45,8 +45,8 @@ const STATUS_CODES = {
 const checkError = (code) => {
 if (code==11000){
 //for "username alrdy exist"
-//406= user does not exist
-code=406;
+//204= user does not exist
+code=201;
 }
   const strKey = 'a' + code.toString();
   //made to string to be able to access object (int can't be used as properties)

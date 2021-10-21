@@ -9,6 +9,14 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const LOG_OUT_USER = "LOG_OUT_USER";
 export const FIND_USER_SUCCESS = "FIND_USER_SUCCESS";
 
+//Signup user messages
+export const ERROR_MESSAGE = "ERROR_MESSAGE";
+
+interface ErrorMessage {
+    type: typeof ERROR_MESSAGE;
+    payload?:{}
+}
+
 interface DatabaseLoading {
     type: typeof DATABASE_LOADING;
 }
@@ -30,7 +38,7 @@ interface DatabaseSuccess {
 
 interface CreateUser {
     type: typeof CREATE_USER;
-    payload:boolean;
+    payload:boolean|any;
 };
 interface FindUserSuccess{
     type: typeof FIND_USER_SUCCESS,
@@ -56,4 +64,4 @@ export interface UserInput {
 //     token: String,
 //     }
 
-export type DataBaeDispatchTypes = DatabaseLoading | DatabaseFail | DatabaseSuccess | SetCurrentUser | CreateUser | LogOutUser | FindUserSuccess;
+export type DataBaeDispatchTypes = DatabaseLoading | DatabaseFail | DatabaseSuccess | SetCurrentUser | CreateUser | LogOutUser | FindUserSuccess | ErrorMessage;

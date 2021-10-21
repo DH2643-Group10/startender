@@ -13,8 +13,8 @@ const { ObjectId }  = require("mongodb");
 // })
 
 //Create new user
-//Todo: fixa unique email och unique username bad request message.
 router.route('/add').post((req, res) => {
+
   console.log("/add req",req.body)
   bcrypt.hash(req.body.password,10).then((hash)=>{
     const newUser = new User({
@@ -38,8 +38,11 @@ router.route('/add').post((req, res) => {
       console.log("error in users.js",error.code)
       if(error){
         var errorParse= checkError(error.code)
+        console.log("errorParse",errorParse.msg)
+
         res.status(errorParse.code)
-        res.json({error:errorParse})
+        res.json({errorMessage:errorParse.msg})
+      
         // console.log(errorParse)
         // var data = {}
 
@@ -49,14 +52,11 @@ router.route('/add').post((req, res) => {
       }
       });
 
-
   }).catch((error)=>{
     var errorParse= checkError(error.code)
     res.status(errorParse.code)
-    res.json({error:errorParse})
+    res.json({errorMessage:errorParse.msg})
   })
- 
-  
 });
 
 //Find all comments by a user
