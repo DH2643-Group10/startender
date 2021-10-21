@@ -37,7 +37,7 @@ const MyPageView: FC = () => {
 
     return (
         <Container fluid className="mypage">
-            <h2 className="myPage__header">My Page</h2>
+            <h2 className="mypage__header">My Page</h2>
             {!userState.isAuthenticated ?
             // <Row>
                 <LoginController/>
