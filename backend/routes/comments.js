@@ -7,12 +7,25 @@ const { ObjectId }  = require("mongodb");
 
 
 //Delete comment by id
-//perhaps implement authenticate??
-router.route('/delete/:id').delete((req,res) => {
-  Comment.findByIdAndDelete(req.params.id)
-  .then(comment=> {
-    res.status(200).json({message:'Your comment has been deleted!'})})
-  .catch(error=>{res.status(400).json(error)})
+router.route('/delete/:id').delete( async(req,res) => {
+  var commentId = req.params.id
+ 
+  try {
+    var deleteComment = await  Comment.findByIdAndDelete(commentId)
+    if(deleteComment!=null){
+      res.status(200).json({statusMessage:'Comment deleted!'})
+    } else{
+      res.status(200).json({statusMessage: 'Comment does not exist'})
+    }
+   
+    
+    console.log("deleteComment",deleteComment)
+  
+}
+catch(error){
+  console.log("comments error:", error)
+  res.status(400).json({error:error})
+}
 
 })
 
@@ -28,8 +41,6 @@ router.route('/:id').get(async(req,res) => {
   // console.log("cocktailID1;",cocktailID1)
   console.log("cocktailID2:",cocktailID)
 
-
-   
   // var cocktailID = req.params.cocktailDBId
 
   // var objId = new ObjectId(req.params.id)
@@ -56,22 +67,6 @@ router.route('/:id').get(async(req,res) => {
   // })
 
 })
-
-
-// router.route('/:id').get((req,res) => {
-  
-//   var objId = new ObjectId(req.params.id)
-//   Comment.find(objId)
-//   .then(comments=> res.status(200).json({comments:comments}))
-//   .catch((error)=>{
-//     console.log("comments error:", error)
-//     res.status(400).json({error:error})
-  
-//   })
-
-// })
-
-
 
 
 //Post comment on drink

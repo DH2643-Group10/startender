@@ -14,7 +14,9 @@ import { CommentsDispatchTypes,
     COMMENTS_FAIL, 
     COMMENTS_LOADING, 
     COMMENTS_SUCCESS,
-    CommentType } from "./CommentsActionTypes";
+    CommentType, 
+    CREATED_COMMENT,
+    DELETE_COMMENT} from "./CommentsActionTypes";
 import axios from "axios";
 
 export const GetAllComments = (cocktailDBId: string) => async (dispatch: Dispatch<CommentsDispatchTypes>) => {
@@ -49,7 +51,7 @@ export const GetAllComments = (cocktailDBId: string) => async (dispatch: Dispatc
       }
 
 };
-export const CreateComment = (comment: CommentType) => async (dispatch: Dispatch<CommentsDispatchTypes>) => {
+export const CreateComment = (comment: CommentType | any) => async (dispatch: Dispatch<CommentsDispatchTypes>) => {
     // comments/create
     try {
         dispatch({
@@ -57,8 +59,11 @@ export const CreateComment = (comment: CommentType) => async (dispatch: Dispatch
 
         axios.post(`http://localhost:4000/comments/create`, comment).then(response=>{
             if(response.status==200){
+                const {message} = response.data
+
                 dispatch({
-                    type:COMMENTS_SUCCESS})
+                    type:CREATED_COMMENT,
+                    payload:message})
             }
         })
     }
@@ -76,13 +81,18 @@ export const DeleteComment = (commentId: string) => async (dispatch: Dispatch<Co
         dispatch({
             type: COMMENTS_LOADING})
 
-        axios.post(`http://localhost:4000/delete/create`, commentId).then(response=>{
+        await axios.delete(`http://localhost:4000/comments/delete/${commentId}`).then(response=>{
             if(response.status==200){
+                const {statusMessage} = response.data
+
                 dispatch({
-                    type:COMMENTS_SUCCESS})
+                    type:DELETE_COMMENT,
+                    payload:statusMessage })
             }
-        })
-    }
+            }).catch((error)=>{
+                console.log("error",error)
+            })
+        }
     catch (error) {
         dispatch({
             type: COMMENTS_FAIL,

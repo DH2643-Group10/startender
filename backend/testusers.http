@@ -3,12 +3,12 @@ Content-Type: application/json
   
 {
     "name" : "Albin Matson Gyllang3",
-    "username" : "newnew",
-    "email" : "ALBA222@ALBA.se",
-    "password":"ALBA"
+    "username" : "albin",
+    "email" : "albin@albin.se",
+    "password":"albin"
         
 }
 ###
-GET http://localhost:4000/users/61703ee59c6e5c93a2caad5f
+GET http://localhost:4000/users/61711297f6c09f2cc42cade6
 Content-Type: application/json
 

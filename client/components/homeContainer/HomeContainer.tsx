@@ -8,7 +8,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetFromCocktailDB } from '../../actions/CocktailActions';
 // import { FetchUserDataWithId } from '../../actions/DatabaeActions';
-// import { GetAllComments } from '../../actions/CommentsActions';
+import { GetAllComments,DeleteComment } from '../../actions/CommentsActions';
 import CardView from '../card/CardView';
 import CardController from '../card/CardController';
 import SpinnerView from '../spinner/SpinnerView';
@@ -40,17 +40,18 @@ const HomeContainer:FC = () => {
     // const userState = useSelector((state: RootStore) => state.databae);
     // console.log("FetchUserDataWithId", userState)
 
-    // const commentState = useSelector((state: RootStore) => state.commentsReducer);
-    // console.log("GetAllComments",commentState)
+    const commentState = useSelector((state: RootStore) => state.commentsReducer);
+    console.log("GetAllComments",commentState)
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     dispatch(GetAllComments('15997'))
+        // dispatch(GetAllComments('15997'))
+        // dispatch(DeleteComment('617120175ffbba5f33447ab2'))
 
-    //     dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'))
+        // dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'))
 
 
-    // }, []);
+    }, []);
 
     // //__________________
 

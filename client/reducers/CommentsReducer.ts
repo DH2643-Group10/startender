@@ -14,12 +14,15 @@ import {
     CommentsTypes,
     COMMENTS_SUCCESS, 
     COMMENTS_LOADING, 
-    COMMENTS_FAIL } from "../actions/CommentsActionTypes";
+    COMMENTS_FAIL,
+    CREATED_COMMENT,
+    DELETE_COMMENT } from "../actions/CommentsActionTypes";
 
 interface DefaultStateI {
     commentsLoading: boolean,
     comments?: CommentsTypes,
     commentsError?: string
+    message?:string
 
 }
 
@@ -45,6 +48,16 @@ const commentsReducer = (state: DefaultStateI = defaultState, action: CommentsDi
                 commentsLoading: false,
                 comments: action.payload
             }
+        case DELETE_COMMENT: 
+        return {
+            commentsLoading: false,
+            message: action.payload
+        }
+        case CREATED_COMMENT: 
+        return {
+            commentsLoading: false,
+            message: action.payload
+        }
         default:
             return state
     }

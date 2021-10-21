@@ -3,6 +3,9 @@
 export const COMMENTS_LOADING = "COMMENTS_LOADING";
 export const COMMENTS_FAIL = "COMMENTS_FAIL";
 export const COMMENTS_SUCCESS = "COMMENTS_SUCCESS";
+export const DELETE_COMMENT = "DELTE_COMMENT";
+export const CREATED_COMMENT = "CREATED_COMMENT";
+
 
 // This type corresponds to the JSON object returned from the Cocktail DB API.
 export type CommentsTypes = {
@@ -19,9 +22,19 @@ export type CommentType = {
    
 }
 
-
 export interface CommentsLoading {
     type: typeof COMMENTS_LOADING
+}
+
+export interface DeleteComment {
+    type: typeof DELETE_COMMENT
+    payload?: string
+}
+
+
+export interface CreatedComment {
+    type: typeof CREATED_COMMENT
+    payload?: string
 }
 
 export interface CommentsFail {
@@ -36,4 +49,4 @@ export interface CommentsSuccess {
         // The API returns an object that contains an array of drink objects.
 };
 
-export type CommentsDispatchTypes = CommentsLoading | CommentsFail | CommentsSuccess;
+export type CommentsDispatchTypes = CommentsLoading | CommentsFail | CommentsSuccess | DeleteComment | CreatedComment ;
