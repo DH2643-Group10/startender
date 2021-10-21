@@ -7,6 +7,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../Store";
 import { Login, SignUp } from '../../actions/DatabaeActions';
 import {UserInput} from '../../actions/DatabaeActionTypes';
+import './styles.scss';
+import ButtonView from "../button/ButtonView"
+import { Col, Row } from "react-bootstrap"
 
 //component meant to render login box and handle authorization
 
@@ -144,18 +147,20 @@ const LoginController = () => {
         databaeRootState.createSuccessful
     ])
     return (
-        <div>{
-        !databaeRootState.isAuthenticated
-        ? <> 
-        {!signingUp &&
-        <LoginView  login={handleLogin} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
-        }   
-        <SignupView successful={databaeRootState.createSuccessful} signingUp={signingUp} handleToggle={handleToggle} signUp={handleSignUp}/> 
-        </> : 
-        <Profile/> // remove from this file? Or remove entirely? 
-        }
+        <Col className="mypage">
+            {
+            !databaeRootState.isAuthenticated
+            ? <> 
+            {!signingUp &&
+            <LoginView  login={handleLogin} handleToggle={handleToggle} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
+            }   
+            <SignupView successful={databaeRootState.createSuccessful} signingUp={signingUp} handleToggle={handleToggle} signUp={handleSignUp}/> 
+            {/* <ButtonView onClick={handleToggle}>Register New</ButtonView> */}
+            </> : 
+            <Profile/> // remove from this file? Or remove entirely? 
+            }
            
-        </div>
+        </Col>
     )
 }
 
