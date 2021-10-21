@@ -98,7 +98,7 @@ export const SignUp = (userInput : UserInput |any) => async (dispatch: Dispatch<
                 //error statuses from backend
             if(response.status==201){
                 // console.log("error 201:", response)
-                const {errorMessage} = response.data.data
+                const {errorMessage} = response.data
                 dispatch(
                     {
                         type: ERROR_MESSAGE,
@@ -135,7 +135,6 @@ export const FetchUserDataWithId = (userId : string) => async (dispatch: Dispatc
             type: DATABASE_LOADING
             
         })
-        console.log("kommer vi hit")
 
         // Här gör vi själva API callet till CocktailDB.
         // axios.get(`http://localhost:4000/comments/find/${cocktailDBId}`,{params:{id:cocktailDBId}}).then(response=>{
@@ -150,8 +149,6 @@ export const FetchUserDataWithId = (userId : string) => async (dispatch: Dispatc
             }
         })
    
-       
-
       } catch (error) {
           dispatch({
               type: DATABASE_FAIL

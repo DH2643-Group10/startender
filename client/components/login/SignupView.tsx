@@ -3,20 +3,41 @@ import React,{useState, useEffect} from 'react'
 import ButtonView from '../button/ButtonView'
 import Input from '../input/Input'
 import { Col, Container, Row } from 'react-bootstrap';
-import {UserInput} from '../../actions/DatabaeActionTypes';
+import { UserInput } from '../../actions/DatabaeActionTypes';
+import { useSelector, useDispatch } from "react-redux";
+import { RootStore } from "../../Store";
+
+//render prop
+const ErrorContainer = (props) => {
+        const {message} = props
+    return(
+    <div>
+        {message()}
+    </div>)
+}
+
 
 const SignupView = ({...props}) => {
-
     const {successful, signingUp, handleToggle, signUp} = props
     const [name, setname] = useState("")
     const [username, setusername] = useState("")
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
-    const [statusMessage, setStatusMessage]=useState("")
+    const [statusMessage, setStatusMessage] = useState("")
 
     var newUser : UserInput = {name:name, username:username, password:password, email:email, token:'', }
+    // const dispatch = useDispatch();
 
-
+    const databaeRootState = useSelector((state: RootStore) => state.databae);
+    const errorMessage = databaeRootState.errorMessage
+    console.log("databaeRootState.errorMessage?",databaeRootState.errorMessage)
+   
+    useEffect(()=>{
+        databaeRootState.errorMessage&&
+        setStatusMessage(databaeRootState.errorMessage)
+    },[databaeRootState.errorMessage])
+    
+    
     useEffect(() => {
         if(successful){
             setStatusMessage("Your account has been successfully created")
@@ -37,6 +58,9 @@ const SignupView = ({...props}) => {
                 <Row>
                     <Input className="login__input" placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
                 </Row>
+
+                {errorMessage && <ErrorContainer message= { () => <h3>{statusMessage}</h3> }/>}
+                
                 <Row>
                     <Input className="login__input" placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
                 </Row>

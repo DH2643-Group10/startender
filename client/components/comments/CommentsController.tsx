@@ -28,8 +28,7 @@ const CommentsController = ({drinktoshow}) => {
             {userState.isAuthenticated &&
             <CommentForm
             drinktoshow={drinktoshow}/>
-            cocktailState={cocktailState}
-            />
+           
             }
             <Comments
             comments={comments}
