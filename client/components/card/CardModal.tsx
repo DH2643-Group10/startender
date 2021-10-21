@@ -58,8 +58,8 @@ const CardModal = (props) => {
                 <Col sm={12} md={6} lg={8} className="modal__ingredients">
                     <Row>
                         <div className="modal__subheader">Ingredients</div>
-                        {props?.drinktoshow?.ingredientList?.map(ing => (
-                            <Col xs={12} sm={6} md={4}>
+                        {props?.drinktoshow?.ingredientList?.map((ing: Array<string>, index) => (
+                            <Col xs={12} sm={6} md={4} key={index}>
                                 <Image className="modal__ingredients--image" src={"https://www.thecocktaildb.com/images/ingredients/" + ing[1] + "-Medium.png"} alt="" />
                                 {ing}
                             </Col>
@@ -83,7 +83,7 @@ const CardModal = (props) => {
                 <div> User {commentState.comments[0].userId} said {commentState.comments[0].comment}</div> : ''} */}
 
                 {commentState.comments instanceof Array ? 
-                    commentState.comments.map((comment) => <div>User {comment.userId} said {comment.comment} </div>) : ''
+                    commentState.comments.map((comment, index) => <div key={index}>User {comment.userId} said {comment.comment} </div>) : ''
                 }
 
             </Row>
