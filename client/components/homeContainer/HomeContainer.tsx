@@ -15,6 +15,7 @@ import SpinnerView from '../spinner/SpinnerView';
 import { RootStore } from "../../Store";
 import { Spinner } from 'react-bootstrap';
 import ButtonView from '../button/ButtonView';
+import Comment from '../comments/CommentsController'
 
 //component is meant to be like a container for everything else
                     

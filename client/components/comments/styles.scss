@@ -1,0 +1,73 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
+.comment{
+    height: auto;
+    border-radius: 30px;
+
+    @include themed() {
+        color: t($text);
+        background-color: t($comment-bg);
+        box-shadow: t($bs);
+      }
+
+
+    &__title {
+        padding: 1em;
+    }
+
+    &__text {
+        padding: 1em;
+        margin: 10px;
+        border-radius: 20px;
+
+        @include themed() {
+            color: t($text);
+            background-color: t($bg);
+            box-shadow: t($bs);
+          }
+    }
+    
+    &__text--title {
+        font-weight: bold;
+    }
+}
+
+.form{
+
+    margin:0em;
+    display: flex;
+    
+    &__img{
+        background-color: black;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        margin: 10px;
+    }
+
+    &__input{
+        width: 75vw;
+        padding: 1em;
+        border-radius: 10px;
+
+        @include themed() {
+            color: t($text);
+            background-color: t($bg);
+            box-shadow: t($bs);
+          }
+    }
+
+    &__button{
+        float: right;
+        border-radius: 2px;
+        margin: 5px;
+        margin-bottom: 1em;
+
+        @include themed() {
+        color: t($text);
+        background-color: t($comment-bg);
+        box-shadow: t($bs);
+      }
+    }
+}

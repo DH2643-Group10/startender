@@ -2,6 +2,7 @@
 $bg: 'bg';
 $card-bg: 'card-bg';
 $card-border: 'card-border';
+$comment-bg: 'comment-bg';
 $text: 'text';
 $text-important: 'text-important';
 $text-secondary: 'text-secondary';
@@ -15,6 +16,8 @@ $brand-secondary: 'brand-blue';
 $brand-primary: 'brand-red';
 $border: 'border';
 $text-third: 'text-third';
+$bs: 'bs';
+
 //themes
 $themes: (
         default: (
@@ -24,6 +27,7 @@ $themes: (
                 bg: $bg--light,
                 card-bg: $bg--card--light,
                 card-border: $card-border--light,
+                comment-bg: $bg--comment--light,
                 text: $text--light,
                 text-important: $text--imp--light,
                 text-secondary: $text--2--light,
@@ -33,7 +37,8 @@ $themes: (
                 hover: $hover--light,
                 brand-red: $brand--primary--light,
                 brand-blue: $brand--secondary--light,
-                border: $border--light
+                border: $border--light,
+                bs: $bs--light,
         ),
         dark: (
                 background-image: url("https://i.imgur.com/bdkAcDA.png"),
@@ -42,6 +47,7 @@ $themes: (
                 bg: $bg--dark--top,
                 card-bg: $bg--card--dark,
                 card-border: $card-border--dark,
+                comment-bg: $bg--comment--dark,
                 text: $text--dark,
                 text-important: $text--imp--dark,
                 text-secondary: $text--2--dark,
@@ -51,7 +57,8 @@ $themes: (
                 hover: $hover--dark,
                 brand-red: $brand--primary--dark,
                 brand-blue: $brand--secondary--dark,
-                border: $border--dark
+                border: $border--dark,
+                bs: $bs--dark,
         ),
 );
 
