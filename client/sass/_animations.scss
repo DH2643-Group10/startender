@@ -1,16 +1,16 @@
 /* Button animation */
 @keyframes wiggle {
     0% { transform: rotate(0deg); }
-    1% { transform: rotate(-30deg); }
-    2% { transform: rotate(30deg); }
-    3% { transform: rotate(-30deg); }
-    4% { transform: rotate(30deg); }
-    5% { transform: rotate(-30deg); }
-    6% { transform: rotate(30deg); }
-    7% { transform: rotate(-30deg); }
-    8% { transform: rotate(30deg); }
+    10% { transform: rotate(-30deg); }
+    20% { transform: rotate(30deg); }
+    30% { transform: rotate(-30deg); }
+    40% { transform: rotate(30deg); }
+    50% { transform: rotate(-30deg); }
+    60% { transform: rotate(30deg); }
+    70% { transform: rotate(-30deg); }
+    80% { transform: rotate(30deg); }
   
-    10%, 100% {
+    81%, 100% {
       transform: rotate(0deg); 
     }
   

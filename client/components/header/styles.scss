@@ -35,15 +35,14 @@
     }
     cursor: pointer;
 
-    animation: wiggle 20s ease infinite;
-    animation-delay: 0s;
-
   }
 
   &__icon--clickable:hover {
     @include themed() {
       color: t($text-important);
     }
+    animation: wiggle 5s ease infinite;
+
   }
 
 }
