@@ -75,6 +75,7 @@ const CardModal = (props) => {
             </Row>
             <CommentsController/>
             <Row>
+<<<<<<< HEAD
                 {/* TODO: Use Comment component for styling */}
                 <div>Comments:</div>
                 {props?.drinktoshow?.idDrink}
@@ -86,6 +87,9 @@ const CardModal = (props) => {
                     commentState.comments.map((comment, index) => <div key={index}>User {comment.userId} said {comment.comment} </div>) : ''
                 }
 
+=======
+                Drinkid: {props?.drinktoshow?.idDrink}
+>>>>>>> Display drink comments using comments component
             </Row>
         </Modal.Body>
         
