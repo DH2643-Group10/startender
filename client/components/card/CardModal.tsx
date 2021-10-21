@@ -17,6 +17,8 @@ const CardModal = (props) => {
     console.log('Comment state: ', commentState);
     console.log('Commentstate:.comments ', commentState.comments)
 
+    console.log(props)
+
     useEffect(() => {
         // dispatch(GetAllComments()) depending on current drink id
         // dispatch(GetAllComments('15997'))
@@ -73,7 +75,9 @@ const CardModal = (props) => {
                     {props?.drinktoshow?.strInstructions}
                 </Col>
             </Row>
-            <CommentsController/>
+            <CommentsController
+            drinktoshow={props?.drinktoshow}
+            />
             <Row>
                 Drinkid: {props?.drinktoshow?.idDrink}
             </Row>

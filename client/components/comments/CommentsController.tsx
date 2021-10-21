@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 //component meant to handle logic for comments
 
-const CommentsController = () => {
+const CommentsController = ({drinktoshow}) => {
 
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const userState = useSelector((state: RootStore) => state.databae);
@@ -27,6 +27,7 @@ const CommentsController = () => {
             {/* If the user is signed in, the form is displayed */}
             {userState.isAuthenticated &&
             <CommentForm
+            drinktoshow={drinktoshow}/>
             cocktailState={cocktailState}
             />
             }
