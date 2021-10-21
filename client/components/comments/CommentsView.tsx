@@ -3,32 +3,29 @@ import { Collapse } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SpinnerView from '../spinner/SpinnerView';
-
+import { useSelector } from 'react-redux';
+import { RootStore } from '../../Store';
 
 const Comments = ({comments}) => {
 
     //maybe move this one to the controller, because if a comment 
     // is added we want the new one to be rendered as well
     const [iscommentsLoading, setcommentsLoading] = useState(true);
-
+    const commentState = useSelector((state: RootStore) => state.commentsReducer);
 
     return (
         // !iscommentsLoading? 
         //     comments?
             //här loopar vi över all kommentarer och skapar en col i row (lägg till nyast sist?):
             <Row>
-            <Col className="comment__text">
-                <div className="comment__text--title">userName wrote:</div>
-                <div className="comment__text--comment">HÄR ÄR EN TEXT</div>
-            </Col>
-            <Col className="comment__text">
-            <div className="comment__text--title">userName2 wrote:</div>
-            <div className="comment__text--comment">HÄR ÄR EN ANNAN RIKTIGT RIKTIGT RIIIIIIIIIIIIIIIIIIIIIIIIIIIIIKTIGT LÅNG TEXT</div>
-        </Col>
-            <Col className="comment__text">
-            <div className="comment__text--title">userName2 wrote:</div>
-            <div className="comment__text--comment">HÄR ÄR EN ANNAN TEXT</div>
-        </Col>
+                {/* TODO: Update comment.userId to be username instead */}
+                {commentState.comments instanceof Array ? 
+                    commentState.comments.map((comment, index) => 
+                    <Col className="comment__text" key={index}>
+                        <div className="comment__text--title">{comment.userId} wrote:</div> 
+                        <div className="comment__text--comment">{comment.comment}</div>
+                    </Col>)
+                    : ''}
         </Row>
         //     :
         //     <div>There are no comments on this drink, your comment can be the first!</div>
@@ -39,7 +36,6 @@ const Comments = ({comments}) => {
         //     </div> 
         // </Row>       
     )
-    
 }
 
-export default Comments
+export default Comments;
