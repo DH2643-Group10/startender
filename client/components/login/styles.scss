@@ -4,6 +4,8 @@
 .mypage {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login {
@@ -28,6 +30,8 @@
     &__input{
         margin: 1em;
         flex: auto;
+        justify-content: space-between;
+
     }
 
     &__button{
