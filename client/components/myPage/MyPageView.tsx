@@ -1,7 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Logout } from "../../actions/DatabaeActions";
+import { GetAllCommentsFromUser } from "../../actions/CommentsActions";
+import { FetchUserDataWithId, Logout } from "../../actions/DatabaeActions";
 import { UserInput } from "../../actions/DatabaeActionTypes";
 import { RootStore } from "../../Store";
 import ButtonController from "../button/ButtonController";
@@ -13,6 +14,8 @@ import './styles.scss';
 
 const MyPageView: FC = () => {
     const userState = useSelector((state: RootStore) => state.databae);
+    const commentState = useSelector((state: RootStore) => state.commentsReducer);
+    
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -21,6 +24,21 @@ const MyPageView: FC = () => {
         console.log("userState.isAuthenticated AFTER: ", userState.isAuthenticated)
         console.log("userstate: ", userState)
     }
+
+
+    console.log("FetchUserDataWithId", userState.currentUser? userState.currentUser.id : '') 
+    console.log('UserState: ', userState)
+    console.log('FETCHED USER: ', userState.fetchedUser)
+
+    useEffect(() => {
+        // dispatch(GetAllCommentsFromUser('61704cf61df5011f8bd1469c'))
+        dispatch(FetchUserDataWithId('61704cf61df5011f8bd1469c'));
+        // dispatch(FetchUserDataWithId(userState?.currentUser?.id));
+        // dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'));
+
+        console.log('fetched user: ', userState.fetchedUser)
+
+    }, [])
 
     useEffect(() => {
         console.log("userState: ", userState)

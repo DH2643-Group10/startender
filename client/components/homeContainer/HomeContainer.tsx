@@ -7,6 +7,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetFromCocktailDB } from '../../actions/CocktailActions';
+// import { FetchUserDataWithId } from '../../actions/DatabaeActions';
+// import { GetAllComments } from '../../actions/CommentsActions';
 import CardView from '../card/CardView';
 import CardController from '../card/CardController';
 import SpinnerView from '../spinner/SpinnerView';
@@ -29,6 +31,32 @@ const HomeContainer:FC = () => {
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const [cocktailName, setCocktailName] = useState("");
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setCocktailName(event.target.value);
+    
+
+    // //__________________
+    // //Test for retrieving comments with drinkId and userId
+    // //make sure to uncomment imports at the top of document
+
+
+    // const userState = useSelector((state: RootStore) => state.databae);
+    // console.log("FetchUserDataWithId", userState)
+
+    // const commentState = useSelector((state: RootStore) => state.commentsReducer);
+    // console.log("GetAllComments",commentState)
+
+    // useEffect(() => {
+
+    //     dispatch(GetAllComments('15997'))
+
+    //     dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'))
+
+
+    // }, []);
+
+    // //__________________
+
+
+ 
     const handleSubmit = () => 
         {dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName));
         setIsCardsLoading(true);
@@ -36,7 +64,12 @@ const HomeContainer:FC = () => {
   
     // Show drinks on initial visit:
     useEffect(() => {
+        // dispatch(GetAllComments('15997'))
+
+        // dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'))
+
         // Searches all of API when user enters the page
+
         dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/search.php?s= "));
     }, []);
     
