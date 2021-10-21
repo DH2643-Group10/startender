@@ -1,11 +1,15 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './styles.scss'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import {CommentType} from '../../actions/CommentsActionTypes';
-// import {CreateComment} from '../../actions/CommentsActions';
+import {CreateComment} from '../../actions/CommentsActions';
 import Button from '../button/ButtonController'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootStore } from '../../Store';
+import { CocktailType } from '../../actions/CocktailActionTypes';
+
 
 
 interface Values {
@@ -14,33 +18,47 @@ comment: string;
 
 // var NewComment : CommentType = {cocktailDBId:cocktailDBId, userId:userId, comment:'', date:new Date}
 
-const CommentForm = ({cocktailState}) => {
-return (
+const CommentForm = ({drinktoshow}) => {
 
-    <Col sm={1} md={1} lg={1} className="form">
-        {/* <img className="form__img"></img> */}
-        {/* <Row> */}
-        <Formik
-            initialValues={{
-               comment: ''
-            }}
-            onSubmit={(
-                values: Values,
-                { setSubmitting }: FormikHelpers<Values>
-                ) => {
-                    setTimeout(() => {
-                    alert(JSON.stringify(cocktailState, null, 2));
-                    setSubmitting(false);
-                    }, 500);
-            }}
-        >
-            <Form>
-                <Field id="comment" className="form__input"  rows="3" name="comment" placeholder="Have you tried this drink, what did you think?" />
-                <button type="submit" className="form__button">Submit</button>
-            </Form>
-        </Formik>
-    </Col>    
-);
-};
+    // console.log(drinktoshow)
+
+    const cocktailState = useSelector((state: RootStore) => state.cocktails);
+    const userId = useSelector((state: RootStore) => state.databae.currentUser?.id)
+    const [comment, setComment] = useState('')
+    
+    var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:comment,};
+
+    const dispatch = useDispatch();
+    const handleComment = () => dispatch(CreateComment(newComment));
+
+
+
+    return (
+
+        <Col sm={1} md={1} lg={1} className="form">
+            {/* <img className="form__img"></img> */}
+            {/* <Row> */}
+            <Formik
+                initialValues={{
+                comment: ''
+                }}
+                onSubmit={(
+                    values: Values,
+                    { setSubmitting }: FormikHelpers<Values>
+                    ) => {
+                        // alert(JSON.stringify(values.comment, null, 2));
+                        setComment(values.comment);
+                        setSubmitting(false);
+                        handleComment()
+                }}
+            >
+                <Form>
+                    <Field id="comment" className="form__input"  rows="3" name="comment" placeholder="Have you tried this drink, what did you think?" />
+                    <button type="submit" className="form__button">Submit</button>
+                </Form>
+            </Formik>
+        </Col>    
+    );
+    };
 
 export default CommentForm
