@@ -41,7 +41,7 @@ const CardView: FC<Props> = () => {
                                 <Card.Text className="card__text">
                                 {drink.strInstructions}
                                 </Card.Text>
-                                <Button variant="secondary" onClick={() => handleShow(drink)}>Read more</Button>
+                                <Button variant="secondary" className="card___animation" onClick={() => handleShow(drink)}>Read more</Button>
                             </Card.Body>
                         </Card>
                     </Col>

@@ -1,5 +1,6 @@
 @import '../../sass/settings';
 @import '../../sass/color-themes';
+@import '../../sass/animations';
 
 .navbar {
   @include themed() {
@@ -10,7 +11,7 @@
   &__icon {
     @include themed() {
       color: t($text-third);
-    }
+    }  
   }
 
   &__link {
@@ -33,6 +34,10 @@
       color: t($text);
     }
     cursor: pointer;
+
+    animation: wiggle 20s ease infinite;
+    animation-delay: 0s;
+
   }
 
   &__icon--clickable:hover {
