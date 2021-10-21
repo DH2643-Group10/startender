@@ -5,6 +5,7 @@ $card-border: 'card-border';
 $comment-bg: 'comment-bg';
 $text: 'text';
 $text-important: 'text-important';
+$text-important-daker: 'text-important-daker';
 $text-secondary: 'text-secondary';
 $text-badge: 'text-badge';
 $link: 'link';
@@ -17,7 +18,7 @@ $brand-primary: 'brand-red';
 $border: 'border';
 $text-third: 'text-third';
 $bs: 'bs';
-
+$shadow-color: 'shadow-color';
 //themes
 $themes: (
         default: (
@@ -30,6 +31,7 @@ $themes: (
                 comment-bg: $bg--comment--light,
                 text: $text--light,
                 text-important: $text--imp--light,
+                text-important-daker: $text--imp--light-hover,
                 text-secondary: $text--2--light,
                 text-third: $text--third--light,
                 text-badge: $text--light,
@@ -39,6 +41,7 @@ $themes: (
                 brand-blue: $brand--secondary--light,
                 border: $border--light,
                 bs: $bs--light,
+                shadow-color: $shadow-color-light,
         ),
         dark: (
                 background-image: url("https://i.imgur.com/bdkAcDA.png"),
@@ -50,6 +53,7 @@ $themes: (
                 comment-bg: $bg--comment--dark,
                 text: $text--dark,
                 text-important: $text--imp--dark,
+                text-important-daker: $text--imp--dark-hover,
                 text-secondary: $text--2--dark,
                 text-third: $text--third--dark,
                 text-badge: $text--dark,
@@ -59,6 +63,7 @@ $themes: (
                 brand-blue: $brand--secondary--dark,
                 border: $border--dark,
                 bs: $bs--dark,
+                shadow-color: $shadow-color-dark,
         ),
 );
 

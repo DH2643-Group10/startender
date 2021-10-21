@@ -80,11 +80,15 @@
 
 /* The cards */
 .card {
+    border: none;
+    margin: 0.5em;
     margin-top: 1em;
-    
+
     @include themed() {
         color: t($text);
         background: t($bg);
+        -webkit-box-shadow: 0px -1px 9px -1px t($shadow-color); 
+        box-shadow: 0px -1px 9px -1px t($shadow-color); 
         }
     
     &__text{
@@ -92,6 +96,27 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+    }
+    .button__container {
+        text-align: center;
+    }
+
+    &__button {
+        color: rgb(10, 10, 10);
+        border: none;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+
+
+        @include themed() {
+            background-color: t($text-important);
+        }
+    }
+
+    &__button:hover {
+        @include themed() {
+            background-color: t($text-important-daker);
+        }
     }
 }
 
