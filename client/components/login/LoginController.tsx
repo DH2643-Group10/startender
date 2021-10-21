@@ -32,7 +32,7 @@ const LoginController = () => {
     const handleSignUp = (user) => dispatch(SignUp(user));
 
     const databaeRootState = useSelector((state: RootStore) => state.databae);
-    console.log("databaeRootState", databaeRootState)
+    // console.log("databaeRootState", databaeRootState)
     useEffect(()=>{
         databaeRootState.createSuccessful &&
         setSigningUp(false)

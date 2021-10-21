@@ -28,7 +28,7 @@ export const GetFromCocktailDB = (requestUrl: string) => async (dispatch: Dispat
 
         var response = await axios.get(requestUrl)
         
-        console.log("response GetFromCocktailDB",response);
+        // console.log("response GetFromCocktailDB",response);
         if(response.status==200){
           dispatch({
             type: COCKTAILS_SUCCESS,

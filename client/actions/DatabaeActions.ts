@@ -35,7 +35,7 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
 
             axios.post('http://localhost:4000/login/', userInput)
             .then(response => {
-                console.log("login response@ DatabaeActions.ts", response)
+                // console.log("login response@ DatabaeActions.ts", response)
 
                 if (response.status==200){
                    const {token} = response.data
@@ -72,7 +72,8 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
         
     })
         
-    console.log("catch error in DatabaeActions.ts: ", error)}
+    // console.log("catch error in DatabaeActions.ts: ", error)
+}
 
 }
 
@@ -126,7 +127,8 @@ export const SignUp = (userInput : UserInput |any) => async (dispatch: Dispatch<
         // payload: error.error
     })
         
-    console.log("catch error in DatabaeActions.ts: ", error)}
+    // console.log("catch error in DatabaeActions.ts: ", error)
+}
 }
 
 export const FetchUserDataWithId = (userId : string) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {

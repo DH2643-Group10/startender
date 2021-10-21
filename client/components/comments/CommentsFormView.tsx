@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './styles.scss'
 import Row from 'react-bootstrap/Row';
@@ -9,8 +9,6 @@ import Button from '../button/ButtonController'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../Store';
 import { CocktailType } from '../../actions/CocktailActionTypes';
-
-
 
 interface Values {
 comment: string;
@@ -26,12 +24,20 @@ const CommentForm = ({drinktoshow}) => {
     const userId = useSelector((state: RootStore) => state.databae.currentUser?.id)
     const [comment, setComment] = useState('')
     
-    var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:comment,};
+    // var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:comment,};
 
     const dispatch = useDispatch();
-    const handleComment = () => dispatch(CreateComment(newComment));
+    const handleComment = (newComment) => 
+     {
+        
+        dispatch(CreateComment(newComment));
+     }
+
+    //  useEffect(() => {
 
 
+    //     dispatch(CreateComment(newComment));
+    //  }, [])
 
     return (
 
@@ -46,10 +52,12 @@ const CommentForm = ({drinktoshow}) => {
                     values: Values,
                     { setSubmitting }: FormikHelpers<Values>
                     ) => {
+                        var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment,};
                         // alert(JSON.stringify(values.comment, null, 2));
                         setComment(values.comment);
                         setSubmitting(false);
-                        handleComment()
+                        handleComment(newComment)
+               
                 }}
             >
                 <Form>

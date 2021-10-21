@@ -25,7 +25,7 @@ import React, { useEffect, useState, FC } from "react";
           const response = await fetch(requestUrl);
           if (response.ok) {
             const data = await response.json();
-            console.log("data withFetch",data)
+            // console.log("data withFetch",data)
             setIsLoading(false);
             setData(data);
           } else {

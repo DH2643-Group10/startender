@@ -16,7 +16,7 @@ export type CommentType = {
     // We can add more stuff here in the future, to extract more data from the API.
     cocktailDBId:string
     userId: string
-    drinkId: string
+    drinkId?: string
     comment: string
     date?:  string
    

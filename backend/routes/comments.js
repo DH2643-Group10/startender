@@ -76,7 +76,7 @@ router.post('/create', (req, res) => {
   const newComment = new Comment({
     
     cocktailDBId: req.body.cocktailDBId,
-    drinkId: req.body.drinkId,
+    // drinkId: req.body.drinkId,
     userId: req.body.userId,
     name: req.body.name,
     comment: req.body.comment,

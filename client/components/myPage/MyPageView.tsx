@@ -24,6 +24,8 @@ const MyPageView: FC = () => {
     }
 
     useEffect(() => {
+
+        userState.currentUser &&
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
     }, [userState?.currentUser?.id])
 
