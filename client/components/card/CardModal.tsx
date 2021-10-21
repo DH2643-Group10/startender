@@ -8,20 +8,22 @@ import CommentsController from '../comments/CommentsController';
 import Comment from '../comments/CommentsController'
 
 // Modal that shows more info of specific drink
-const CardModal = (props) => {
+const CardModal = ({...props}) => {
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const themeState = useSelector((state: RootStore) => state.themeReducer);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const dispatch = useDispatch();
 
-    console.log('Comment state: ', commentState);
-    console.log('Commentstate:.comments ', commentState.comments)
+    // console.log('Comment state: ', commentState);
+    // console.log('Commentstate:.comments ', commentState.comments)
 
-    console.log(props)
+    // console.log('props', props)
 
     useEffect(() => {
         // dispatch(GetAllComments()) depending on current drink id
         // dispatch(GetAllComments('15997'))
+
+        props.drinktoshow &&
         dispatch(GetAllComments(props?.drinktoshow?.idDrink));
     }, [props?.drinktoshow?.idDrink])
    

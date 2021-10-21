@@ -12,14 +12,15 @@ const CommentsController = ({drinktoshow}) => {
 
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const userState = useSelector((state: RootStore) => state.databae);
+    const commentState = useSelector((state: RootStore) => state.commentsReducer);
     // for future theme integration:
     // const themeState = useSelector((state: RootStore) => state.themeReducer);
 
-    const comments = null
-    //get all comments for the drink
-    useEffect(()=>{
 
-    }, null)
+    // useEffect(() => {
+    //     console.log('comments: ', commentState?.comments)
+
+    // }, [commentState])
 
     return (
         <Row className="comment">
@@ -30,9 +31,12 @@ const CommentsController = ({drinktoshow}) => {
             drinktoshow={drinktoshow}/>
            
             }
-            <Comments
-            comments={comments}
+            {/* {!commentState.commentsLoading ? 
+            <Comments 
             />
+            : console.log('NOOOOOT') */}
+            {!commentState.commentsLoading && <Comments />
+        }
         </Row>
     )
 }

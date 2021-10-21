@@ -57,6 +57,8 @@ export const CreateComment = (comment: CommentType | any) => async (dispatch: Di
         dispatch({
             type: COMMENTS_LOADING})
 
+            // console.log('GEt here??? ')
+
         axios.post(`http://localhost:4000/comments/create`, comment).then(response=>{
             if(response.status==200){
                 const {message} = response.data

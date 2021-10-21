@@ -42,7 +42,7 @@ const HomeContainer:FC = () => {
     // console.log("FetchUserDataWithId", userState)
 
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
-    console.log("GetAllComments",commentState)
+    // console.log("GetAllComments",commentState)
 
     useEffect(() => {
 
@@ -114,9 +114,10 @@ const HomeContainer:FC = () => {
         ? cocktailState.cocktail ?
         <Row className="results">
             <CardController/>
-            {console.log("cocktailState: ", cocktailState.cocktail)}
+            {/* {console.log("cocktailState: ", cocktailState.cocktail)} */}
         </Row> : 
-        console.log("Cannot find drinks") 
+        // console.log("Cannot find drinks") 
+        ''
         :
         <Row className="spinner">
             <div className="spinner--state-loading">

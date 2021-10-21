@@ -14,7 +14,7 @@ const Comment = new mongoose.Schema({
     },
     drinkId: {
         type:String,
-        required: true,
+        // required: true,
     },
     comment: {
         type:String,

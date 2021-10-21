@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Collapse } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -6,12 +6,19 @@ import SpinnerView from '../spinner/SpinnerView';
 import { useSelector } from 'react-redux';
 import { RootStore } from '../../Store';
 
-const Comments = ({comments}) => {
+const Comments = () => {
 
     //maybe move this one to the controller, because if a comment 
     // is added we want the new one to be rendered as well
     const [iscommentsLoading, setcommentsLoading] = useState(true);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
+
+    // console.log('COMMENTS : ', commentState?.comments)
+
+    useEffect(() => {
+        commentState
+        
+    }, [commentState]);
 
     return (
         // !iscommentsLoading? 
