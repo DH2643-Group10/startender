@@ -1,0 +1,41 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
+.mypage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login {
+    padding: 1em;
+    padding-bottom: 2em;
+    margin: 1em;
+    // flex: auto;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://i.imgur.com/OlpG6X4_d.webp?maxwidth=760&fidelity=grand");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    border-radius: 20px;
+    text-align: center;
+
+    &__header {
+        margin-top: 120px; 
+    }
+
+    &__input{
+        margin: 1em;
+        flex: auto;
+        justify-content: space-between;
+
+    }
+
+    &__button{
+        flex: auto;
+        justify-content: center;
+    }
+}

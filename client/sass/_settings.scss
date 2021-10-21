@@ -21,6 +21,8 @@ $card-border--light: 0px solid transparent;
 $card-border--dark: 1px solid lighten($bg--card--dark, 12%);
 $text--imp--light: #ff831d;
 $text--imp--dark: #56f4ff;
+$text--imp--light-hover: darken($text--imp--light, 20%);
+$text--imp--dark-hover: darken($text--imp--dark, 40%);
 $text--third--light: lighten($text--imp--light, 20%);
 $text--third--dark: lighten($text--imp--dark, 20%);
 $text--light: #212631;
@@ -35,6 +37,9 @@ $hover--light: transparentize($brand--secondary--light, .9);
 $hover--dark: transparentize(#fff, .9);
 $bs--light: 1px 1px 1px 1px #333;
 $bs--dark: 1px 1px 1px 1px #000;
+$shadow-color-light: rgba(0, 0, 0, 0.5);
+$shadow-color-dark: rgba(209, 250, 255, 0.5);
+
 
 $highlight-color: transparentize($brand--secondary--light, .1);
 

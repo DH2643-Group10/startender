@@ -10,22 +10,20 @@ const LoginView = ({...props}) => {
     // console.log("loginView username",username)
 
     return (
-        <Container fluid>
-            <Row>
-            Hello login here :-) 
-            </Row>
-            <Row>
-                <Col>
-                    <Input placeholder={'Username'} type={'text'} value={username} onChange={setUsername}/>
-                </Col>
-                <Col>
-                    <Input placeholder={'Password'} type={'password'} value={password} onChange={setPassword}/>
-                </Col>
-                <Col>
+        
+            <Col className="login" sm={12} md={6} lg={4}>
+                <h3 className="login__header">Login to enter your page</h3>
+                
+                <Row>
+                    <Input className="login__input" placeholder={'Username'} type={'text'} value={username} onChange={setUsername}/>
+                </Row>
+                <Row>
+                    <Input className="login__input" placeholder={'Password'} type={'password'} value={password} onChange={setPassword}/>
+                </Row>
+                <Row className="login__input"> 
                     <ButtonView onClick={login}>Login</ButtonView>
-                </Col>
-            </Row>
-        </Container>
+                </Row>
+            </Col>
 
 
         // <div>

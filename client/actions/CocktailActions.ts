@@ -22,14 +22,20 @@ export const GetFromCocktailDB = (requestUrl: string) => async (dispatch: Dispat
         })
 
         // Här gör vi själva API callet till CocktailDB.
-        const response = await axios.get(requestUrl)
-      
-        console.log(response);
+        // var response = await axios.get(requestUrl,{headers : 
+        //   {"Access-Control-Allow-Origin": "*"}
+        // })
 
-        dispatch({
+        var response = await axios.get(requestUrl)
+        
+        console.log("response GetFromCocktailDB",response);
+        if(response.status==200){
+          dispatch({
             type: COCKTAILS_SUCCESS,
             payload: response.data
         })
+
+        } else {console.log("response not status 200", response)}
 
       } catch (err) {
           dispatch({

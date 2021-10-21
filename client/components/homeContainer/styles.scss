@@ -14,15 +14,34 @@
 
     // ---- Background Image ----
     @include themed() {
+
       @media screen and (max-width:800px) {
           /* style changes when the screen gets smaller */
           background-image: t($background-image-mobile); 
           background-size: 100%;
-          height: 80vh;
+          height: 90vh;
 
       }
+
+      /* style changes for smaller mobile screen */
+      @media screen and (max-width:500px) {
+        height: 60vh;
+      }
+
+      /* style changes for smaller mobile screen */
+      @media screen and (max-width:400px) {
+        height: 40vh;
+      }
+
+      /* style changes when the screen gets larger */
       @media screen and (min-width:801px) {
-        /* style changes when the screen gets larger */
+        background-image: t($background-image); 
+        background-size: cover;
+        height: 90vh;
+        margin-top: -60px;
+      }
+
+      @media screen and (min-width:1100px) {
         background-image: t($background-image); 
         background-size: cover;
         height: 105vh;
@@ -34,7 +53,9 @@
 }
 
 .search {
-    padding: 1em 5em 1em 5em;
+  @media screen and (min-width:801px) {
+      padding: 1em 5em 1em 5em;
+  }
 
     &__input{
         @include themed() {
@@ -45,7 +66,9 @@
 }
 
 .results {
-    padding: 1em 5em 1em 5em;
+  @media screen and (min-width:801px) {
+      padding: 1em 5em 1em 5em;
+  }
 }
 
 .spinner {

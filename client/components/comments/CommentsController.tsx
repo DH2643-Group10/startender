@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 const CommentsController = ({drinktoshow}) => {
 
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
+    const userState = useSelector((state: RootStore) => state.databae);
     // for future theme integration:
     // const themeState = useSelector((state: RootStore) => state.themeReducer);
 
@@ -20,14 +21,16 @@ const CommentsController = ({drinktoshow}) => {
 
     }, null)
 
-    
-
     return (
         <Row className="comment">
             <h1 className="comment__title">Comments</h1>
             {/* If the user is signed in, the form is displayed */}
+            {userState.isAuthenticated &&
             <CommentForm
             drinktoshow={drinktoshow}/>
+            cocktailState={cocktailState}
+            />
+            }
             <Comments
             comments={comments}
             />

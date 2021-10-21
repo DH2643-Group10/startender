@@ -42,7 +42,7 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
 
                     dispatch({type: DATABASE_SUCCESS,})
 
-                    setAuthToken(token)
+                    // setAuthToken(token)
                     //function that sets HTTP headers
 
                     const decodedFromToken= jwt_decode(token)
