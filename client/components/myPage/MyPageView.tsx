@@ -48,9 +48,9 @@ const MyPageView: FC = () => {
         <Container fluid>
             <h2 className="header--myPage">My Page</h2>
             {!userState.isAuthenticated ?
-            <Row>
+            // <Row>
                 <LoginController/>
-            </Row>
+            // </Row>
             :
             <Row>
                  <div className="button--myPage-logOut">

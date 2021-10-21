@@ -2,6 +2,7 @@ import Button from '@restart/ui/esm/Button'
 import React,{useState, useEffect} from 'react'
 import ButtonView from '../button/ButtonView'
 import Input from '../input/Input'
+import { Col, Container, Row } from 'react-bootstrap';
 import {UserInput} from '../../actions/DatabaeActionTypes';
 
 const SignupView = ({...props}) => {
@@ -33,21 +34,33 @@ const SignupView = ({...props}) => {
     }, [successful])
 
     return (
-        <div>
-            {signingUp ? 
-            <div>
-                <div>Sign up as a new user</div>
-            <Input placeholder={'Name'} onChange={(e)=>{setname(e.target.value)}} value={name}/>
-            <Input placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
-            <Input placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
-            <Input placeholder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
-            <ButtonView onClick={() =>signUp(newUser)}>Submit</ButtonView>
-           </div>
-            :
-            <ButtonView onClick={handleToggle}>Register New</ButtonView>
-            }
-            <div>{statusMessage}</div>
-        </div>
+        // <Col className="login" sm={12} md={6} lg={4}>
+            signingUp ? 
+            <Col className="login" sm={12} md={6} lg={4}>
+                <h3 className="login__header">Sign up as a new user</h3>
+                <Row>
+                    <Input className="login__input" placeholder={'Name'} onChange={(e)=>{setname(e.target.value)}} value={name}/>
+                </Row>
+                <Row>
+                    <Input className="login__input" placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
+                </Row>
+                <Row>
+                    <Input className="login__input" placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>
+                </Row>
+                <Row>
+                    <Input className="login__input" placeholder={'Password'} type={'password'} onChange={(e)=>{setpassword(e.target.value)}} value={password}/>
+                </Row>
+                <Row className="login__input">
+                    <ButtonView onClick={() =>signUp(newUser)}>Create account</ButtonView>
+                </Row>
+                <Row className="login__input">
+                    <ButtonView onClick={handleToggle}>Back to login</ButtonView>
+                </Row>
+            </Col>
+            : <Row><ButtonView onClick={handleToggle}>Register New</ButtonView></Row>
+            
+            /* <div>{statusMessage}</div>
+        </Col> */
     )
 }
 
