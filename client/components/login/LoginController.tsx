@@ -41,7 +41,7 @@ const LoginController = () => {
         databaeRootState.createSuccessful
     ])
     return (
-        <Col className="mypage">
+        <Col className="loginSignout">
             {
             !databaeRootState.isAuthenticated && 
             <> 

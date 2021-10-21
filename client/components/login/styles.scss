@@ -1,11 +1,18 @@
 @import '../../sass/settings';
 @import '../../sass/color-themes';
 
-.mypage {
+.loginSignout {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    @include themed() {
+        color: t($text);
+        background: t($bg);
+      }
+
+    
 }
 
 .login {
@@ -22,6 +29,12 @@
     box-shadow: 1px 1px 1px 1px black;
     border-radius: 20px;
     text-align: center;
+
+    @include themed() {
+        color: t($text);
+        background: t($login-bg);
+      }
+
 
     &__header {
         margin-top: 120px; 

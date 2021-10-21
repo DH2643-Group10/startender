@@ -1,9 +1,20 @@
-.header--myPage {
-    text-align: center;
-}
+@import '../../sass/settings';
+@import '../../sass/color-themes';
 
-.button--myPage-logOut {
-    display: flex;
-    justify-content: right;
-    padding-right: 2em;
+.mypage{
+    @include themed() {
+        color: t($text);
+        background: t($bg);
+      }
+
+    &__header{
+        text-align: center;
+    }
+
+    &__button--logOut{
+        display: flex;
+        justify-content: right;
+        padding-right: 2em;
+    }
+
 }
