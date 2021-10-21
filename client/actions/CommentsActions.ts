@@ -110,7 +110,7 @@ export const GetAllCommentsFromUser = (userId: string) => async (dispatch: Dispa
         })
 
         // Här gör vi själva API callet till CocktailDB.
-        axios.get(`http://localhost:4000/users/${userId}`).then(response=>{
+        axios.get(`http://localhost:4000/comments/usercomments/${userId}`).then(response=>{
             if(response.status==200){
                 const {comments} = response.data
 

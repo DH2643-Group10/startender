@@ -29,10 +29,10 @@ const MyPageView: FC = () => {
     console.log("FetchUserDataWithId", userState.currentUser? userState.currentUser.id : '') 
     console.log('UserState: ', userState)
     console.log('FETCHED USER: ', userState.fetchedUser)
-
+    console.log("commentState",commentState)
     useEffect(() => {
-        // dispatch(GetAllCommentsFromUser('61704cf61df5011f8bd1469c'))
-        dispatch(FetchUserDataWithId('61704cf61df5011f8bd1469c'));
+        dispatch(GetAllCommentsFromUser('617138c316a483d17cfcfc9f'))
+        // dispatch(FetchUserDataWithId('61704cf61df5011f8bd1469c'));
         // dispatch(FetchUserDataWithId(userState?.currentUser?.id));
         // dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'));
 

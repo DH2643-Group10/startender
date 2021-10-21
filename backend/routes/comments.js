@@ -93,5 +93,42 @@ router.post('/create', (req, res) => {
     });
 });
 
+//Find all comments from a user 
+router.route('/usercomments/:id').get(async(req,res) => {
+  var userId = req.params.id
+  // var comments = await Comment.find({userId : ObjectId(userId)})
+  // console.log("comments",comments)
+
+try {
+  var comments = await Comment.find({userId : ObjectId(userId)})
+  if (comments.length>0){
+    res.status(200).json({comments:comments})
+  }
+}
+catch(error){
+  console.log("comments error:", error)
+  res.status(400).json({error:error})
+}
+
+
+  // try {
+  //     var user = await Comment.find({userId : ObjectId(userId)})
+
+  //   if (user.length>0){
+  //     var user = user[0]
+
+  //     //no need to send password to client
+  //     user.password=""
+      
+  //     res.status(200).json({user:user})
+  //   } 
+  // }
+  // catch(error){
+  //   console.log("comments error:", error)
+  //   res.status(400).json({error:error})
+  // }
+ 
+
+})
 
 module.exports = router;

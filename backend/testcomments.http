@@ -30,3 +30,8 @@ Content-Type: application/json
 # Content-Type: application/json
 DELETE http://localhost:4000/comments/delete/61702cab9e1389273687b16e
 Content-Type: application/json
+
+
+###// find all comments for a user - /comments/usercomments/${drinkId}
+GET http://localhost:4000/comments/usercomments/617138c316a483d17cfcfc9f
+Content-Type: application/json
