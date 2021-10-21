@@ -1,7 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllCommentsFromUser } from "../../actions/CommentsActions";
+import { GetFromCocktailDB } from "../../actions/CocktailActions";
+import { GetAllComments, GetAllCommentsFromUser } from "../../actions/CommentsActions";
 import { FetchUserDataWithId, Logout } from "../../actions/DatabaeActions";
 import { UserInput } from "../../actions/DatabaeActionTypes";
 import { RootStore } from "../../Store";
@@ -15,34 +16,22 @@ import './styles.scss';
 const MyPageView: FC = () => {
     const userState = useSelector((state: RootStore) => state.databae);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
-    
+    const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        console.log("userState.isAuthenticated BEFORE: ", userState.isAuthenticated)
         dispatch(Logout());
-        console.log("userState.isAuthenticated AFTER: ", userState.isAuthenticated)
-        console.log("userstate: ", userState)
     }
 
-
-    console.log("FetchUserDataWithId", userState.currentUser? userState.currentUser.id : '') 
-    console.log('UserState: ', userState)
-    console.log('FETCHED USER: ', userState.fetchedUser)
-    console.log("commentState",commentState)
     useEffect(() => {
-        dispatch(GetAllCommentsFromUser('617138c316a483d17cfcfc9f'))
-        // dispatch(FetchUserDataWithId('61704cf61df5011f8bd1469c'));
-        // dispatch(FetchUserDataWithId(userState?.currentUser?.id));
-        // dispatch(FetchUserDataWithId('61703ee59c6e5c93a2caad5f'));
+        dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
+    }, [userState?.currentUser?.id])
 
-        console.log('fetched user: ', userState.fetchedUser)
+    // const cocktailId = '15997';
 
-    }, [])
-
-    useEffect(() => {
-        console.log("userState: ", userState)
-    }, [userState.isAuthenticated]) 
+    // useEffect(() => {
+    //     dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + cocktailId));
+    // }, []);
 
     return (
         <Container fluid>
@@ -58,24 +47,25 @@ const MyPageView: FC = () => {
                     {/* <ButtonController /> */}
                 </div>
                 <Col>
-                {/* TODO: In future add info about the logged in user. Access with redux, with useSelect 
-                (Like we have done in the CardView component) */}
-                {
-                    userState.currentUser ? console.log(userState.currentUser.email) : ''
+                    <Row>Name: {userState.currentUser ? userState.currentUser.name : ''} </Row>
+                    <Row>Username: {userState.currentUser ? userState.currentUser.username : ''} </Row>
+                    <Row>Email: {userState.currentUser ? userState.currentUser.email : ''} </Row>
+
+                    {commentState.comments instanceof Array ? 
+                    <Row>
+                        My comments: 
+                        {commentState.comments.map((comment, index) => (
+                            // dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + comment.cocktailDBId)) 
+                            //  drinkIdArray.push(comment.cocktailDBId) && 
+                            <Row key={index}>
+                                <Col>Drinkid: {comment.cocktailDBId}</Col>
+                                <Col>Comment: {comment.comment} </Col>
+                                {/* <Col>Drinkname: {cocktailState?.cocktail?.drinks[0].strDrink}</Col> */}
+                            </Row>
+                        ))}
+                    </Row>
+                     : ''
                 }
-                    <Row>
-                        Name: {userState.currentUser ? userState.currentUser.name : ''} 
-                    </Row>
-                    <Row>
-                        Username: {userState.currentUser ? userState.currentUser.username : ''} 
-                    </Row>
-                    <Row>
-                        Email: {userState.currentUser ? userState.currentUser.email : ''} 
-                    </Row>
-                    {/* Probably don't wanna show token in frontend in future, just wanted to show how to access the redux store :-) */}
-                    {/* My token: {userState.token?? ''} */}
-                    My favorite drinks:
-                    My comments:
                 </Col>
             </Row>
             }
