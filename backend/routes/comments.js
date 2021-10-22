@@ -80,6 +80,7 @@ router.post('/create', (req, res) => {
     userId: req.body.userId,
     name: req.body.name,
     comment: req.body.comment,
+    username: req.body.username,
   });
   newComment
     .save()

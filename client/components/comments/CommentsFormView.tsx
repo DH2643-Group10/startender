@@ -21,7 +21,9 @@ const CommentForm = ({drinktoshow}) => {
     // console.log(drinktoshow)
 
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
-    const userId = useSelector((state: RootStore) => state.databae.currentUser?.id)
+    const userState = useSelector((state: RootStore) => state.databae.currentUser);
+    const userId = userState?.id;
+    const username = userState?.username;
     const [comment, setComment] = useState('')
     
     // var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:comment,};
@@ -52,7 +54,7 @@ const CommentForm = ({drinktoshow}) => {
                     values: Values,
                     { setSubmitting }: FormikHelpers<Values>
                     ) => {
-                        var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment,};
+                        var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment, username:username,};
                         // alert(JSON.stringify(values.comment, null, 2));
                         setComment(values.comment);
                         setSubmitting(false);
