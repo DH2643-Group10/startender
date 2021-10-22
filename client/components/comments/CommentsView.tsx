@@ -12,13 +12,15 @@ const Comments = () => {
     // is added we want the new one to be rendered as well
     const [iscommentsLoading, setcommentsLoading] = useState(true);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
+    const [allComments,setComments] = useState([])
+    // console.log('>>>>>>>>>>>>>>>commentState : ', commentState)
 
-    // console.log('COMMENTS : ', commentState?.comments)
-
-    useEffect(() => {
-        commentState
+    // useEffect(() => {
+    //     if(commentState.comments instanceof Array){
+    //         setComments(commentState.comments)
+    //     }
         
-    }, [commentState]);
+    // }, [commentState.comments]);
 
     return (
         // !iscommentsLoading? 
@@ -26,8 +28,9 @@ const Comments = () => {
             //här loopar vi över all kommentarer och skapar en col i row (lägg till nyast sist?):
             <Row>
                 {/* TODO: Update comment.userId to be username instead */}
-                {commentState.comments instanceof Array ? 
-                    commentState.comments.map((comment, index) => 
+              
+                 {commentState.comments instanceof Array ? 
+                commentState.comments.map((comment, index) => 
                     <Col className="comment__text" key={index}>
                         <div className="comment__text--title">{comment.userId} wrote:</div> 
                         <div className="comment__text--comment">{comment.comment}</div>

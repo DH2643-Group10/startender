@@ -1,13 +1,22 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import ButtonView from '../button/ButtonView';
 import Input from '../input/Input'
 
+//render prop
+const ErrorContainer = (props) => {
+    const {message} = props
+return(
+<div>
+    {message()}
+</div>)
+}
 
 //view meant to render login window, input fields and register new users
 const LoginView = ({...props}) => {
-    const {login,signing, handleToggle,setPassword,setUsername,username,password} = props;
+    const {login,signing, handleToggle,setPassword,setUsername,username,password,userErrorMessage} = props;
     // console.log("loginView username",username)
+    // const [statusMessage, setStatusMessage] = useState("")
 
     return (
         
@@ -22,6 +31,7 @@ const LoginView = ({...props}) => {
                 </Row>
                 <Row className="login__input"> 
                     <ButtonView onClick={login}>Login</ButtonView>
+                    {userErrorMessage && <ErrorContainer message= { () => <h3>{userErrorMessage}</h3> }/>}
                 </Row>
             </Col>
 

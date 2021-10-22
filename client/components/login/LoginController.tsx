@@ -17,7 +17,7 @@ const LoginController = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [signingUp, setSigningUp] = useState(false)
-
+    const [statusMessage,setStatusMessage] = useState("")
     const handleToggle = () =>{
         setSigningUp(!signingUp)
     }
@@ -40,13 +40,23 @@ const LoginController = () => {
     },[
         databaeRootState.createSuccessful
     ])
+
+
+    // const errorMessage = databaeRootState.errorMessage
+    // console.log("databaeRootState.errorMessage?",databaeRootState.loginErrorMessage)
+   
+    useEffect(()=>{
+        databaeRootState.loginErrorMessage&&
+        setStatusMessage(databaeRootState.loginErrorMessage)
+    },[databaeRootState.loginErrorMessage])
+
     return (
         <Col className="mypage">
             {
             !databaeRootState.isAuthenticated && 
             <> 
                 {!signingUp &&
-                <LoginView  login={handleLogin} handleToggle={handleToggle} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
+                <LoginView  userErrorMessage={statusMessage} login={handleLogin} handleToggle={handleToggle} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
                 }   
                 <SignupView successful={databaeRootState.createSuccessful} signingUp={signingUp} handleToggle={handleToggle} signUp={handleSignUp}/> 
             </> 

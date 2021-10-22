@@ -2,17 +2,7 @@ const router = require("express").Router();
 var User = require("../models/user.models.js");
 const bcrypt = require("bcrypt"); //used for hash and salting passwords
 const { createTokens, authenticateToken, } = require("../JWT.js");
-
-const posts = [
-  {
-    username: 'Albin1337',
-    title: 'Albin Post 1'
-  },
-  {
-    username: 'Jim',
-    title: 'Post 2'
-  }
-]
+const {checkError} = require('../errorCodes')
 
 
 //Login check
@@ -23,17 +13,17 @@ router.route("/").post(async (req, res) => {
   var user = await User.find({ username: username });
 
   //user is returned in an array => extract the user object
-  console.log("user:",user)
+  // console.log("user:",user)
 
   user = user[0];
-  console.log("user:",user)
-
-  if (!user) res.status(400).json({ error: "User Doesn't Exist" });
+  console.log("user logging in:",user)
+  
+  if (!user) res.status(201).json({ errorMessage: "User Doesn't Exist" });
 
   const dbPassword = user.password;
   bcrypt.compare(password, dbPassword).then((match) => {
     if (!match) {
-      res.status(400).json({ error: "Wrong Username and Password Combination!" });
+      res.status(202).json({ errorMessage: "Wrong Username or Password!" });
     } else {
       const token = createTokens(user);
       console.log("token", token);
@@ -81,5 +71,7 @@ router.route("/posts").get(authenticateToken, (req, res) => {
 //       res.status(400).json(error);
 //     });
 // });
+
+
 
 module.exports = router;

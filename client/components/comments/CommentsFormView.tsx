@@ -22,6 +22,8 @@ const CommentForm = ({drinktoshow}) => {
 
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const userId = useSelector((state: RootStore) => state.databae.currentUser?.id)
+    const storedatabae = useSelector((state: RootStore) => state.databae)
+    // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>storedatabae",storedatabae)
     const [comment, setComment] = useState('')
     
     // var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:comment,};
@@ -50,15 +52,18 @@ const CommentForm = ({drinktoshow}) => {
                 }}
                 onSubmit={(
                     values: Values,
-                    { setSubmitting }: FormikHelpers<Values>
+                    { setSubmitting,resetForm }: FormikHelpers<Values>
                     ) => {
                         var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment,};
                         // alert(JSON.stringify(values.comment, null, 2));
                         setComment(values.comment);
                         setSubmitting(false);
                         handleComment(newComment)
+                        resetForm();
+
                
                 }}
+                
             >
                 <Form>
                     <Field id="comment" className="form__input"  rows="3" name="comment" placeholder="Have you tried this drink, what did you think?" />
@@ -70,3 +75,4 @@ const CommentForm = ({drinktoshow}) => {
     };
 
 export default CommentForm
+

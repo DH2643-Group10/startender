@@ -35,16 +35,10 @@ catch(error){
 
 //Find all comments for a drink
 router.route('/:id').get(async(req,res) => {
-  // console.log("req comments",req)
-  // var cocktailID = req.query.id
+  
   var cocktailID = req.params.id
-  // console.log("cocktailID1;",cocktailID1)
-  console.log("cocktailID2:",cocktailID)
+  console.log("cocktailID:",cocktailID)
 
-  // var cocktailID = req.params.cocktailDBId
-
-  // var objId = new ObjectId(req.params.id)
-  // var objId = new Object(req.params.id)
   try {
       var comments = await Comment.find( {cocktailDBId:cocktailID})
     if (comments.length>0){
@@ -56,8 +50,6 @@ router.route('/:id').get(async(req,res) => {
     res.status(400).json({error:error})
   }
  
-
-
   console.log("comments",comments)
   // .then(comments=> res.status(200).json({comments:comments}))
   // .catch((error)=>{
@@ -84,6 +76,7 @@ router.post('/create', (req, res) => {
   newComment
     .save()
     .then((data) => {
+      console.log("data",data)
       res.status(200)
       // res.json({data:data});
       res.json({message:'Comment created!'});
