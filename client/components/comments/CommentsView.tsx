@@ -32,7 +32,8 @@ const Comments = () => {
                  {commentState.comments instanceof Array ? 
                 commentState.comments.map((comment, index) => 
                     <Col className="comment__text" key={index}>
-                        <div className="comment__text--title">{comment.userId} wrote:</div> 
+                        <div className="comment__text--title">{comment.username? comment.username : 'a user'} wrote:</div> 
+                        {/* <div className="comment__text--title">{comment.userId} </div>  */}
                         <div className="comment__text--comment">{comment.comment}</div>
                     </Col>)
                     : ''}
