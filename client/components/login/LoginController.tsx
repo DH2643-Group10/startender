@@ -51,7 +51,7 @@ const LoginController = () => {
     },[databaeRootState.loginErrorMessage])
 
     return (
-        <Col className="mypage">
+        <Col className="loginSignout">
             {
             !databaeRootState.isAuthenticated && 
             <> 
