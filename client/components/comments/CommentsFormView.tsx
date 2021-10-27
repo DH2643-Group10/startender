@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './styles.scss'
 import Row from 'react-bootstrap/Row';
@@ -14,42 +14,23 @@ interface Values {
 comment: string;
 }
 
-// var NewComment : CommentType = {cocktailDBId:cocktailDBId, userId:userId, comment:'', date:new Date}
+interface Props {
+    drinktoshow: any,
+    handleComment: (newComment: any) => void,
+}
 
-const CommentForm = ({drinktoshow}) => {
-
-    // console.log(drinktoshow)
+const CommentForm: FC<Props> = ({...props}) => {
 
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const userState = useSelector((state: RootStore) => state.databae.currentUser);
     const userId = userState?.id;
     const username = userState?.username;
 
-    // const userId = useSelector((state: RootStore) => state.databae.currentUser?.id)
-    // const storedatabae = useSelector((state: RootStore) => state.databae)
-
     const [comment, setComment] = useState('')
-    
-    // var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:comment,};
-
-    const dispatch = useDispatch();
-    const handleComment = (newComment) => 
-     {
-        
-        dispatch(CreateComment(newComment));
-     }
-
-    //  useEffect(() => {
-
-
-    //     dispatch(CreateComment(newComment));
-    //  }, [])
 
     return (
 
-        <Col sm={1} md={1} lg={1} className="form">
-            {/* <img className="form__img"></img> */}
-            {/* <Row> */}
+        <Col sm={12} md={4} lg={1} className="form">
             <Formik
                 initialValues={{
                 comment: ''
@@ -58,14 +39,11 @@ const CommentForm = ({drinktoshow}) => {
                     values: Values,
                     { setSubmitting,resetForm }: FormikHelpers<Values>
                     ) => {
-                        var newComment : CommentType = {cocktailDBId:drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment, username:username,};
-                        // alert(JSON.stringify(values.comment, null, 2));
+                        var newComment : CommentType = {cocktailDBId:props.drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment, username:username,};
                         setComment(values.comment);
                         setSubmitting(false);
-                        handleComment(newComment)
+                        props.handleComment(newComment)
                         resetForm();
-
-               
                 }}
                 
             >

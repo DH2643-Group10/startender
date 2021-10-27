@@ -1,5 +1,5 @@
 import Button from '@restart/ui/esm/Button'
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, FC} from 'react'
 import ButtonView from '../button/ButtonView'
 import Input from '../input/Input'
 import { Col, Container, Row } from 'react-bootstrap';
@@ -16,8 +16,14 @@ const ErrorContainer = (props) => {
     </div>)
 }
 
+interface Props {
+    successful: boolean,
+    signingUp: boolean,
+    handleToggle: () => void,
+    signUp: any,
+}
 
-const SignupView = ({...props}) => {
+const SignupView: FC<Props> = ({...props}) => {
     const {successful, signingUp, handleToggle, signUp} = props
     const [name, setname] = useState("")
     const [username, setusername] = useState("")
