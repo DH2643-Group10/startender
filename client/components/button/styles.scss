@@ -1,3 +1,6 @@
+@import '../../sass/settings';
+@import '../../sass/color-themes';
+
 .button {
     max-width: 8em;
     max-height: 4em;
@@ -7,4 +10,9 @@
     border-color: #f74b4b;
     color: #f74b4b;
     font-weight: bolder;
+
+    @include themed() {
+        background-color: t($text-important);
+    }
+    
 }

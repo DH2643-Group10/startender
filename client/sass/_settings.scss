@@ -17,6 +17,8 @@ $bg--card--light: lighten($bg--light, 1%);
 $bg--card--dark: desaturate(lighten($bg--dark--top, 5%), 5%);
 $bg--comment--light: rgb(253, 249, 237);
 $bg--comment--dark: desaturate(lighten($bg--dark--top, 5%), 5%);
+$bg--login--light: linear-gradient(0deg, rgba(255,255,255,1) 40%, rgba(255,201,64,1) 100%);
+$bg--login--dark: linear-gradient(0deg, rgba(42,42,42,1) 40%, rgba(30,73,93,1) 100%);
 $card-border--light: 0px solid transparent;
 $card-border--dark: 1px solid lighten($bg--card--dark, 12%);
 $text--imp--light: #ff831d;
@@ -39,7 +41,8 @@ $bs--light: 1px 1px 1px 1px #333;
 $bs--dark: 1px 1px 1px 1px #000;
 $shadow-color-light: rgba(0, 0, 0, 0.5);
 $shadow-color-dark: rgba(209, 250, 255, 0.5);
-
+// $button-color-light: ;
+// $button-color-
 
 $highlight-color: transparentize($brand--secondary--light, .1);
 

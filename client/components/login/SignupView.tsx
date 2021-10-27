@@ -29,13 +29,14 @@ const SignupView = ({...props}) => {
     // const dispatch = useDispatch();
 
     const databaeRootState = useSelector((state: RootStore) => state.databae);
-    const errorMessage = databaeRootState.errorMessage
-    console.log("databaeRootState.errorMessage?",databaeRootState.errorMessage)
-   
+    const signupErrorMessage = databaeRootState.signupErrorMessage
+    // console.log("databaeRootState.errorMessage?",databaeRootState.errorMessage)
+
+
     useEffect(()=>{
-        databaeRootState.errorMessage&&
-        setStatusMessage(databaeRootState.errorMessage)
-    },[databaeRootState.errorMessage])
+        databaeRootState.signupErrorMessage&&
+        setStatusMessage(databaeRootState.signupErrorMessage)
+    },[databaeRootState.signupErrorMessage])
     
     
     useEffect(() => {
@@ -59,7 +60,7 @@ const SignupView = ({...props}) => {
                     <Input className="login__input" placeholder={'Username'} onChange={(e)=>{setusername(e.target.value)}} value={username}/>
                 </Row>
 
-                {errorMessage && <ErrorContainer message= { () => <h3>{statusMessage}</h3> }/>}
+                {signupErrorMessage && <ErrorContainer message= { () => <h3>{statusMessage}</h3> }/>}
                 
                 <Row>
                     <Input className="login__input" placeholder={'Email'} onChange={(e)=>{setemail(e.target.value)}} value={email}/>

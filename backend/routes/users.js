@@ -42,13 +42,6 @@ router.route('/add').post((req, res) => {
 
         res.status(errorParse.code)
         res.json({errorMessage:errorParse.msg})
-      
-        // console.log(errorParse)
-        // var data = {}
-
-        // data.status=errorParse.code
-        // data.error=errorParse
-        // res.json(data);
       }
       });
 
@@ -59,23 +52,12 @@ router.route('/add').post((req, res) => {
   })
 });
 
-//Find all comments by a user
-// router.route('/:userId').get((req,res) => {
-//   console.log("req.params.userId",req.params.userId)
-//   Comment.find({userId:req.params.userId})
-//   // Commment.find()
-//   .then(comments=> res.status(200).json({comments:comments}))
-//   .catch(error=>{res.status(400).json(error)})
-
-// })
 
 
 //find specific user with ${id}
 router.route('/:id').get(async(req,res) => {
 
-
   var userId = req.params.id
-
 
   try {
       var user = await User.find({"_id" : ObjectId(userId)})

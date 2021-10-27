@@ -12,6 +12,7 @@ $link: 'link';
 $hover: 'hover';
 $background-image: 'background-image';
 $background-image-mobile: 'background-image-mobile';
+$login-bg: 'login-bg';
 $logo2: 'logo-2';
 $brand-secondary: 'brand-blue';
 $brand-primary: 'brand-red';
@@ -19,6 +20,7 @@ $border: 'border';
 $text-third: 'text-third';
 $bs: 'bs';
 $shadow-color: 'shadow-color';
+
 //themes
 $themes: (
         default: (
@@ -29,9 +31,9 @@ $themes: (
                 card-bg: $bg--card--light,
                 card-border: $card-border--light,
                 comment-bg: $bg--comment--light,
+                login-bg: $bg--login--light,
                 text: $text--light,
                 text-important: $text--imp--light,
-                text-important-daker: $text--imp--light-hover,
                 text-secondary: $text--2--light,
                 text-third: $text--third--light,
                 text-badge: $text--light,
@@ -51,9 +53,9 @@ $themes: (
                 card-bg: $bg--card--dark,
                 card-border: $card-border--dark,
                 comment-bg: $bg--comment--dark,
+                login-bg: $bg--login--dark,
                 text: $text--dark,
                 text-important: $text--imp--dark,
-                text-important-daker: $text--imp--dark-hover,
                 text-secondary: $text--2--dark,
                 text-third: $text--third--dark,
                 text-badge: $text--dark,

@@ -10,7 +10,7 @@ Read more: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-redu
 
 */
 
-import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, CREATE_USER, LOG_OUT_USER,ERROR_MESSAGE} from "../actions/DatabaeActionTypes"
+import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, CREATE_USER, LOG_OUT_USER,LOGIN_ERROR_MESSAGE,SIGNUP_ERROR_MESSAGE} from "../actions/DatabaeActionTypes"
 import isEmpty from "../components/util/checkEmpty";
 import { UserInput } from "../actions/DatabaeActionTypes";
 
@@ -24,7 +24,8 @@ interface DefaultStateI {
     // currentUser?: UserInput,
     isAuthenticated?: boolean,
     fetchedUser?: any,
-    errorMessage?: any,
+    signupErrorMessage?: any,
+    loginErrorMessage?: any,
 
 }
 
@@ -75,9 +76,13 @@ const databaeReducer = (state: DefaultStateI = defaultState, action: DataBaeDisp
                 isAuthenticated: isEmpty(action.payload)
                 //isAuthenticated: !isEmpty(action.payload)
             }
-        case ERROR_MESSAGE:
+        case LOGIN_ERROR_MESSAGE:
             return {
-                errorMessage: action.payload
+                loginErrorMessage: action.payload
+        }
+        case SIGNUP_ERROR_MESSAGE:
+            return {
+                signupErrorMessage: action.payload
         }
             
         default:

@@ -36,15 +36,15 @@ const MyPageView: FC = () => {
     // }, []);
 
     return (
-        <Container fluid>
-            <h2 className="header--myPage">My Page</h2>
+        <Container fluid className="mypage">
+            <h2 className="mypage__header">My Page</h2>
             {!userState.isAuthenticated ?
             // <Row>
                 <LoginController/>
             // </Row>
             :
             <Row>
-                 <div className="button--myPage-logOut">
+                 <div className="mypage__button--logOut">
                     <ButtonView onClick={handleClick}>Log out</ButtonView>
                     {/* <ButtonController /> */}
                 </div>

@@ -9,13 +9,13 @@ Action Creators, these are the function that creates actions. So actions are the
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#designing-actions
 */
 import axios from "axios";
-import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER, ERROR_MESSAGE} from "./DatabaeActionTypes"
+import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER, LOGIN_ERROR_MESSAGE, SIGNUP_ERROR_MESSAGE} from "./DatabaeActionTypes"
 import {Dispatch} from "redux";
 
 import setAuthToken from "../components/util/setAuthToken";
 import jwt_decode from 'jwt-decode';
 
-export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+export const Login = (userInput : UserInput |any) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
     // Här vill vi hantera allt snack med databasen. 
     // precis på samma sätt som vi snackar med Cocktail DB i den andra reducern.
     // så try { fetch from database } funktionen här inne! 
@@ -51,18 +51,32 @@ export const Login = (userInput : UserInput) => async (dispatch: Dispatch<DataBa
                         type: SET_CURRENT_USER,
                         payload: decodedFromToken},
                         )
-                    
-                // setToken(response.data.token)
-                    // setToken()
-                    // verify()
-
-                    //lös logik i frontend??
-                    // setUsername("")
-                    // setPassword("")
-                    // setIsLoggedIn(true)
                 }
+                if(response.status==201){
+                    //user does not exist
+                    // console.log("error 201:", response)
+                    const {errorMessage} = response.data
+                    dispatch(
+                        {
+                            type: LOGIN_ERROR_MESSAGE,
+                            payload: errorMessage
+                        })
+                }
+                if(response.status==202){
+                    //"Wrong Username or Password!"
+                    // console.log("error 201:", response)
+                    const {errorMessage} = response.data
+                    dispatch(
+                        {
+                            type: LOGIN_ERROR_MESSAGE,
+                            payload: errorMessage
+                        })
+                }
+
+
                 // console.log("response", response)
             })
+            
   
     
 }  catch(error)
@@ -102,7 +116,7 @@ export const SignUp = (userInput : UserInput |any) => async (dispatch: Dispatch<
                 const {errorMessage} = response.data
                 dispatch(
                     {
-                        type: ERROR_MESSAGE,
+                        type: SIGNUP_ERROR_MESSAGE,
                         payload: errorMessage
                     })
             }
