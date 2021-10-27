@@ -17,8 +17,10 @@ const HeaderView = (props) => {
     return (
         <Navbar collapseOnSelect expand="sm" variant="light">
             <Container fluid>
-                <Navbar.Brand>                        
-                    <FontAwesomeIcon className="navbar__icon" icon="star"/>
+                <Navbar.Brand>                
+                    <Link className="navbar__link" to="/">
+                        <FontAwesomeIcon className="navbar__icon" icon="star"/>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
