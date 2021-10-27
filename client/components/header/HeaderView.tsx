@@ -10,8 +10,11 @@ import { useDispatch,useSelector } from "react-redux";
 import { RootStore } from "../../Store";
 
 //component meant to display the header
+interface Props {
+    handleThemeChange: () => void;
+}
 
-const HeaderView = (props) => {
+const HeaderView: FC<Props> = ({...props}) => {
     const themeState = useSelector((state: RootStore) => state.themeReducer);
 
     return (
