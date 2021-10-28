@@ -8,6 +8,7 @@ const createTokens = (user) => {
             id: user.id,
             name: user.name,
             email:user.email,
+            favourites:user.favourites,
             createdAt:user.createdAT
         },
         process.env.ACCESS_TOKEN_SECRET)

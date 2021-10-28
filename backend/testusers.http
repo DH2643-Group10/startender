@@ -3,12 +3,31 @@ Content-Type: application/json
   
 {
     "name" : "Albin Matson Gyllang3",
-    "username" : "albin",
-    "email" : "albin@albin.se",
-    "password":"albin"
+    "username" : "abc",
+    "email" : "ab@albin.se",
+    "password":"abc"
         
 }
 ###
 GET http://localhost:4000/users/61711297f6c09f2cc42cade6
 Content-Type: application/json
 
+###
+
+POST http://localhost:4000/users/favourites/add
+Content-Type: application/json
+
+{
+    "username" : "abc1",
+    "updateId" : "1",
+    "favourites" : []
+}
+###
+POST http://localhost:4000/users/favourites/remove
+Content-Type: application/json
+
+{
+    "username" : "abc1",
+    "updateId" : "1",
+    "favourites" : ["1"]
+}

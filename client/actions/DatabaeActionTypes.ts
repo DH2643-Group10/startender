@@ -62,6 +62,8 @@ export interface UserInput {
     password: String,
     email?: String,
     token?: string,
+    favourites?:[],
+    updateId?:string
     }
 
 // export interface UserInput {

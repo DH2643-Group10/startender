@@ -13,7 +13,7 @@ const Comments = () => {
     const [iscommentsLoading, setcommentsLoading] = useState(true);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const [allComments,setComments] = useState([])
-    // console.log('>>>>>>>>>>>>>>>commentState : ', commentState)
+    console.log('>>>>>>>>>>>>>>>commentState : ', commentState)
 
     // useEffect(() => {
     //     if(commentState.comments instanceof Array){
@@ -29,7 +29,7 @@ const Comments = () => {
             <Row>
                 {/* TODO: Update comment.userId to be username instead */}
               
-                 {commentState.comments instanceof Array ? 
+                {commentState.comments instanceof Array ? 
                 commentState.comments.map((comment, index) => 
                     <Col className="comment__text" key={index}>
                         <div className="comment__text--title">{comment.username? comment.username : 'a user'} wrote:</div> 
