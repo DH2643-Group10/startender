@@ -1,7 +1,7 @@
 import React,{FC, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import HomeContainer from './components/homeContainer/HomeContainer';
+import HomeController from './components/homeContainer/HomeController';
 import './sass/app.scss';
 import { Provider, useSelector } from 'react-redux';
 import store, { RootStore } from "./Store";
@@ -19,7 +19,7 @@ const App: FC = () => {
                         <HeaderController />
                         <Switch>
                             <Route exact path="/">
-                                <HomeContainer/>
+                                <HomeController/>
                             </Route>
                             <Route path="/my-page">
                                 <MyPageController/>

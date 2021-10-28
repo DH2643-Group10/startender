@@ -12,28 +12,14 @@ import LoginController from '../login/LoginController';
 import './styles.scss';
 
 //component meant to display to display information about the logged in user
+interface Props {
+    handleClick: () => void,
+}
 
-const MyPageView: FC = () => {
+
+const MyPageView: FC<Props> = ({...props}) => {
     const userState = useSelector((state: RootStore) => state.databae);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
-    const cocktailState = useSelector((state: RootStore) => state.cocktails);
-    const dispatch = useDispatch();
-
-    const handleClick = () => {
-        dispatch(Logout());
-    }
-
-    useEffect(() => {
-
-        userState.currentUser &&
-        dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
-    }, [userState?.currentUser?.id])
-
-    // const cocktailId = '15997';
-
-    // useEffect(() => {
-    //     dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + cocktailId));
-    // }, []);
 
     return (
         <Container fluid className="mypage">
@@ -45,7 +31,7 @@ const MyPageView: FC = () => {
             :
             <Row>
                  <div className="mypage__button--logOut">
-                    <ButtonView onClick={handleClick}>Log out</ButtonView>
+                    <ButtonView onClick={props.handleClick}>Log out</ButtonView>
                     {/* <ButtonController /> */}
                 </div>
                 <Col>

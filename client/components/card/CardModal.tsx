@@ -78,7 +78,7 @@ const CardModal = ({...props}) => {
                 </Col>
             </Row>
             <CommentsController
-            drinktoshow={props?.drinktoshow}
+                drinktoshow={props?.drinktoshow}
             />
             <Row>
                 Drinkid: {props?.drinktoshow?.idDrink}

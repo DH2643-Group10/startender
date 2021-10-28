@@ -56,9 +56,22 @@ const LoginController = () => {
             !databaeRootState.isAuthenticated && 
             <> 
                 {!signingUp &&
-                <LoginView  userErrorMessage={statusMessage} login={handleLogin} handleToggle={handleToggle} username={username} password={password} setPassword={(e) => setPassword(e.target.value)} setUsername={e => setUsername(e.target.value)}/>
+                <LoginView 
+                    userErrorMessage={statusMessage}
+                    login={handleLogin}
+                    handleToggle={handleToggle}
+                    username={username}
+                    password={password}
+                    setPassword={(e) => setPassword(e.target.value)}
+                    setUsername={e => setUsername(e.target.value)}
+                />
                 }   
-                <SignupView successful={databaeRootState.createSuccessful} signingUp={signingUp} handleToggle={handleToggle} signUp={handleSignUp}/> 
+                <SignupView 
+                    successful={databaeRootState.createSuccessful} 
+                    signingUp={signingUp} 
+                    handleToggle={handleToggle} 
+                    signUp={handleSignUp}
+                /> 
             </> 
             }
            
