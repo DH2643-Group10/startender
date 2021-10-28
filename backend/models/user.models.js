@@ -20,6 +20,9 @@ const User = new mongoose.Schema(
       type: String,
       required: true,
     },
+    favourites:{
+      type: Array
+    },
     _id: {
       type: String,
       // required: true,

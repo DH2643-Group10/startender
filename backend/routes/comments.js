@@ -79,8 +79,8 @@ router.post('/create', (req, res) => {
     .then((data) => {
       console.log("data",data)
       res.status(200)
-      // res.json({data:data});
-      res.json({message:'Comment created!'});
+      res.json(data);
+      // res.json({message:'Comment created!'});
     })
     .catch((error) => {
       res.status(400).json({error:error});

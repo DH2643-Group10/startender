@@ -20,6 +20,7 @@ interface Props {
 const MyPageView: FC<Props> = ({...props}) => {
     const userState = useSelector((state: RootStore) => state.databae);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
+    console.log("userState in myprofile",userState)
 
     return (
         <Container fluid className="mypage">
@@ -38,6 +39,22 @@ const MyPageView: FC<Props> = ({...props}) => {
                     <Row>Name: {userState.currentUser ? userState.currentUser.name : ''} </Row>
                     <Row>Username: {userState.currentUser ? userState.currentUser.username : ''} </Row>
                     <Row>Email: {userState.currentUser ? userState.currentUser.email : ''} </Row>
+                   
+                    {/* display favourites */}
+                     {userState.currentUser.favourites instanceof Array ? 
+                    <Row>
+                        My favourite drinks: 
+                        {userState.currentUser.favourites.map((favId, index) => (
+                            // dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + comment.cocktailDBId)) 
+                            //  drinkIdArray.push(comment.cocktailDBId) && 
+                            <Row key={favId}>
+                                <Col>Favourite Drinkid: {favId}</Col>
+                                {/* <Col>Drinkname: {cocktailState?.cocktail?.drinks[0].strDrink}</Col> */}
+                            </Row>
+                        ))}
+                    </Row>
+                     : ''
+                }
 
                     {commentState.comments instanceof Array ? 
                     <Row>

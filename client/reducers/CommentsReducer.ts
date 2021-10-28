@@ -12,6 +12,7 @@ Read more: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-redu
 import { 
     CommentsDispatchTypes, 
     CommentsTypes,
+    CommentType,
     COMMENTS_SUCCESS, 
     COMMENTS_LOADING, 
     COMMENTS_FAIL,
@@ -20,7 +21,7 @@ import {
 
 interface DefaultStateI {
     commentsLoading: boolean,
-    comments?: CommentsTypes,
+    comments?: CommentType[],
     commentsError?: string
     message?:string
 
@@ -29,6 +30,7 @@ interface DefaultStateI {
 const defaultState: DefaultStateI = {
     commentsLoading: false,
     commentsError:'',
+    comments:[]
 
 };
 
@@ -42,6 +44,7 @@ const commentsReducer = (state: DefaultStateI = defaultState, action: CommentsDi
         case COMMENTS_LOADING:
             return {
                 commentsLoading: true,
+                ...state
             }
         case COMMENTS_SUCCESS: 
             return {
@@ -54,10 +57,14 @@ const commentsReducer = (state: DefaultStateI = defaultState, action: CommentsDi
             message: action.payload
         }
         case CREATED_COMMENT: 
+        console.log("CREATED_COMMENT coments reducer")
+        console.log("CREATED_COMMENT coments reducer state",state)
+        console.log("CREATED_COMMENT coments reducer action.payload",action.payload)
         return {
-            commentsLoading: false,
-            message: action.payload
+            commentsLoading:false,
+            comments:[...state.comments, action.payload]
         }
+        
         default:
             return state
     }

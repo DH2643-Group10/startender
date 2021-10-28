@@ -23,6 +23,7 @@ router.route('/add').post((req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hash,
+      favourites: []
     });
   
     newUser.save()
@@ -51,6 +52,87 @@ router.route('/add').post((req, res) => {
     res.json({errorMessage:errorParse.msg})
   })
 });
+
+//Add CocktailID to favourites
+router.route('/favourites/add').post(async(req,res) => {
+// router.route('/favourites/:update').post(async(req,res) => {
+  //send favourites/"update"/"remove" for adding/removing id
+  // var update = req.params.update
+  
+  console.log("/favourites/add req.body",req.body)
+  var username = req.body.username
+  var updateId= req.body.updateId
+  var favourites= req.body.favourites
+
+  if(!favourites.includes(updateId))
+  {
+    console.log("does not include, therefore we going to add it")
+    var updateUser = await User.findOneAndUpdate({username:username},{new:true})
+
+    // if (update==="update"){
+      updateUser.favourites.push(updateId)
+    // 
+    updateUser.save().then(update => {
+      
+     
+
+
+      console.log("favourite has been added", update)
+
+
+
+      res.status(200)
+      res.json({user:update});
+      return
+    })
+      // .catch((error) => {
+      //   console.log("error in users.js",error)
+      //   console.log("error in users.js",error.code)
+      //   if(error){
+      //     var errorParse= checkError(error.code)
+      //     console.log("errorParse",errorParse.msg)
+  
+      //     res.status(errorParse.code)
+      //     res.json({errorMessage:errorParse.msg})
+      //   }
+      //   });
+  } 
+})
+
+//REMOVE CocktailID to favourites
+router.route('/favourites/remove').post(async(req,res) => {
+  // router.route('/favourites/:update').post(async(req,res) => {
+    //send favourites/"update"/"remove" for adding/removing id
+    // var update = req.params.update
+    
+    console.log("/favourites/remove req.body",req.body)
+    var username = req.body.username
+    var updateId= req.body.updateId
+    var favourites= req.body.favourites
+  
+    if(favourites.includes(updateId))
+    console.log("drink exist in favourite and shall be removed:", updateId)
+
+    //if the cocktailId already exist in the favourites ( remove it) and update the favourites array
+    {
+      var updateUser = await User.findOneAndUpdate({username:username},{favourites: favourites.filter(item=>item!==updateId)},{new:true})
+      console.log("removed id from favourites and updated the user:", updateUser)
+      // // if (update==="remove"){
+        // updateUser.favourites.pull(updateId)
+      // // }
+      
+      updateUser.save().then(update => {
+        console.log("favourite has been removed:",update)
+        res.status(200)
+        res.json({user:update});})
+        .catch(error=>{console.log(error)})
+  
+      //   return
+    }
+ 
+  })
+  
+
 
 
 

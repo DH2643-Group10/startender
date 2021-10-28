@@ -9,7 +9,7 @@ export const CREATED_COMMENT = "CREATED_COMMENT";
 
 // This type corresponds to the JSON object returned from the Cocktail DB API.
 export type CommentsTypes = {
-    comments: CommentType[];
+    comments?: CommentType[];
 };
 
 export type CommentType = {
@@ -34,7 +34,7 @@ export interface DeleteComment {
 
 export interface CreatedComment {
     type: typeof CREATED_COMMENT
-    payload?: string
+    payload?: CommentType
 }
 
 export interface CommentsFail {
@@ -44,7 +44,7 @@ export interface CommentsFail {
 
 export interface CommentsSuccess {
     type: typeof COMMENTS_SUCCESS
-    payload?: CommentsTypes 
+    payload?: CommentType[] 
     
         // The API returns an object that contains an array of drink objects.
 };

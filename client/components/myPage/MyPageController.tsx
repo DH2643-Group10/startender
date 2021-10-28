@@ -23,6 +23,12 @@ const MyPageController = () => {
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
     }, [userState?.currentUser?.id])
 
+    // useEffect(() => {
+
+    //     userState.currentUser &&
+    //     dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
+    // }, [userState?.currentUser?.id])
+
 
     return (
         <div>
