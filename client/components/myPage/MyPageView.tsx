@@ -3,11 +3,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { GetFromCocktailDB } from "../../actions/CocktailActions";
 import { CocktailType } from "../../actions/CocktailActionTypes";
-import { GetAllComments, GetAllCommentsFromUser } from "../../actions/CommentsActions";
-import { FetchUserDataWithId, Logout } from "../../actions/DatabaeActions";
-import { UserInput } from "../../actions/DatabaeActionTypes";
+import { GetAllCommentsFromUser } from "../../actions/CommentsActions";
 import { RootStore } from "../../Store";
-import ButtonController from "../button/ButtonController";
 import ButtonView from "../button/ButtonView";
 import CardModal from "../card/CardModal";
 import LoginController from '../login/LoginController';
@@ -21,7 +18,6 @@ interface Props {
 const MyPageView: FC<Props> = ({...props}) => {
     const userState = useSelector((state: RootStore) => state.databae);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
-    console.log("userState in myprofile",userState)
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const dispatch = useDispatch();
 
@@ -45,8 +41,7 @@ const MyPageView: FC<Props> = ({...props}) => {
 
     useEffect(() => {
         cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), setShow(true)) :  '';
-        console.log('useeffect: ', cocktailState)
-
+        console.log('useeffect: ', cocktailState);
     }, [cocktailState?.cocktail?.drinks]);
 
     return (
@@ -68,7 +63,7 @@ const MyPageView: FC<Props> = ({...props}) => {
                     {/* display favourites */}
                      {userState.currentUser.favourites instanceof Array ? 
                     <Row>
-                        My favourite drinks: 
+                        <h3>My favourite drinks</h3>
                         {userState.currentUser.favourites.map((favId, index) => (
                             // dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + comment.cocktailDBId)) 
                             //  drinkIdArray.push(comment.cocktailDBId) && 
@@ -89,7 +84,6 @@ const MyPageView: FC<Props> = ({...props}) => {
                                 <Row key={index}>
                                     <Col>Drinkid: {comment.cocktailDBId}</Col>
                                     <Col>Comment: {comment.comment} </Col>
-                                    {/* <Col>Drinkname: {cocktailState?.cocktail?.drinks[0]?.strDrink}</Col> */}
                                     <div className="button__container">
                                         <Button variant="secondary" className="card__button" onClick={() => handleShow(comment.cocktailDBId)}>Read more</Button>
                                     </div>
