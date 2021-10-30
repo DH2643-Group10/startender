@@ -36,17 +36,15 @@ const MyPageView: FC<Props> = ({...props}) => {
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
         setShow(false);
     };
-
+    
     const handleShow = (id: string) => {
         dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id));
-
         // setDrinkToShow(cocktailState?.cocktail?.drinks[0]);
         // setShow(true);
     };
 
-    //TODO: Fix this so comments doesn't disappear 
     useEffect(() => {
-        cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), setShow(true)) : '';
+        cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), setShow(true)) :  '';
         console.log('useeffect: ', cocktailState)
 
     }, [cocktailState?.cocktail?.drinks]);
