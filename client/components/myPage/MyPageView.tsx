@@ -28,15 +28,15 @@ const MyPageView: FC<Props> = ({...props}) => {
     const [show, setShow] = useState<boolean>(false);
     const [drinkToShow, setDrinkToShow] = useState<CocktailType>(undefined);
 
-    console.log('userstate: ', userState);
-    console.log('commentstate: ', commentState);
+    // console.log('userstate: ', userState);
+    // console.log('commentstate: ', commentState);
     console.log('cocktailstate: ', cocktailState);
 
     const handleClose = () => {
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
         setShow(false);
     };
-    
+
     const handleShow = (id: string) => {
         dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id));
         // setDrinkToShow(cocktailState?.cocktail?.drinks[0]);
@@ -53,16 +53,14 @@ const MyPageView: FC<Props> = ({...props}) => {
         <Container fluid className="mypage">
             <h2 className="mypage__header">My Page</h2>
             {!userState.isAuthenticated ?
-            // <Row>
                 <LoginController/>
-            // </Row>
             :
             <Row>
                  <div className="mypage__button--logOut">
                     <ButtonView onClick={props.handleClick}>Log out</ButtonView>
-                    {/* <ButtonController /> */}
                 </div>
                 <Col>
+                    <h3>My account details</h3>
                     <Row>Name: {userState.currentUser ? userState.currentUser.name : ''} </Row>
                     <Row>Username: {userState.currentUser ? userState.currentUser.username : ''} </Row>
                     <Row>Email: {userState.currentUser ? userState.currentUser.email : ''} </Row>
@@ -86,7 +84,7 @@ const MyPageView: FC<Props> = ({...props}) => {
                     {!show ?                 
                     (    commentState.comments instanceof Array ? 
                         <Row>
-                            My comments: 
+                            <h3>My comments</h3> 
                             {commentState.comments.map((comment, index) => (
                                 <Row key={index}>
                                     <Col>Drinkid: {comment.cocktailDBId}</Col>
@@ -95,22 +93,14 @@ const MyPageView: FC<Props> = ({...props}) => {
                                     <div className="button__container">
                                         <Button variant="secondary" className="card__button" onClick={() => handleShow(comment.cocktailDBId)}>Read more</Button>
                                     </div>
-                                    {/* { show &&
-                                    <CardModal
-                                        show = {show}
-                                        onHide={handleClose}
-                                        // drinktoshow = {cocktailState?.cocktail?.drinks[0]}
-                                        drinktoshow = {drinkToShow}
-                                        />
-                                    }  */}
                                 </Row>
                             ))}
                         </Row>
-                     : '') : 
+                     : '') 
+                     : 
                      <CardModal
                      show = {show}
                      onHide={handleClose}
-                     // drinktoshow = {cocktailState?.cocktail?.drinks[0]}
                      drinktoshow = {drinkToShow}
                      />
                 }
