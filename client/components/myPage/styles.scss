@@ -5,7 +5,10 @@
     @include themed() {
         color: t($text);
         background: t($bg);
+        padding: 3em;
+    
       }
+
 
     &__header{
         text-align: center;
@@ -13,8 +16,19 @@
 
     &__button--logOut{
         display: flex;
-    justify-content: right;
-    padding-right: 2em;    
+        justify-content: right;
+        padding-right: 2em;    
     }
 
+    &__details {
+        margin-bottom: 1em;
+        padding-left: 1em;
+    }
+
+    &__details--bold {
+        display: inline;
+        font-weight:900;
+        text-decoration: underline;
+        margin-right: 0.5em;
+    }
 }

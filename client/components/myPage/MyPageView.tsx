@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { GetFromCocktailDB } from "../../actions/CocktailActions";
 import { CocktailType } from "../../actions/CocktailActionTypes";
@@ -27,8 +27,6 @@ const MyPageView: FC<Props> = ({...props}) => {
 
     const [drinkToShow, setDrinkToShow] = useState<CocktailType>(undefined);
 
-    // console.log('userstate: ', userState);
-    // console.log('commentstate: ', commentState);
     console.log('cocktailstate: ', cocktailState);
 
 
@@ -49,10 +47,20 @@ const MyPageView: FC<Props> = ({...props}) => {
                 </div>
                 <Col>
                     <h3>My account details</h3>
-                    <Row>Name: {userState.currentUser ? userState.currentUser.name : ''} </Row>
-                    <Row>Username: {userState.currentUser ? userState.currentUser.username : ''} </Row>
-                    <Row>Email: {userState.currentUser ? userState.currentUser.email : ''} </Row>
-                   
+                    <div className="mypage__details">
+                        <div className="mypage__details--bold">
+                            Name:
+                        </div>
+                        {userState.currentUser ? userState.currentUser.name : ''}<br/>
+                        <div className="mypage__details--bold">
+                            Username
+                        </div>
+                        {userState.currentUser ? userState.currentUser.username : ''}<br/>
+                        <div className="mypage__details--bold">
+                            Email:
+                        </div>
+                        {userState.currentUser ? userState.currentUser.email : ''}<br/>
+                    </div>
                     {/* display favourites */}
                      {userState.currentUser.favourites instanceof Array ? 
                     <Row>
@@ -60,10 +68,15 @@ const MyPageView: FC<Props> = ({...props}) => {
                         {userState.currentUser.favourites.map((favId, index) => (
                             // dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + comment.cocktailDBId)) 
                             //  drinkIdArray.push(comment.cocktailDBId) && 
-                            <Row key={favId}>
-                                <Col>Favourite Drinkid: {favId}</Col>
-                                {/* <Col>Drinkname: {cocktailState?.cocktail?.drinks[0].strDrink}</Col> */}
-                            </Row>
+                            <Col>
+                                <Card key={favId}>
+                                    <Card.Body>Favourite Drinkid: {favId}</Card.Body>
+                                </Card>
+                            </Col>
+                            // <Row key={favId}>
+                            //     <Col>Favourite Drinkid: {favId}</Col>
+                            //     {/* <Col>Drinkname: {cocktailState?.cocktail?.drinks[0].strDrink}</Col> */}
+                            // </Row>
                         ))}
                     </Row>
                      : ''
@@ -74,13 +87,17 @@ const MyPageView: FC<Props> = ({...props}) => {
                         <Row>
                             <h3>My comments</h3> 
                             {commentState.comments.map((comment, index) => (
-                                <Row key={index}>
-                                    <Col>Drinkid: {comment.cocktailDBId}</Col>
-                                    <Col>Comment: {comment.comment} </Col>
-                                    <div className="button__container">
-                                        <Button variant="secondary" className="card__button" onClick={() => props.handleShow(comment.cocktailDBId)}>Read more</Button>
-                                    </div>
-                                </Row>
+                                <Col xs={12} sm={4} md={3} lg={2} >
+                                    <Card key={index}>
+                                        <Card.Body>
+                                            <Card.Title>Drink {comment.cocktailDBId}</Card.Title>
+                                            <Card.Subtitle>{comment.comment}</Card.Subtitle>
+                                            <div className="button__container">
+                                                <Button variant="secondary" className="card__button" onClick={() => props.handleShow(comment.cocktailDBId)}>See drink</Button>
+                                            </div>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
                             ))}
                         </Row>
                      : '') 
