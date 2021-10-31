@@ -56,9 +56,6 @@ const commentsReducer = (state: DefaultStateI = defaultState, action: CommentsDi
             message: action.payload
         }
         case CREATED_COMMENT: 
-        console.log("CREATED_COMMENT coments reducer")
-        console.log("CREATED_COMMENT coments reducer state",state)
-        console.log("CREATED_COMMENT coments reducer action.payload",action.payload)
         return {
             commentsLoading:false,
             comments:[...state.comments, action.payload]

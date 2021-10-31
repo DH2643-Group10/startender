@@ -57,31 +57,8 @@ export const CreateComment = (comment:CommentType) => async (dispatch: Dispatch<
         dispatch({
             type: COMMENTS_LOADING})
 
-            // console.log('GEt here??? ')
-
         await axios.post(`http://localhost:4000/comments/create`, comment).then(response=>{
             if(response.status==200){
-
-                // const {data} = response.data
-
-                console.log("response.status==200 data",response.data)
-                
-                // const {message} = response.data
-                // var newComment = response.data
-
-                // newComment.cocktailDBId=response.data.cocktailDBId;
-                // console.log("newComment",newComment)
-
-                // newComment.userId=response.data.userId;
-                // console.log("newComment",newComment)
-
-                // newComment.comment=response.data.comment;
-                // console.log("newComment",newComment)
-
-                // newComment.date=response.data.date;
-                // console.log("newComment",newComment)
-
-                
 
                 dispatch({
                     type: CREATED_COMMENT,

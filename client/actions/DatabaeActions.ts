@@ -19,14 +19,7 @@ export const Login = (userInput : UserInput |any) => async (dispatch: Dispatch<D
     // Här vill vi hantera allt snack med databasen. 
     // precis på samma sätt som vi snackar med Cocktail DB i den andra reducern.
     // så try { fetch from database } funktionen här inne! 
-   
-        //authorization
-        // var userInput = {
-        //     username:username,
-        //     password:password,
-        //     token:""
-        //     }
-            // console.log("userInput",userInput)
+
             try {
                 dispatch( {
                     type: DATABASE_LOADING
@@ -100,9 +93,6 @@ export const SignUp = (userInput : UserInput |any) => async (dispatch: Dispatch<
             
         })
     await axios.post('http://localhost:4000/users/add',userInput).then(response => {
-        // console.log("response", response)
-        // console.log("response Data", response.data)
-        // console.log("response Data usernamne", response.data.username)
 
             if(response.status==200){
                 dispatch({

@@ -15,27 +15,6 @@ const createTokens = (user) => {
     return accessToken
 }
 
-// const validateToken = (req, res, next) => {
-//     const accessToken = req.cookies["access-token"]
-
-//     if(!accessToken)
-//         return res.status(400).json({error:"User not Authenticated"});
-    
-//     try{
-//         const validToken = verify(accessToken, process.env.ACCESS_TOKEN_SECRET)
-//         if(validToken){
-//             console.log("token valid")
-//             req.authenticated = true;
-//             return next()
-//         } 
-//     } catch(error){
-//         return res.status(400).json({error: error});
-
-//     }
-// }
-
-
-
 const authenticateToken = (req, res, next) =>{
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]

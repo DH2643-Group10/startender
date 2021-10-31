@@ -32,12 +32,9 @@ const SignupView: FC<Props> = ({...props}) => {
     const [statusMessage, setStatusMessage] = useState("")
 
     var newUser : UserInput = {name:name, username:username, password:password, email:email, token:'', favourites:[] }
-    // const dispatch = useDispatch();
 
     const databaeRootState = useSelector((state: RootStore) => state.databae);
     const signupErrorMessage = databaeRootState.signupErrorMessage
-    // console.log("databaeRootState.errorMessage?",databaeRootState.errorMessage)
-
 
     useEffect(()=>{
         databaeRootState.signupErrorMessage&&

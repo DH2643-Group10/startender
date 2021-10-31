@@ -8,19 +8,9 @@ import { RootStore } from '../../Store';
 
 const Comments = () => {
 
-    //maybe move this one to the controller, because if a comment 
-    // is added we want the new one to be rendered as well
     const [iscommentsLoading, setcommentsLoading] = useState(true);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const [allComments,setComments] = useState([])
-    console.log('>>>>>>>>>>>>>>>commentState : ', commentState)
-
-    // useEffect(() => {
-    //     if(commentState.comments instanceof Array){
-    //         setComments(commentState.comments)
-    //     }
-        
-    // }, [commentState.comments]);
 
     return (
         // !iscommentsLoading? 

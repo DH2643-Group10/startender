@@ -48,19 +48,17 @@ const MyPageController = () => {
 
 
     return (
-        <div>
-            <MyPageView
-                handleLogOut = {handleLogOut}
-                handleClose = {handleClose}
-                handleShow = {handleShow}
-                show = {show}
-                setShow = {setShow}
-                areCommentsLoading = {areCommentsLoading}
-                setAreCommentsLoading = {setAreCommentsLoading}
-                areFavLoading = {areFavLoading}
-                setAreFavLoading = {setAreFavLoading}
-            />
-        </div>
+        <MyPageView
+            handleLogOut = {handleLogOut}
+            handleClose = {handleClose}
+            handleShow = {handleShow}
+            show = {show}
+            setShow = {setShow}
+            areCommentsLoading = {areCommentsLoading}
+            setAreCommentsLoading = {setAreCommentsLoading}
+            areFavLoading = {areFavLoading}
+            setAreFavLoading = {setAreFavLoading}
+        />
     )
 }
 

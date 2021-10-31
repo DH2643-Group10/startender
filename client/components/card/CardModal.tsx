@@ -19,9 +19,6 @@ const CardModal = ({...props}) => {
     const dispatch = useDispatch();
     
     console.log('User state in CardModal: ', userState);
-    // console.log('Commentstate:.comments ', commentState.comments)
-
-    // console.log('props', props)
 
     const saveFavourite = () => {
         userState.currentUser &&
@@ -33,9 +30,6 @@ const CardModal = ({...props}) => {
     }
 
     useEffect(() => {
-        // dispatch(GetAllComments()) depending on current drink id
-        // dispatch(GetAllComments('15997'))
-
         props.drinktoshow &&
         dispatch(GetAllComments(props?.drinktoshow?.idDrink));
     }, [props?.drinktoshow?.idDrink])

@@ -32,7 +32,6 @@ const LoginController = () => {
     const handleSignUp = (user) => dispatch(SignUp(user));
 
     const databaeRootState = useSelector((state: RootStore) => state.databae);
-    // console.log("databaeRootState", databaeRootState)
     useEffect(()=>{
         databaeRootState.createSuccessful &&
         setSigningUp(false)
@@ -41,10 +40,6 @@ const LoginController = () => {
         databaeRootState.createSuccessful
     ])
 
-
-    // const errorMessage = databaeRootState.errorMessage
-    // console.log("databaeRootState.errorMessage?",databaeRootState.loginErrorMessage)
-   
     useEffect(()=>{
         databaeRootState.loginErrorMessage&&
         setStatusMessage(databaeRootState.loginErrorMessage)
