@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {Modal, Button, Image, Row, Col} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { CocktailsType, CocktailType } from '../../actions/CocktailActionTypes';
 import { GetAllComments } from '../../actions/CommentsActions';
 import { AddToFavourites, RemoveFromFavourites } from '../../actions/DatabaeActions';
 import { RootStore } from '../../Store';
 import CommentsController from '../comments/CommentsController';
-import Comment from '../comments/CommentsController'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -15,11 +13,8 @@ const CardModal = ({...props}) => {
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
     const themeState = useSelector((state: RootStore) => state.themeReducer);
     const userState = useSelector((state: RootStore) => state.databae);
-    const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const dispatch = useDispatch();
     
-    console.log('User state in CardModal: ', userState);
-
     const saveFavourite = () => {
         userState.currentUser &&
         dispatch(AddToFavourites(userState.currentUser,props?.drinktoshow?.idDrink))
@@ -67,7 +62,7 @@ const CardModal = ({...props}) => {
                 <Col sm={12} md={6} lg={4} >
                     <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
                       <Row>
-                                                {/* ADD to favourites */}
+                            {/* ADD to favourites */}
 
                             <Col >
                                 {userState.isAuthenticated ? <> 

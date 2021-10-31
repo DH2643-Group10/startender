@@ -1,14 +1,10 @@
 import React, {FC, useEffect, useState} from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './styles.scss'
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import {CommentType} from '../../actions/CommentsActionTypes';
-import {CreateComment} from '../../actions/CommentsActions';
-import Button from '../button/ButtonController'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootStore } from '../../Store';
-import { CocktailType } from '../../actions/CocktailActionTypes';
 
 interface Values {
 comment: string;
