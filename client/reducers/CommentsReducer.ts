@@ -44,7 +44,6 @@ const commentsReducer = (state: DefaultStateI = defaultState, action: CommentsDi
         case COMMENTS_LOADING:
             return {
                 commentsLoading: true,
-                ...state
             }
         case COMMENTS_SUCCESS: 
             return {
