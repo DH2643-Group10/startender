@@ -13,34 +13,27 @@ import './styles.scss';
 //component meant to display to display information about the logged in user
 interface Props {
     handleClick: () => void,
+    handleClose: () => void,
+    handleShow: (id: string) => void,
+    show: boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+
 }
 
 const MyPageView: FC<Props> = ({...props}) => {
     const userState = useSelector((state: RootStore) => state.databae);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
-    const dispatch = useDispatch();
 
-    const [show, setShow] = useState<boolean>(false);
     const [drinkToShow, setDrinkToShow] = useState<CocktailType>(undefined);
 
     // console.log('userstate: ', userState);
     // console.log('commentstate: ', commentState);
     console.log('cocktailstate: ', cocktailState);
 
-    const handleClose = () => {
-        dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
-        setShow(false);
-    };
-
-    const handleShow = (id: string) => {
-        dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id));
-        // setDrinkToShow(cocktailState?.cocktail?.drinks[0]);
-        // setShow(true);
-    };
 
     useEffect(() => {
-        cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), setShow(true)) :  '';
+        cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), props.setShow(true)) :  '';
         console.log('useeffect: ', cocktailState);
     }, [cocktailState?.cocktail?.drinks]);
 
@@ -76,7 +69,7 @@ const MyPageView: FC<Props> = ({...props}) => {
                      : ''
                 }
 
-                    {!show ?                 
+                    {!props.show ?                 
                     (    commentState.comments instanceof Array ? 
                         <Row>
                             <h3>My comments</h3> 
@@ -85,7 +78,7 @@ const MyPageView: FC<Props> = ({...props}) => {
                                     <Col>Drinkid: {comment.cocktailDBId}</Col>
                                     <Col>Comment: {comment.comment} </Col>
                                     <div className="button__container">
-                                        <Button variant="secondary" className="card__button" onClick={() => handleShow(comment.cocktailDBId)}>Read more</Button>
+                                        <Button variant="secondary" className="card__button" onClick={() => props.handleShow(comment.cocktailDBId)}>Read more</Button>
                                     </div>
                                 </Row>
                             ))}
@@ -93,8 +86,8 @@ const MyPageView: FC<Props> = ({...props}) => {
                      : '') 
                      : 
                      <CardModal
-                     show = {show}
-                     onHide={handleClose}
+                     show = {props.show}
+                     onHide={props.handleClose}
                      drinktoshow = {drinkToShow}
                      />
                 }
