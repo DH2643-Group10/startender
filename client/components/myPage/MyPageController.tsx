@@ -13,14 +13,17 @@ import MyPageView from "./MyPageView";
 const MyPageController = () => {
     const userState = useSelector((state: RootStore) => state.databae);
     const [show, setShow] = useState<boolean>(false);
+    const [areCommentsLoading, setAreCommentsLoading] = useState(true);
+    const [areFavLoading, setAreFavLoading] = useState(true);
+
+
     const dispatch = useDispatch();
 
-    const handleClick = () => {
+    const handleLogOut = () => {
         dispatch(Logout());
     }
 
     useEffect(() => {
-
         userState.currentUser &&
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
     }, [userState?.currentUser?.id])
@@ -47,11 +50,15 @@ const MyPageController = () => {
     return (
         <div>
             <MyPageView
-                handleClick = {handleClick}
+                handleLogOut = {handleLogOut}
                 handleClose = {handleClose}
                 handleShow = {handleShow}
                 show = {show}
                 setShow = {setShow}
+                areCommentsLoading = {areCommentsLoading}
+                setAreCommentsLoading = {setAreCommentsLoading}
+                areFavLoading = {areFavLoading}
+                setAreFavLoading = {setAreFavLoading}
             />
         </div>
     )

@@ -8,16 +8,20 @@ import { RootStore } from "../../Store";
 import ButtonView from "../button/ButtonView";
 import CardModal from "../card/CardModal";
 import LoginController from '../login/LoginController';
+import SpinnerView from "../spinner/SpinnerView";
 import './styles.scss';
 
 //component meant to display to display information about the logged in user
 interface Props {
-    handleClick: () => void,
+    handleLogOut: () => void,
     handleClose: () => void,
     handleShow: (id: string) => void,
     show: boolean,
     setShow: React.Dispatch<React.SetStateAction<boolean>>
-
+    areCommentsLoading: boolean,
+    setAreCommentsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    areFavLoading: boolean,
+    setAreFavLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const MyPageView: FC<Props> = ({...props}) => {
@@ -27,12 +31,11 @@ const MyPageView: FC<Props> = ({...props}) => {
 
     const [drinkToShow, setDrinkToShow] = useState<CocktailType>(undefined);
 
-    console.log('cocktailstate: ', cocktailState);
-
 
     useEffect(() => {
         cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), props.setShow(true)) :  '';
         console.log('useeffect: ', cocktailState);
+        
     }, [cocktailState?.cocktail?.drinks]);
 
     return (
@@ -43,7 +46,7 @@ const MyPageView: FC<Props> = ({...props}) => {
             :
             <Row>
                  <div className="mypage__button--logOut">
-                    <ButtonView onClick={props.handleClick}>Log out</ButtonView>
+                    <ButtonView onClick={props.handleLogOut}>Log out</ButtonView>
                 </div>
                 <Col>
                     <h3>My account details</h3>
@@ -61,13 +64,15 @@ const MyPageView: FC<Props> = ({...props}) => {
                         </div>
                         {userState.currentUser ? userState.currentUser.email : ''}<br/>
                     </div>
+
+                    <h3>My favourite drinks</h3>
                     {/* display favourites */}
-                     {userState.currentUser.favourites instanceof Array ? 
+                    {!props.areFavLoading ?
+                     (userState.currentUser.favourites instanceof Array ? 
                     <Row>
-                        <h3>My favourite drinks</h3>
                         {userState.currentUser.favourites.map((favId, index) => (
-                            <Col>
-                                <Card key={favId}>
+                            <Col key={favId}>
+                                <Card>
                                     <Card.Body>
                                         <Card.Title>Drink {favId}</Card.Title>                                        
                                         <div className="button__container">
@@ -78,16 +83,22 @@ const MyPageView: FC<Props> = ({...props}) => {
                             </Col>
                         ))}
                     </Row>
-                     : ''
+                     : '')
+                     :
+                     <Row className="spinner">
+                        <div className="spinner--state-loading">
+                        <SpinnerView setIsLoading={props.setAreFavLoading}/>
+                        </div> 
+                    </Row>
                 }
-
-                    {!props.show ?                 
+                <h3>My comments</h3> 
+                {!props.areCommentsLoading ?
+                    !props.show ?                 
                     (    commentState.comments instanceof Array ? 
-                        <Row>
-                            <h3>My comments</h3> 
+                        <Row>                            
                             {commentState.comments.map((comment, index) => (
-                                <Col xs={12} sm={4} md={3} lg={2} >
-                                    <Card key={index}>
+                                <Col xs={12} sm={4} md={3} lg={2} key={index}>
+                                    <Card>
                                         <Card.Body>
                                             <Card.Title>Drink {comment.cocktailDBId}</Card.Title>
                                             <Card.Subtitle>{comment.comment}</Card.Subtitle>
@@ -106,6 +117,12 @@ const MyPageView: FC<Props> = ({...props}) => {
                      onHide={props.handleClose}
                      drinktoshow = {drinkToShow}
                      />
+                 :
+                    <Row className="spinner">
+                        <div className="spinner--state-loading">
+                        <SpinnerView setIsLoading={props.setAreCommentsLoading}/>
+                        </div> 
+                    </Row>
                 }
                 </Col>
             </Row>
