@@ -53,7 +53,7 @@ const CardModal = ({...props}) => {
             }
             drink.ingredientList = arr_i; 
         });
-      }, [])
+      }, [cocktailState.cocktail]) // empty before
 
     return (
         <Modal
