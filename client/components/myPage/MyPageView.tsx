@@ -66,17 +66,16 @@ const MyPageView: FC<Props> = ({...props}) => {
                     <Row>
                         <h3>My favourite drinks</h3>
                         {userState.currentUser.favourites.map((favId, index) => (
-                            // dispatch(GetFromCocktailDB("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + comment.cocktailDBId)) 
-                            //  drinkIdArray.push(comment.cocktailDBId) && 
                             <Col>
                                 <Card key={favId}>
-                                    <Card.Body>Favourite Drinkid: {favId}</Card.Body>
+                                    <Card.Body>
+                                        <Card.Title>Drink {favId}</Card.Title>                                        
+                                        <div className="button__container">
+                                            <Button variant="secondary" className="card__button" onClick={() => props.handleShow(favId)}>Show drink</Button>
+                                        </div>
+                                    </Card.Body>
                                 </Card>
                             </Col>
-                            // <Row key={favId}>
-                            //     <Col>Favourite Drinkid: {favId}</Col>
-                            //     {/* <Col>Drinkname: {cocktailState?.cocktail?.drinks[0].strDrink}</Col> */}
-                            // </Row>
                         ))}
                     </Row>
                      : ''
@@ -93,7 +92,7 @@ const MyPageView: FC<Props> = ({...props}) => {
                                             <Card.Title>Drink {comment.cocktailDBId}</Card.Title>
                                             <Card.Subtitle>{comment.comment}</Card.Subtitle>
                                             <div className="button__container">
-                                                <Button variant="secondary" className="card__button" onClick={() => props.handleShow(comment.cocktailDBId)}>See drink</Button>
+                                                <Button variant="secondary" className="card__button" onClick={() => props.handleShow(comment.cocktailDBId)}>Show drink</Button>
                                             </div>
                                         </Card.Body>
                                     </Card>
