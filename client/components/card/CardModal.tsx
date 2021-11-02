@@ -17,11 +17,11 @@ const CardModal = ({...props}) => {
     
     const saveFavourite = () => {
         userState.currentUser &&
-        dispatch(AddToFavourites(userState.currentUser,props?.drinktoshow?.idDrink))
+        dispatch(AddToFavourites(userState.currentUser, props?.drinktoshow))
     }
     const removeFavourite = () => {
         userState.currentUser &&
-        dispatch(RemoveFromFavourites(userState.currentUser,props?.drinktoshow?.idDrink))
+        dispatch(RemoveFromFavourites(userState.currentUser, props?.drinktoshow))
     }
 
     useEffect(() => {
@@ -43,6 +43,32 @@ const CardModal = ({...props}) => {
             drink.ingredientList = arr_i; 
         });
       }, [cocktailState.cocktail]) // empty before
+
+
+      //check if drink is favourited
+      const checkObjId = (obj,id,idNo) => {
+        for (const [key, value] of Object.entries(obj)) {
+          if(key===id && value==idNo ){
+            return true
+          }
+          else{
+            return false
+          }
+        }
+        
+        }
+        
+        const checkArray = (checkFor,inArray) => {
+          var bool = false
+          inArray.forEach(each => {
+                if(checkObjId(each,"favId",checkFor)){
+                  bool=true
+                }
+              }
+           )
+           return bool
+        }
+     
 
     return (
         <Modal
@@ -66,7 +92,7 @@ const CardModal = ({...props}) => {
 
                             <Col >
                                 {userState.isAuthenticated ? <> 
-                                {userState.currentUser.favourites?.includes(props?.drinktoshow?.idDrink) ?
+                                {checkArray( props?.drinktoshow?.idDrink, userState.currentUser.favourites) ?
                                 <FontAwesomeIcon size={"lg"} className="navbar__icon" icon="star" /> : <Button size="sm" onClick={saveFavourite}>Add to favourites</Button>} </>
                                 : ""
                                 }
@@ -74,7 +100,7 @@ const CardModal = ({...props}) => {
                             {/* REMOVE from favourites */}
                             <Col>
                                 {userState.isAuthenticated ? <> 
-                                    {userState.currentUser.favourites?.includes(props?.drinktoshow?.idDrink) ?
+                                    {checkArray( props?.drinktoshow?.idDrink, userState.currentUser.favourites) ?
                                 <Button size="sm" variant="danger" onClick={removeFavourite}> Remove </Button> :""} </>
                                     : <></>
                                 }

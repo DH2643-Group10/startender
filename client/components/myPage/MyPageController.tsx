@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetFromCocktailDB } from '../../actions/CocktailActions';
+import { GetFromCocktailDB, } from '../../actions/CocktailActions';
 import { GetAllCommentsFromUser } from '../../actions/CommentsActions';
 import { Logout } from '../../actions/DatabaeActions';
 import { RootStore } from '../../Store';
@@ -15,6 +15,7 @@ const MyPageController = () => {
     const [show, setShow] = useState<boolean>(false);
     const [areCommentsLoading, setAreCommentsLoading] = useState(true);
     const [areFavLoading, setAreFavLoading] = useState(true);
+    const cocktailState = useSelector((state: RootStore) => state.cocktails);
 
 
     const dispatch = useDispatch();
@@ -28,6 +29,30 @@ const MyPageController = () => {
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
     }, [userState?.currentUser?.id])
 
+    
+    // useEffect(() => {
+    //     userState?.currentUser?.favourites
+    //     && userState.currentUser.favourites.forEach((favId)=>{
+    //         dispatch(getFavCocktailInfo(favId))
+    //     })
+    //     console.log("cocktailState myPagecontroller", cocktailState)
+
+    // }, [userState?.currentUser?.favourites])
+
+    // const handleTest = () => {
+    //     console.log("cocktailState myPagecontroller BEFORE ^^", cocktailState)
+    //     console.log("userState myPagecontroller  ^^", userState)
+
+        
+    //     // userState.currentUser.favourites&&
+    //     //  userState.currentUser.favourites.forEach((fav)=>{
+    //     //      console.log("fav",fav)
+    //     //     // getFavCocktailInfo(favId)
+    //     // })
+    //     console.log("cocktailState myPagecontroller AFTER _____", cocktailState)
+
+    // }
+
 
     const handleClose = () => {
         dispatch(GetAllCommentsFromUser(userState?.currentUser?.id));
@@ -39,6 +64,7 @@ const MyPageController = () => {
         // setDrinkToShow(cocktailState?.cocktail?.drinks[0]);
         // setShow(true);
     };
+
 
     // useEffect(() => {
 

@@ -10,6 +10,7 @@ https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#design
 */
 import axios from "axios";
 import {DataBaeDispatchTypes, FIND_USER_SUCCESS, DATABASE_LOADING, DATABASE_FAIL, DATABASE_SUCCESS, SET_CURRENT_USER, UserInput, CREATE_USER, LOG_OUT_USER, LOGIN_ERROR_MESSAGE, SIGNUP_ERROR_MESSAGE} from "./DatabaeActionTypes"
+import { CocktailType } from "./CocktailActionTypes";
 import {Dispatch} from "redux";
 
 import setAuthToken from "../components/util/setAuthToken";
@@ -164,15 +165,21 @@ export const FetchUserDataWithId = (userId : string) => async (dispatch: Dispatc
 
 };
 
-export const AddToFavourites = (userInput : UserInput|any, updateId:string) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+export const AddToFavourites = (userInput : UserInput|any, cocktailObject : CocktailType) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
     try {
         dispatch( {
             type: DATABASE_LOADING
         })
-
+      
         // Här gör vi själva API callet till CocktailDB.
         // axios.get(`http://localhost:4000/comments/find/${cocktailDBId}`,{params:{id:cocktailDBId}}).then(response=>{
-        userInput.updateId = updateId
+        
+        //for displaying Favourite drinks, name and image on myPage
+        userInput.updateId = cocktailObject.idDrink
+        userInput.cocktailName = cocktailObject.strDrink
+        userInput.cocktailImgUrl = cocktailObject.strDrinkThumb
+
+        
         await axios.post(`http://localhost:4000/users/favourites/add`, userInput).then(response=>{
             console.log("userInput databaeactions,",userInput)
             if(response.status==200){
@@ -201,13 +208,19 @@ export const AddToFavourites = (userInput : UserInput|any, updateId:string) => a
 
 };
 
-export const RemoveFromFavourites = (userInput : UserInput|any, updateId:string) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
+export const RemoveFromFavourites = (userInput : UserInput|any, cocktailObject : CocktailType) => async (dispatch: Dispatch<DataBaeDispatchTypes>) => {
     try {
         dispatch( {
             type: DATABASE_LOADING
         })
 
-        userInput.updateId = updateId
+        // userInput.updateId = updateId
+
+
+        userInput.updateId = cocktailObject.idDrink
+        userInput.cocktailName = cocktailObject.strDrink
+        userInput.cocktailImgUrl = cocktailObject.strDrinkThumb
+        
         await axios.post(`http://localhost:4000/users/favourites/remove`, userInput).then(response=>{
             console.log("userInput databaeactions,",userInput)
             if(response.status==200){

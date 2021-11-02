@@ -10,7 +10,7 @@ https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#design
 */
 
 import {Dispatch} from "redux";
-import { CocktailDispatchTypes, COCKTAILS_FAIL, COCKTAILS_LOADING, COCKTAILS_SUCCESS } from "./CocktailActionTypes";
+import { CocktailDispatchTypes, COCKTAILS_FAIL, COCKTAILS_LOADING, COCKTAILS_SUCCESS,CocktailType, } from "./CocktailActionTypes";
 import axios from "axios";
 
 export const GetFromCocktailDB = (requestUrl: string) => async (dispatch: Dispatch<CocktailDispatchTypes>) => {
@@ -39,3 +39,34 @@ export const GetFromCocktailDB = (requestUrl: string) => async (dispatch: Dispat
       }
 
 };
+
+// export const GetFavFromCocktailDB = (requestUrl: string) => async (dispatch: Dispatch<CocktailDispatchTypes>) => {
+//     console.log("GetFavFromCocktailDB requestUrl",requestUrl)
+//     try {
+//         dispatch( {
+//             type: COCKTAILS_LOADING
+            
+//         })
+
+//         // Här gör vi själva API callet till CocktailDB.
+//         var response  = await axios.get(requestUrl)
+//         console.log(" GetFavFromCocktailDB response",response)
+//         // console.log(" GetFavFromCocktailDB response", response.data.drinks[0])
+//         if(response.status==200){
+//         //    var setter = response.data
+//           dispatch({
+//             type: FAVOURITE_COCKTAILS,
+//             payload: response.data
+//         })
+
+//         } else {console.log("response not status 200", response)}
+
+//       } catch (err) {
+//         console.log("GetFavFromCocktailDB err",err)
+
+//           dispatch({
+//               type: COCKTAILS_FAIL
+//           })
+//       }
+
+// };

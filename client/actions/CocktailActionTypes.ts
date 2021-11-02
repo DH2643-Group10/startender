@@ -63,4 +63,5 @@ export interface CocktailsSuccess {
         CocktailsType
 };
 
-export type CocktailDispatchTypes = CocktailsLoading | CocktailsFail | CocktailsSuccess;
+
+export type CocktailDispatchTypes = CocktailsLoading | CocktailsFail | CocktailsSuccess ;

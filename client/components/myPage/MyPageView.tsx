@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Image} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { GetFromCocktailDB } from "../../actions/CocktailActions";
 import { CocktailType } from "../../actions/CocktailActionTypes";
@@ -16,6 +16,8 @@ interface Props {
     handleLogOut: () => void,
     handleClose: () => void,
     handleShow: (id: string) => void,
+
+
     show: boolean,
     setShow: React.Dispatch<React.SetStateAction<boolean>>
     areCommentsLoading: boolean,
@@ -29,13 +31,12 @@ const MyPageView: FC<Props> = ({...props}) => {
     const userState = useSelector((state: RootStore) => state.databae);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const cocktailState = useSelector((state: RootStore) => state.cocktails);
-
     const [drinkToShow, setDrinkToShow] = useState<CocktailType>(undefined);
 
 
     useEffect(() => {
         cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), props.setShow(true)) :  '';
-        console.log('useeffect: ', cocktailState);
+        // console.log('useeffect: ', cocktailState);
         
     }, [cocktailState?.cocktail?.drinks]);
 
@@ -71,13 +72,15 @@ const MyPageView: FC<Props> = ({...props}) => {
                     {!props.areFavLoading ?
                      (userState.currentUser.favourites instanceof Array ? 
                     <Row>
-                        {userState.currentUser.favourites.map((favId, index) => (
-                            <Col xs={12} sm={4} md={3} lg={2} key={favId}>
+                        {userState.currentUser.favourites.map((favourite, index) => (
+                            <Col xs={12} sm={4} md={3} lg={2} key={favourite.favId}>
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title>Drink {favId}</Card.Title>                                        
+                                        <Image className="modal__img" id={"image-"+favourite.favId} src={favourite.cocktailImgUrl}/>
+
+                                        <Card.Title>{favourite.cocktailName }</Card.Title>                                        
                                         <div className="button__container">
-                                            <Button variant="secondary" className="card__button" onClick={() => props.handleShow(favId)}>Show drink</Button>
+                                            <Button variant="secondary" className="card__button" onClick={() => props.handleShow(favourite.favId)}>Show drink</Button>
                                         </div>
                                     </Card.Body>
                                 </Card>
