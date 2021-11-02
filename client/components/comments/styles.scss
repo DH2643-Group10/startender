@@ -16,6 +16,8 @@
         padding: 1em;
     }
 
+
+
     &__text {
         padding: 1em;
         margin: 10px;
@@ -27,6 +29,19 @@
             box-shadow: t($bs);
           }
     }
+    &__text--date {
+        // padding: 1em;
+        // margin: 10px;
+        // border-radius: 20px;
+        font-size:10px;
+
+        @include themed() {
+            color: t($text);
+            background-color: t($bg);
+          }
+    }
+
+    
     
     &__text--title {
         font-weight: bold;

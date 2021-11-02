@@ -7,11 +7,17 @@ import { useSelector } from 'react-redux';
 import { RootStore } from '../../Store';
 
 const Comments = () => {
-
+    const dateFormat = (day)=>{
+        const oldFormat = new Date(day).getTime();
+        var d = new Date(oldFormat)
+        var datestring = ("0" + d.getDate()).slice(-2) + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+        d.getFullYear() + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+     return (datestring)
+ }
     const [iscommentsLoading, setcommentsLoading] = useState(true);
     const commentState = useSelector((state: RootStore) => state.commentsReducer);
     const [allComments,setComments] = useState([])
-
+    console.log("commentState",commentState)
     return (
         // !iscommentsLoading? 
         //     comments?
@@ -25,6 +31,8 @@ const Comments = () => {
                         <div className="comment__text--title">{comment.username? comment.username : 'a user'} wrote:</div> 
                         {/* <div className="comment__text--title">{comment.userId} </div>  */}
                         <div className="comment__text--comment">{comment.comment}</div>
+                        <div className="comment__text--date">{comment.date && dateFormat(comment.date)}</div>
+
                     </Col>)
                     : ''}
         </Row>

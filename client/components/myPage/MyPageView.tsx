@@ -21,7 +21,8 @@ interface Props {
     areCommentsLoading: boolean,
     setAreCommentsLoading: React.Dispatch<React.SetStateAction<boolean>>
     areFavLoading: boolean,
-    setAreFavLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setAreFavLoading: React.Dispatch<React.SetStateAction<boolean>>,
+
 }
 
 const MyPageView: FC<Props> = ({...props}) => {
@@ -71,7 +72,7 @@ const MyPageView: FC<Props> = ({...props}) => {
                      (userState.currentUser.favourites instanceof Array ? 
                     <Row>
                         {userState.currentUser.favourites.map((favId, index) => (
-                            <Col key={favId}>
+                            <Col xs={12} sm={4} md={3} lg={2} key={favId}>
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>Drink {favId}</Card.Title>                                        

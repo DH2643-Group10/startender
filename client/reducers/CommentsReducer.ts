@@ -42,7 +42,7 @@ const commentsReducer = (state: DefaultStateI = defaultState, action: CommentsDi
                 commentsError: action.payload
             }
         case COMMENTS_LOADING:
-            return {
+            return {...state,
                 commentsLoading: true,
             }
         case COMMENTS_SUCCESS: 
