@@ -24,6 +24,12 @@ const Comment = new mongoose.Schema({
         type:String,
         required: true
     },
+    strDrink: {
+        type:String,
+    },
+    strDrinkThumb: {
+        type:String,
+    },
     date:{
         type: Date,
         default: Date.now

@@ -73,6 +73,8 @@ router.post('/create', (req, res) => {
     name: req.body.name,
     comment: req.body.comment,
     username: req.body.username,
+    strDrink: req.body.strDrink,
+    strDrinkThumb: req.body.strDrinkThumb,
   });
   newComment
     .save()

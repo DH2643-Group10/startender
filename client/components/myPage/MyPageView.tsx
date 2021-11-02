@@ -34,8 +34,6 @@ const MyPageView: FC<Props> = ({...props}) => {
 
     useEffect(() => {
         cocktailState?.cocktail?.drinks.length === 1 ? (setDrinkToShow(cocktailState?.cocktail?.drinks[0]), props.setShow(true)) :  '';
-        console.log('useeffect: ', cocktailState);
-        
     }, [cocktailState?.cocktail?.drinks]);
 
     return (
@@ -100,8 +98,11 @@ const MyPageView: FC<Props> = ({...props}) => {
                                 <Col xs={12} sm={4} md={3} lg={2} key={index}>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Drink {comment.cocktailDBId}</Card.Title>
+                                            <Card.Title>Drink {comment.strDrink? comment.strDrink : comment.cocktailDBId}</Card.Title>
                                             <Card.Subtitle>{comment.comment}</Card.Subtitle>
+                                            {comment.strDrinkThumb &&
+                                                <Card.Img variant="top" src={comment.strDrinkThumb} />
+                                            }
                                             <div className="button__container">
                                                 <Button variant="secondary" className="card__button" onClick={() => props.handleShow(comment.cocktailDBId)}>Show drink</Button>
                                             </div>
