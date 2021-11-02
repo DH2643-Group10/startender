@@ -39,7 +39,7 @@ export const Login = (userInput : UserInput |any) => async (dispatch: Dispatch<D
                     //function that sets HTTP headers
 
                     const decodedFromToken= jwt_decode(token)
-                    console.log("decodedFromToken",decodedFromToken)
+                    // console.log("decodedFromToken",decodedFromToken)
                     //decodes the token
                     dispatch({
                         type: SET_CURRENT_USER,
@@ -174,12 +174,12 @@ export const AddToFavourites = (userInput : UserInput|any, updateId:string) => a
         // axios.get(`http://localhost:4000/comments/find/${cocktailDBId}`,{params:{id:cocktailDBId}}).then(response=>{
         userInput.updateId = updateId
         await axios.post(`http://localhost:4000/users/favourites/add`, userInput).then(response=>{
-            console.log("userInput databaeactions,",userInput)
+            // console.log("userInput databaeactions,",userInput)
             if(response.status==200){
                 //response is the updated user
                
                 const {user} = response.data
-                console.log("user response favourites add", user)
+                // console.log("user response favourites add", user)
 
                 //database returns "_id" property, we use "id" in client, therefore we rename it here.
 
@@ -209,12 +209,12 @@ export const RemoveFromFavourites = (userInput : UserInput|any, updateId:string)
 
         userInput.updateId = updateId
         await axios.post(`http://localhost:4000/users/favourites/remove`, userInput).then(response=>{
-            console.log("userInput databaeactions,",userInput)
+            // console.log("userInput databaeactions,",userInput)
             if(response.status==200){
                //response is the updated user
                 const {user} = response.data
 
-                console.log("user response favourites remove", user)
+                // console.log("user response favourites remove", user)
 
                 //database returns "_id" property, we use "id" in client, therefore we rename it here.
                 user.id = user._id
