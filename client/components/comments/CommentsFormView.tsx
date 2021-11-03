@@ -35,7 +35,7 @@ const CommentForm: FC<Props> = ({...props}) => {
                     values: Values,
                     { setSubmitting,resetForm }: FormikHelpers<Values>
                     ) => {
-                        var newComment : CommentType = {cocktailDBId:props.drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment, username:username,};
+                        var newComment : CommentType = {cocktailDBId:props.drinktoshow?.idDrink, userId:userId, drinkId:'', comment:values.comment, username:username, strDrink:props.drinktoshow?.strDrink, strDrinkThumb:props.drinktoshow?.strDrinkThumb};
                         setComment(values.comment);
                         setSubmitting(false);
                         props.handleComment(newComment)
