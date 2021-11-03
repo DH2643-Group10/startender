@@ -20,6 +20,8 @@ export type CommentType = {
     comment: string
     date?:  string
     username: string
+    strDrink?: string
+    strDrinkThumb?: string
 }
 
 export interface CommentsLoading {

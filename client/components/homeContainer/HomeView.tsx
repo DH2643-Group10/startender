@@ -59,14 +59,9 @@ const HomeView: FC<Props> = ({...props}) => {
             </Row>
 
             {!props.isCardsLoading 
-            // and we have data : && data.drinks or something
-            // or do we want that in the CardController / someplace else? 
-            // && cocktailState 
-            // ? cocktailState != null || cocktailState.cocktail != null? 
             ? cocktailState.cocktail ?
             <Row className="results">
                 <CardController/>
-                {/* {console.log("cocktailState: ", cocktailState.cocktail)} */}
             </Row> : 
             ''
             :
