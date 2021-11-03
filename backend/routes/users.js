@@ -5,14 +5,32 @@ const bcrypt = require('bcrypt')
 const {checkError} = require('../errorCodes')
 const { ObjectId }  = require("mongodb");
 
-//Find user all users
-// router.route('/').get((req, res) => {
-//   User.find().
-//     then(users=> res.json(users))
-//     .catch(error=>{res.status(400).json(error)})
-// })
-
+//functions to check if id is containted within array of objects (favourited drinks) 
+const checkObjId = (obj,id,idNo) => {
+  for (const [key, value] of Object.entries(obj)) {
+    if(key===id && value==idNo ){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  
+  }
+  
+  const checkArray = (checkFor,inArray) => {
+    var bool = false
+    inArray.forEach(each => {
+          if(checkObjId(each,"favId",checkFor)){
+            bool=true
+          }
+        }
+     )
+     return bool
+  }
 //Create new user
+
+
 router.route('/add').post((req, res) => {
 
   console.log("/add req",req.body)
@@ -53,6 +71,8 @@ router.route('/add').post((req, res) => {
   })
 });
 
+
+
 //Add CocktailID to favourites
 router.route('/favourites/add').post(async(req,res) => {
 // router.route('/favourites/:update').post(async(req,res) => {
@@ -62,15 +82,22 @@ router.route('/favourites/add').post(async(req,res) => {
   console.log("/favourites/add req.body",req.body)
   var username = req.body.username
   var updateId= req.body.updateId
+  var cocktailName = req.body.cocktailName
+  var cocktailImgUrl = req.body.cocktailImgUrl
+  var updateId= req.body.updateId
   var favourites= req.body.favourites
 
-  if(!favourites.includes(updateId))
+
+
+
+  if(!checkArray(updateId,favourites))
+  // if(!favourites.includes(updateId))
   {
     console.log("does not include, therefore we going to add it")
     var updateUser = await User.findOneAndUpdate({username:username},{new:true})
 
     // if (update==="update"){
-      updateUser.favourites.push(updateId)
+      updateUser.favourites.push({favId:updateId,cocktailName: cocktailName, cocktailImgUrl:cocktailImgUrl})
     // 
     updateUser.save().then(update => {
       
@@ -99,7 +126,7 @@ router.route('/favourites/add').post(async(req,res) => {
   } 
 })
 
-//REMOVE CocktailID to favourites
+//REMOVE favourite with CocktailID from  favourites
 router.route('/favourites/remove').post(async(req,res) => {
   // router.route('/favourites/:update').post(async(req,res) => {
     //send favourites/"update"/"remove" for adding/removing id
@@ -109,13 +136,16 @@ router.route('/favourites/remove').post(async(req,res) => {
     var username = req.body.username
     var updateId= req.body.updateId
     var favourites= req.body.favourites
-  
-    if(favourites.includes(updateId))
+    
+    if(checkArray(updateId, favourites))
+
+    // if(favourites.includes(updateId))
     console.log("drink exist in favourite and shall be removed:", updateId)
 
     //if the cocktailId already exist in the favourites ( remove it) and update the favourites array
     {
-      var updateUser = await User.findOneAndUpdate({username:username},{favourites: favourites.filter(item=>item!==updateId)},{new:true})
+      var updateUser = await User.findOneAndUpdate({username:username},{favourites: favourites.filter(each=> each.favId!=updateId && checkArray(each.favId,favourites))},{new:true})
+      // var updateUser = await User.findOneAndUpdate({username:username},{favourites: favourites.filter(item=>item!==updateId)},{new:true})
       console.log("removed id from favourites and updated the user:", updateUser)
       // // if (update==="remove"){
         // updateUser.favourites.pull(updateId)

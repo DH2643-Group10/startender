@@ -9,7 +9,7 @@ Read more: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-redu
 
 */
 
-import { CocktailDispatchTypes, CocktailsType, COCKTAILS_SUCCESS, COCKTAILS_LOADING, COCKTAILS_FAIL } from "../actions/CocktailActionTypes";
+import { CocktailDispatchTypes, CocktailsType, CocktailType, COCKTAILS_SUCCESS, COCKTAILS_LOADING, COCKTAILS_FAIL,} from "../actions/CocktailActionTypes";
 
 interface DefaultStateI {
     loading: boolean,
@@ -17,17 +17,20 @@ interface DefaultStateI {
 }
 
 const defaultState: DefaultStateI = {
-    loading: false
+    loading: false,
 };
 
 const cocktailReducer = (state: DefaultStateI = defaultState, action: CocktailDispatchTypes): DefaultStateI => {
     switch(action.type) {
         case COCKTAILS_FAIL:
             return {
+
                 loading: false,
             }
         case COCKTAILS_LOADING:
             return {
+                ...state,
+
                 loading: true,
             }
         case COCKTAILS_SUCCESS: 
@@ -35,6 +38,7 @@ const cocktailReducer = (state: DefaultStateI = defaultState, action: CocktailDi
                 loading: false,
                 cocktail: action.payload
             }
+    
         default:
             return state
     }
