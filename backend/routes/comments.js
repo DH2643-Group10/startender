@@ -97,7 +97,7 @@ router.route('/usercomments/:id').get(async(req,res) => {
 
 try {
   var comments = await Comment.find({userId : ObjectId(userId)})
-  if (comments.length>0){
+  if (comments){
     res.status(200).json({comments:comments})
   }
 }

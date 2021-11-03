@@ -87,18 +87,16 @@ const CardModal = ({...props}) => {
             <Row>
                 <Col sm={12} md={6} lg={4} >
                     <Image className="modal__img" id={"image-"+props?.drinktoshow?.idDrink} src={props?.drinktoshow?.strDrinkThumb}/>
-                      <Row>
+                      <Row className="modal__favorite--row">
                             {/* ADD to favourites */}
 
-                            <Col >
+                            <Col>
                                 {userState.isAuthenticated ? <> 
                                 {checkArray( props?.drinktoshow?.idDrink, userState.currentUser.favourites) ?
                                 <FontAwesomeIcon size={"lg"} className="navbar__icon" icon="star" /> : <Button size="sm" onClick={saveFavourite}>Add to favourites</Button>} </>
                                 : ""
                                 }
-                            </Col>
-                            {/* REMOVE from favourites */}
-                            <Col>
+                            
                                 {userState.isAuthenticated ? <> 
                                     {checkArray( props?.drinktoshow?.idDrink, userState.currentUser.favourites) ?
                                 <Button size="sm" variant="danger" onClick={removeFavourite}> Remove </Button> :""} </>
@@ -129,9 +127,6 @@ const CardModal = ({...props}) => {
             <CommentsController
                 drinktoshow={props?.drinktoshow}
             />
-            <Row>
-                Drinkid: {props?.drinktoshow?.idDrink}
-            </Row>
         </Modal.Body>
         
     </Modal>
