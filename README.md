@@ -20,7 +20,7 @@ A project made for the course DH2643 Advanced interaction programming, at KTH.
 <!-- ABOUT THE PROJECT -->
 # About The Project
 
-_The Startender_ is your digital bartender - just search for whatever you feel like drinking and the startender will suggest a delicious cocktail recipe. You can also create your own profile, comment on drinks, read other users comments and save your favorite drinks for future access. The app was built as a part of the course DH2643 Advanced interaction programming, at KTH Royal Institute of Technology. 
+_The Startender_ is your digital bartender - just search for whatever you feel like drinking and the startender will suggest a delicious cocktail recipe. You can also create your own profile, comment on drinks, read other users comments and save your favorite drinks for future access. The app was built as a part of the course DH2643 Advanced interaction programming, at KTH Royal Institute of Technology. The page is deployed through Heroku and Netlify, and you can visit it at [startender.netlify.app](https://startender.netlify.app/). 
 
 ![Dark Mode Screen Shot](client/assets/imgs/about_1_light.png) _The landing page in light mode._
 
@@ -64,6 +64,10 @@ ____
 ## Database
 *  mongoDB
 * [The Cocktail DB](https://www.thecocktaildb.com/)
+
+## Deployment
+* Backend: hosted with [Heroku](https://thestartender.herokuapp.com/)
+* Frontend: hosted with [Netlify](https://startender.netlify.app/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
